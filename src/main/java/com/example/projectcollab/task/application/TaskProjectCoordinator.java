@@ -1,12 +1,12 @@
 package com.example.projectcollab.task.application;
 
 import com.example.projectcollab.task.domain.Task;
-import com.example.projectcollab.task.persistence.TaskEntity;
-import com.example.projectcollab.task.persistence.TaskMapper;
-import com.example.projectcollab.task.persistence.TaskRepository;
+import com.example.projectcollab.task.domain.TaskRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Component
 public class TaskProjectCoordinator {
@@ -18,17 +18,13 @@ public class TaskProjectCoordinator {
 
     @Transactional(propagation = Propagation.MANDATORY)
     public void normalizeAssignments(final long projectId, final String removedUserId) {
-        for (TaskEntity entity : taskRepository.findAssignedTasksForUpdate(projectId, removedUserId)) {
-            Task task = TaskMapper.toDomain(entity);
-            task.removeAssigneeForMembershipEnd();
-            TaskMapper.apply(entity, task);
-        }
-        taskRepository.flush();
+        List<Task> tasks = taskRepository.findAssignedTasksForMembershipEnd(projectId, removedUserId);
+        tasks.forEach(Task::removeAssigneeForMembershipEnd);
+        taskRepository.saveAll(tasks);
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
     public void deleteProjectTasks(final long projectId) {
-        taskRepository.deleteAllByProjectId(projectId);
-        taskRepository.flush();
+        taskRepository.deleteProjectTasks(projectId);
     }
 }

@@ -16,14 +16,12 @@ import com.example.projectcollab.task.application.dto.TaskPageResponse;
 import com.example.projectcollab.task.application.dto.TaskResponse;
 import com.example.projectcollab.task.domain.Task;
 import com.example.projectcollab.task.domain.TaskContent;
-import com.example.projectcollab.task.persistence.TaskEntity;
-import com.example.projectcollab.task.persistence.TaskMapper;
-import com.example.projectcollab.task.persistence.TaskRepository;
+import com.example.projectcollab.task.domain.TaskRepository;
+import com.example.projectcollab.task.persistence.SpringDataTaskRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -32,18 +30,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @SpringBootTest
-class TaskServiceIntegrationTests {
+class TaskApplicationServicesIntegrationTests {
     private static final String OWNER = "owner";
     private static final String MEMBER = "member";
 
     @Autowired
-    private TaskService taskService;
+    private TaskWriteService taskWriteService;
+
+    @Autowired
+    private TaskReadService taskReadService;
 
     @Autowired
     private ProjectService projectService;
 
     @Autowired
     private TaskRepository taskRepository;
+
+    @Autowired
+    private TaskQueryRepository taskQueryRepository;
+
+    @Autowired
+    private SpringDataTaskRepository springDataTaskRepository;
 
     @Autowired
     private ProjectRepository projectRepository;
@@ -53,7 +60,7 @@ class TaskServiceIntegrationTests {
 
     @BeforeEach
     void cleanDatabase() {
-        taskRepository.deleteAll();
+        springDataTaskRepository.deleteAll();
         projectRepository.deleteAll();
     }
 
@@ -61,7 +68,7 @@ class TaskServiceIntegrationTests {
     void memberProposalCanCompleteThroughTheDocumentedLifecycle() {
         long projectId = projectWithMember();
 
-        TaskResponse proposed = taskService.createTask(
+        TaskResponse proposed = taskWriteService.createTask(
                 projectId,
                 new CreateTaskRequest("  첫 작업  ", "  설명  ", null, false),
                 MEMBER
@@ -72,15 +79,15 @@ class TaskServiceIntegrationTests {
         assertThat(proposed.assigneeUserId()).isEqualTo(MEMBER);
         assertThat(proposed.revision()).isZero();
 
-        TaskResponse approved = taskService.approve(
+        TaskResponse approved = taskWriteService.approve(
                 projectId,
                 proposed.taskId(),
                 new ApproveTaskRequest(null, false, proposed.revision()),
                 OWNER
         );
-        TaskResponse started = taskService.start(projectId, proposed.taskId(), approved.revision(), MEMBER);
-        TaskResponse inReview = taskService.requestReview(projectId, proposed.taskId(), started.revision(), MEMBER);
-        TaskResponse done = taskService.complete(projectId, proposed.taskId(), inReview.revision(), OWNER);
+        TaskResponse started = taskWriteService.start(projectId, proposed.taskId(), approved.revision(), MEMBER);
+        TaskResponse inReview = taskWriteService.requestReview(projectId, proposed.taskId(), started.revision(), MEMBER);
+        TaskResponse done = taskWriteService.complete(projectId, proposed.taskId(), inReview.revision(), OWNER);
 
         assertThat(approved.state()).isEqualTo(Task.TaskState.ACCEPTED.name());
         assertThat(started.state()).isEqualTo(Task.TaskState.IN_PROGRESS.name());
@@ -93,7 +100,7 @@ class TaskServiceIntegrationTests {
     void roleDeterminesInitialStateAndOnlyManagersCanSelectAnAssignee() {
         long projectId = projectWithMember();
 
-        TaskResponse managerTask = taskService.createTask(
+        TaskResponse managerTask = taskWriteService.createTask(
                 projectId,
                 new CreateTaskRequest("관리자 작업", "설명", null, true),
                 OWNER
@@ -101,7 +108,7 @@ class TaskServiceIntegrationTests {
 
         assertThat(managerTask.state()).isEqualTo(Task.TaskState.ACCEPTED.name());
         assertThat(managerTask.assigneeUserId()).isNull();
-        assertThatThrownBy(() -> taskService.createTask(
+        assertThatThrownBy(() -> taskWriteService.createTask(
                 projectId,
                 new CreateTaskRequest("멤버 작업", "설명", null, true),
                 MEMBER
@@ -111,20 +118,20 @@ class TaskServiceIntegrationTests {
     @Test
     void assigneeMustBeACurrentProjectMemberAndCreatorCannotSelfApprove() {
         long projectId = projectWithMember();
-        TaskResponse accepted = taskService.createTask(
+        TaskResponse accepted = taskWriteService.createTask(
                 projectId,
                 new CreateTaskRequest("관리자 작업", "설명", null, false),
                 OWNER
         );
 
-        assertThatThrownBy(() -> taskService.assign(
+        assertThatThrownBy(() -> taskWriteService.assign(
                 projectId,
                 accepted.taskId(),
                 new AssignTaskRequest("outsider", accepted.revision()),
                 OWNER
         )).isInstanceOf(ProjectPermissionException.class);
 
-        TaskResponse proposed = taskService.createTask(
+        TaskResponse proposed = taskWriteService.createTask(
                 projectId,
                 new CreateTaskRequest("승격 전 제안", "설명", null, false),
                 MEMBER
@@ -136,7 +143,7 @@ class TaskServiceIntegrationTests {
                 new ChangeProjectRoleRequest(ProjectRole.ADMIN)
         );
 
-        assertThatThrownBy(() -> taskService.approve(
+        assertThatThrownBy(() -> taskWriteService.approve(
                 projectId,
                 proposed.taskId(),
                 new ApproveTaskRequest(null, false, proposed.revision()),
@@ -148,32 +155,32 @@ class TaskServiceIntegrationTests {
     @Test
     void staleRevisionIsRejectedAndSearchFilterPagingAreAppliedTogether() {
         long projectId = projectWithMember();
-        TaskResponse alpha = taskService.createTask(
+        TaskResponse alpha = taskWriteService.createTask(
                 projectId,
                 new CreateTaskRequest("Alpha task", "검색 설명", null, false),
                 MEMBER
         );
-        taskService.createTask(
+        taskWriteService.createTask(
                 projectId,
                 new CreateTaskRequest("Beta task", "다른 설명", null, false),
                 OWNER
         );
 
-        TaskResponse revised = taskService.editTask(
+        TaskResponse revised = taskWriteService.editTask(
                 projectId,
                 alpha.taskId(),
                 new ReviseTaskRequest("Alpha revised", "검색 설명", alpha.revision()),
                 MEMBER
         );
 
-        assertThatThrownBy(() -> taskService.editTask(
+        assertThatThrownBy(() -> taskWriteService.editTask(
                 projectId,
                 alpha.taskId(),
                 new ReviseTaskRequest("오래된 변경", "덮어쓰면 안 됨", alpha.revision()),
                 MEMBER
         )).isInstanceOf(TaskConflictException.class);
 
-        TaskPageResponse page = taskService.listTasks(
+        TaskPageResponse page = taskReadService.listTasks(
                 projectId,
                 MEMBER,
                 "alpha",
@@ -189,33 +196,33 @@ class TaskServiceIntegrationTests {
     @Test
     void removingMemberUnassignsAndNormalizesTheirTasks() {
         long projectId = projectWithMember();
-        TaskResponse proposed = taskService.createTask(
+        TaskResponse proposed = taskWriteService.createTask(
                 projectId,
                 new CreateTaskRequest("진행 작업", "설명", null, false),
                 MEMBER
         );
-        TaskResponse approved = taskService.approve(
+        TaskResponse approved = taskWriteService.approve(
                 projectId,
                 proposed.taskId(),
                 new ApproveTaskRequest(null, false, proposed.revision()),
                 OWNER
         );
-        TaskResponse inProgress = taskService.start(projectId, proposed.taskId(), approved.revision(), MEMBER);
+        TaskResponse inProgress = taskWriteService.start(projectId, proposed.taskId(), approved.revision(), MEMBER);
 
         projectService.removeMember(projectId, OWNER, MEMBER);
 
-        TaskResponse normalized = taskService.getTaskDetail(projectId, proposed.taskId(), OWNER);
+        TaskResponse normalized = taskReadService.getTaskDetail(projectId, proposed.taskId(), OWNER);
         assertThat(normalized.state()).isEqualTo(Task.TaskState.ACCEPTED.name());
         assertThat(normalized.assigneeUserId()).isNull();
         assertThat(normalized.revision()).isGreaterThan(inProgress.revision());
-        assertThatThrownBy(() -> taskService.getTaskDetail(projectId, proposed.taskId(), MEMBER))
+        assertThatThrownBy(() -> taskReadService.getTaskDetail(projectId, proposed.taskId(), MEMBER))
                 .isInstanceOf(ProjectPermissionException.class);
     }
 
     @Test
     void projectDeletionDeletesItsTasksInTheSameCommand() {
         long projectId = createProject();
-        taskService.createTask(
+        taskWriteService.createTask(
                 projectId,
                 new CreateTaskRequest("삭제될 작업", "설명", null, false),
                 OWNER
@@ -223,31 +230,31 @@ class TaskServiceIntegrationTests {
 
         projectService.deleteProject(projectId, OWNER);
 
-        assertThat(taskRepository.count()).isZero();
+        assertThat(springDataTaskRepository.count()).isZero();
         assertThat(projectRepository.findById(projectId)).isEmpty();
     }
 
     @Test
     void creatorCanReviseAndResubmitARejectedProposal() {
         long projectId = projectWithMember();
-        TaskResponse proposed = taskService.createTask(
+        TaskResponse proposed = taskWriteService.createTask(
                 projectId,
                 new CreateTaskRequest("초안", "설명", null, false),
                 MEMBER
         );
-        TaskResponse rejected = taskService.reject(
+        TaskResponse rejected = taskWriteService.reject(
                 projectId,
                 proposed.taskId(),
                 new RejectTaskRequest("내용 보완", proposed.revision()),
                 OWNER
         );
-        TaskResponse revised = taskService.editTask(
+        TaskResponse revised = taskWriteService.editTask(
                 projectId,
                 proposed.taskId(),
                 new ReviseTaskRequest("수정안", "보완한 설명", rejected.revision()),
                 MEMBER
         );
-        TaskResponse resubmitted = taskService.resubmit(
+        TaskResponse resubmitted = taskWriteService.resubmit(
                 projectId,
                 proposed.taskId(),
                 revised.revision(),
@@ -264,13 +271,13 @@ class TaskServiceIntegrationTests {
     @Test
     void taskWithoutAssigneeCannotBeUnassignedAgain() {
         long projectId = createProject();
-        TaskResponse unassigned = taskService.createTask(
+        TaskResponse unassigned = taskWriteService.createTask(
                 projectId,
                 new CreateTaskRequest("미할당 작업", "설명", null, true),
                 OWNER
         );
 
-        assertThatThrownBy(() -> taskService.unassign(
+        assertThatThrownBy(() -> taskWriteService.unassign(
                 projectId,
                 unassigned.taskId(),
                 unassigned.revision(),
@@ -278,7 +285,7 @@ class TaskServiceIntegrationTests {
         )).isInstanceOf(IllegalStateException.class)
                 .hasMessage("담당자가 없는 작업은 담당자를 해제할 수 없습니다.");
 
-        TaskResponse unchanged = taskService.getTaskDetail(projectId, unassigned.taskId(), OWNER);
+        TaskResponse unchanged = taskReadService.getTaskDetail(projectId, unassigned.taskId(), OWNER);
         assertThat(unchanged.assigneeUserId()).isNull();
         assertThat(unchanged.revision()).isEqualTo(unassigned.revision());
     }
@@ -286,7 +293,7 @@ class TaskServiceIntegrationTests {
     @Test
     void taskQueriesDoNotReturnRowsAfterMembershipWasRemovedFollowingAnEarlierCheck() {
         long projectId = projectWithMember();
-        TaskResponse task = taskService.createTask(
+        TaskResponse task = taskWriteService.createTask(
                 projectId,
                 new CreateTaskRequest("권한 경계", "설명", null, false),
                 MEMBER
@@ -300,11 +307,11 @@ class TaskServiceIntegrationTests {
 
         projectService.removeMember(projectId, OWNER, MEMBER);
 
-        boolean detailVisible = transaction.execute(status -> taskRepository
+        boolean detailVisible = transaction.execute(status -> taskQueryRepository
                 .findReadableTask(projectId, task.taskId(), MEMBER)
                 .isPresent());
-        boolean listVisible = transaction.execute(status -> !taskRepository
-                .searchReadable(projectId, MEMBER, null, null, PageRequest.of(0, 20))
+        boolean listVisible = transaction.execute(status -> !taskQueryRepository
+                .searchReadable(projectId, MEMBER, null, null, 0, 20)
                 .isEmpty());
         assertThat(detailVisible).isFalse();
         assertThat(listVisible).isFalse();
@@ -314,25 +321,25 @@ class TaskServiceIntegrationTests {
     @Test
     void managerCanEditAndDeleteAnApprovedTaskCreatedBySomeoneElse() {
         long projectId = projectWithMember();
-        TaskResponse proposed = taskService.createTask(
+        TaskResponse proposed = taskWriteService.createTask(
                 projectId,
                 new CreateTaskRequest("멤버 제안", "설명", null, false),
                 MEMBER
         );
-        TaskResponse approved = taskService.approve(
+        TaskResponse approved = taskWriteService.approve(
                 projectId,
                 proposed.taskId(),
                 new ApproveTaskRequest(null, false, proposed.revision()),
                 OWNER
         );
 
-        TaskResponse edited = taskService.editTask(
+        TaskResponse edited = taskWriteService.editTask(
                 projectId,
                 approved.taskId(),
                 new ReviseTaskRequest("관리자 수정", "승인 후 수정", approved.revision()),
                 OWNER
         );
-        taskService.removeTask(projectId, edited.taskId(), edited.revision(), OWNER);
+        taskWriteService.removeTask(projectId, edited.taskId(), edited.revision(), OWNER);
 
         assertThat(edited.state()).isEqualTo(Task.TaskState.ACCEPTED.name());
         assertThat(edited.title()).isEqualTo("관리자 수정");
@@ -342,32 +349,28 @@ class TaskServiceIntegrationTests {
     @Test
     void jpaVersionRejectsAChangeThatRacesAfterTheExplicitRevisionCheck() {
         long projectId = createProject();
-        TaskResponse created = taskService.createTask(
+        TaskResponse created = taskWriteService.createTask(
                 projectId,
                 new CreateTaskRequest("동시 수정", "설명", null, false),
                 OWNER
         );
         TransactionTemplate transaction = new TransactionTemplate(transactionManager);
-        TaskEntity first = transaction.execute(status -> taskRepository
+        Task first = transaction.execute(status -> taskRepository
                 .findByTaskIdAndProjectId(created.taskId(), projectId)
                 .orElseThrow());
-        TaskEntity second = transaction.execute(status -> taskRepository
+        Task second = transaction.execute(status -> taskRepository
                 .findByTaskIdAndProjectId(created.taskId(), projectId)
                 .orElseThrow());
 
-        Task firstChange = TaskMapper.toDomain(first);
-        firstChange.edit(new TaskContent("첫 변경", "먼저 반영"));
-        TaskMapper.apply(first, firstChange);
-        Task secondChange = TaskMapper.toDomain(second);
-        secondChange.edit(new TaskContent("두 번째 변경", "덮어쓰면 안 됨"));
-        TaskMapper.apply(second, secondChange);
+        first.edit(new TaskContent("첫 변경", "먼저 반영"));
+        second.edit(new TaskContent("두 번째 변경", "덮어쓰면 안 됨"));
 
-        transaction.executeWithoutResult(status -> taskRepository.saveAndFlush(first));
+        transaction.executeWithoutResult(status -> taskRepository.save(first));
 
         assertThatThrownBy(() -> transaction.executeWithoutResult(
-                status -> taskRepository.saveAndFlush(second)
+                status -> taskRepository.save(second)
         )).isInstanceOf(ObjectOptimisticLockingFailureException.class);
-        assertThat(taskService.getTaskDetail(projectId, created.taskId(), OWNER).title()).isEqualTo("첫 변경");
+        assertThat(taskReadService.getTaskDetail(projectId, created.taskId(), OWNER).title()).isEqualTo("첫 변경");
     }
 
     private long projectWithMember() {

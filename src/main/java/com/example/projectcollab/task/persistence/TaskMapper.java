@@ -6,11 +6,11 @@ import com.example.projectcollab.task.domain.Task;
 import com.example.projectcollab.task.domain.TaskAssignment;
 import com.example.projectcollab.task.domain.TaskContent;
 
-public final class TaskMapper {
+final class TaskMapper {
     private TaskMapper() {
     }
 
-    public static Task toDomain(final TaskEntity taskEntity) {
+    static Task toDomain(final TaskEntity taskEntity) {
         TaskAssignment assignment = taskEntity.assigneeUserId() == null
                 ? TaskAssignment.Unassigned.INSTANCE
                 : new TaskAssignment.Assigned(new Assignee(taskEntity.assigneeUserId()));
@@ -18,16 +18,20 @@ public final class TaskMapper {
         Task.TaskState state = Task.TaskState.valueOf(taskEntity.state());
 
         return Task.restore(
+                taskEntity.taskId(),
+                taskEntity.revision(),
                 taskEntity.projectId(),
                 new Creator(taskEntity.creatorUserId()),
                 new TaskContent(taskEntity.title(), taskEntity.description()),
                 assignment,
                 state,
-                taskEntity.rejectionReason()
+                taskEntity.rejectionReason(),
+                taskEntity.createdAt(),
+                taskEntity.updatedAt()
         );
     }
 
-    public static TaskEntity toEntity(final Task task) {
+    static TaskEntity toEntity(final Task task) {
         String assigneeUserId = task.assignment() instanceof TaskAssignment.Assigned assigned
                 ? assigned.assignee().username()
                 : null;
@@ -43,7 +47,7 @@ public final class TaskMapper {
         );
     }
 
-    public static void apply(final TaskEntity taskEntity, final Task task) {
+    static void apply(final TaskEntity taskEntity, final Task task) {
         String assigneeUserId = task.assignment() instanceof TaskAssignment.Assigned assigned
                 ? assigned.assignee().username()
                 : null;

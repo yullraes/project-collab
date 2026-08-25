@@ -4,6 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.time.Instant;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,11 +18,15 @@ class TaskAssigneeNormalizationTests {
     ) {
         Task task = Task.restore(
                 1L,
+                0L,
+                1L,
                 new Creator("creator"),
                 new TaskContent("제목", "설명"),
                 new TaskAssignment.Assigned(new Assignee("member")),
                 currentState,
-                currentState == Task.TaskState.REJECTED ? "반려 사유" : null
+                currentState == Task.TaskState.REJECTED ? "반려 사유" : null,
+                Instant.EPOCH,
+                Instant.EPOCH
         );
 
         task.removeAssigneeForMembershipEnd();

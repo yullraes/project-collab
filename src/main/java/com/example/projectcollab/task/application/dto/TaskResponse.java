@@ -1,6 +1,7 @@
 package com.example.projectcollab.task.application.dto;
 
-import com.example.projectcollab.task.persistence.TaskEntity;
+import com.example.projectcollab.task.domain.Task;
+import com.example.projectcollab.task.domain.TaskAssignment;
 
 import java.time.Instant;
 
@@ -18,19 +19,22 @@ public record TaskResponse(
         Instant updatedAt
 ) {
 
-    public static TaskResponse from(final TaskEntity taskEntity) {
+    public static TaskResponse from(final Task task) {
+        String assigneeUserId = task.assignment() instanceof TaskAssignment.Assigned assigned
+                ? assigned.assignee().username()
+                : null;
         return new TaskResponse(
-                taskEntity.taskId(),
-                taskEntity.projectId(),
-                taskEntity.revision(),
-                taskEntity.creatorUserId(),
-                taskEntity.assigneeUserId(),
-                taskEntity.title(),
-                taskEntity.description(),
-                taskEntity.state(),
-                taskEntity.rejectionReason(),
-                taskEntity.createdAt(),
-                taskEntity.updatedAt()
+                task.taskId(),
+                task.projectId(),
+                task.revision(),
+                task.creator().username(),
+                assigneeUserId,
+                task.content().title(),
+                task.content().description(),
+                task.state().name(),
+                task.rejectionReason(),
+                task.createdAt(),
+                task.updatedAt()
         );
     }
 }

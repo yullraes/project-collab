@@ -1,0 +1,84 @@
+package com.example.projectcollab.task.persistence;
+
+import com.example.projectcollab.task.domain.Task;
+import com.example.projectcollab.task.domain.TaskRepository;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
+@Repository
+public class JpaTaskRepository implements TaskRepository {
+    private final SpringDataTaskRepository springDataRepository;
+
+    public JpaTaskRepository(final SpringDataTaskRepository springDataRepository) {
+        this.springDataRepository = springDataRepository;
+    }
+
+    @Override
+    public Task save(final Task task) {
+        TaskEntity entity;
+        if (task.taskId() == null) {
+            entity = TaskMapper.toEntity(task);
+        } else {
+            entity = loadCurrent(task);
+            requireSameRevision(entity, task);
+            TaskMapper.apply(entity, task);
+        }
+        return TaskMapper.toDomain(springDataRepository.saveAndFlush(entity));
+    }
+
+    @Override
+    public void saveAll(final List<Task> tasks) {
+        for (Task task : tasks) {
+            TaskEntity entity = loadCurrent(task);
+            requireSameRevision(entity, task);
+            TaskMapper.apply(entity, task);
+        }
+        springDataRepository.flush();
+    }
+
+    @Override
+    public Optional<Task> findByTaskIdAndProjectId(final long taskId, final long projectId) {
+        return springDataRepository.findByTaskIdAndProjectId(taskId, projectId)
+                .map(TaskMapper::toDomain);
+    }
+
+    @Override
+    public List<Task> findAssignedTasksForMembershipEnd(final long projectId, final String assigneeUserId) {
+        return springDataRepository.findAssignedTasksForUpdate(projectId, assigneeUserId).stream()
+                .map(TaskMapper::toDomain)
+                .toList();
+    }
+
+    @Override
+    public void delete(final Task task) {
+        TaskEntity entity = loadCurrent(task);
+        requireSameRevision(entity, task);
+        springDataRepository.delete(entity);
+        springDataRepository.flush();
+    }
+
+    @Override
+    public void deleteProjectTasks(final long projectId) {
+        springDataRepository.deleteAllByProjectId(projectId);
+        springDataRepository.flush();
+    }
+
+    private TaskEntity loadCurrent(final Task task) {
+        Long taskId = task.taskId();
+        if (taskId == null) {
+            throw new IllegalArgumentException("저장된 작업의 ID는 필수입니다.");
+        }
+        return springDataRepository.findByTaskIdAndProjectId(taskId, task.projectId())
+                .orElseThrow(() -> new ObjectOptimisticLockingFailureException(TaskEntity.class, taskId));
+    }
+
+    private void requireSameRevision(final TaskEntity entity, final Task task) {
+        if (!Objects.equals(entity.revision(), task.revision())) {
+            throw new ObjectOptimisticLockingFailureException(TaskEntity.class, task.taskId());
+        }
+    }
+}

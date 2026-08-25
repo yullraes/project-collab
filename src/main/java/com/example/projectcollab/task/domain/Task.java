@@ -1,5 +1,6 @@
 package com.example.projectcollab.task.domain;
 
+import java.time.Instant;
 import java.util.Set;
 
 public final class Task {
@@ -19,8 +20,12 @@ public final class Task {
             TaskState.DONE
     );
 
+    private final Long taskId;
+    private final Long revision;
     private final Long projectId;
     private final Creator creator;
+    private final Instant createdAt;
+    private final Instant updatedAt;
 
     private TaskContent content;
     private TaskAssignment assignment;
@@ -28,19 +33,27 @@ public final class Task {
     private String rejectionReason;
 
     Task(
+            final Long taskId,
+            final Long revision,
             final Long projectId,
             final Creator creator,
             final TaskContent content,
             final TaskAssignment assignment,
             final TaskState state,
-            final String rejectionReason
+            final String rejectionReason,
+            final Instant createdAt,
+            final Instant updatedAt
     ) {
+        this.taskId = taskId;
+        this.revision = revision;
         this.projectId = Require.positive(projectId, "프로젝트 ID는 양수여야 합니다.");
         this.creator = Require.notNull(creator, "생성자는 필수입니다.");
         this.content = Require.notNull(content, "작업 내용은 필수입니다.");
         this.assignment = Require.notNull(assignment, "담당자 배정 정보는 필수입니다.");
         this.state = Require.notNull(state, "작업 상태는 필수입니다.");
         this.rejectionReason = rejectionReason;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public static Task propose(
@@ -50,11 +63,15 @@ public final class Task {
     ) {
         Creator validatedCreator = Require.notNull(creator, "생성자는 필수입니다.");
         return new Task(
+                null,
+                null,
                 projectId,
                 validatedCreator,
                 content,
                 new TaskAssignment.Assigned(new Assignee(validatedCreator.username())),
                 TaskState.PENDING,
+                null,
+                null,
                 null
         );
     }
@@ -80,24 +97,43 @@ public final class Task {
             final TaskAssignment assignment
     ) {
         return new Task(
+                null,
+                null,
                 projectId,
                 creator,
                 content,
                 assignment,
                 TaskState.ACCEPTED,
+                null,
+                null,
                 null
         );
     }
 
     public static Task restore(
+            final Long taskId,
+            final Long revision,
             final Long projectId,
             final Creator creator,
             final TaskContent content,
             final TaskAssignment assignment,
             final TaskState state,
-            final String rejectionReason
+            final String rejectionReason,
+            final Instant createdAt,
+            final Instant updatedAt
     ) {
-        return new Task(projectId, creator, content, assignment, state, rejectionReason);
+        return new Task(
+                Require.positive(taskId, "작업 ID는 양수여야 합니다."),
+                Require.notNull(revision, "작업 리비전은 필수입니다."),
+                projectId,
+                creator,
+                content,
+                assignment,
+                state,
+                rejectionReason,
+                Require.notNull(createdAt, "작업 생성 시각은 필수입니다."),
+                Require.notNull(updatedAt, "작업 수정 시각은 필수입니다.")
+        );
     }
 
     public void approve() {
@@ -215,6 +251,14 @@ public final class Task {
         return projectId;
     }
 
+    public Long taskId() {
+        return taskId;
+    }
+
+    public Long revision() {
+        return revision;
+    }
+
     public Creator creator() {
         return creator;
     }
@@ -233,5 +277,13 @@ public final class Task {
 
     public String rejectionReason() {
         return rejectionReason;
+    }
+
+    public Instant createdAt() {
+        return createdAt;
+    }
+
+    public Instant updatedAt() {
+        return updatedAt;
     }
 }

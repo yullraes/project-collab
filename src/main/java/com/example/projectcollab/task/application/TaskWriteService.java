@@ -9,31 +9,25 @@ import com.example.projectcollab.task.application.dto.AssignTaskRequest;
 import com.example.projectcollab.task.application.dto.CreateTaskRequest;
 import com.example.projectcollab.task.application.dto.RejectTaskRequest;
 import com.example.projectcollab.task.application.dto.ReviseTaskRequest;
-import com.example.projectcollab.task.application.dto.TaskPageResponse;
 import com.example.projectcollab.task.application.dto.TaskResponse;
 import com.example.projectcollab.task.domain.Assignee;
 import com.example.projectcollab.task.domain.Creator;
 import com.example.projectcollab.task.domain.Task;
 import com.example.projectcollab.task.domain.TaskAssignment;
 import com.example.projectcollab.task.domain.TaskContent;
-import com.example.projectcollab.task.persistence.TaskEntity;
-import com.example.projectcollab.task.persistence.TaskMapper;
-import com.example.projectcollab.task.persistence.TaskRepository;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import com.example.projectcollab.task.domain.TaskRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional(readOnly = true)
-public class TaskService {
-    private static final int MAX_PAGE_SIZE = 100;
-
+public class TaskWriteService {
     private final TaskRepository taskRepository;
     private final ProjectRepository projectRepository;
 
-    public TaskService(final TaskRepository taskRepository, final ProjectRepository projectRepository) {
+    public TaskWriteService(
+            final TaskRepository taskRepository,
+            final ProjectRepository projectRepository
+    ) {
         this.taskRepository = taskRepository;
         this.projectRepository = projectRepository;
     }
@@ -60,51 +54,7 @@ public class TaskService {
             task = Task.propose(projectId, creator, content);
         }
 
-        return saveAndRespond(TaskMapper.toEntity(task));
-    }
-
-    public TaskPageResponse listTasks(
-            final long projectId,
-            final String userId,
-            final String keyword,
-            final Task.TaskState state,
-            final int page,
-            final int size
-    ) {
-        loadReadableProject(projectId, userId, "task.read.forbidden");
-        if (page < 0) {
-            throw new IllegalArgumentException("task.page.invalid");
-        }
-        if (size < 1 || size > MAX_PAGE_SIZE) {
-            throw new IllegalArgumentException("task.page_size.invalid");
-        }
-
-        String normalizedKeyword = normalize(keyword);
-        if (normalizedKeyword != null && normalizedKeyword.isBlank()) {
-            normalizedKeyword = null;
-        }
-        String stateName = state == null ? null : state.name();
-        PageRequest pageRequest = PageRequest.of(
-                page,
-                size,
-                Sort.by(Sort.Order.desc("createdAt"), Sort.Order.desc("taskId"))
-        );
-        Page<TaskResponse> tasks = taskRepository.searchReadable(
-                        projectId,
-                        userId,
-                        normalizedKeyword,
-                        stateName,
-                        pageRequest
-                )
-                .map(TaskResponse::from);
-        return TaskPageResponse.from(tasks);
-    }
-
-    public TaskResponse getTaskDetail(final long projectId, final long taskId, final String userId) {
-        loadReadableProject(projectId, userId, "task.read.forbidden");
-        TaskEntity task = taskRepository.findReadableTask(projectId, taskId, userId)
-                .orElseThrow(TaskNotFoundException::new);
-        return TaskResponse.from(task);
+        return TaskResponse.from(taskRepository.save(task));
     }
 
     @Transactional
@@ -115,10 +65,8 @@ public class TaskService {
             final String userId
     ) {
         ProjectResource project = loadProjectForUpdate(projectId, userId, "task.modify.forbidden");
-        TaskEntity current = loadTask(projectId, taskId);
-        verifyRevision(current, request.revision());
-
-        Task task = TaskMapper.toDomain(current);
+        Task task = loadTask(projectId, taskId);
+        verifyRevision(task, request.revision());
         TaskContent content = new TaskContent(normalize(request.title()), normalize(request.description()));
         if (project.isManager(userId)) {
             task.edit(content);
@@ -128,8 +76,7 @@ public class TaskService {
             }
             task.revise(content);
         }
-        TaskMapper.apply(current, task);
-        return saveAndRespond(current);
+        return TaskResponse.from(taskRepository.save(task));
     }
 
     @Transactional
@@ -141,18 +88,16 @@ public class TaskService {
     ) {
         ProjectResource project = loadProjectForUpdate(projectId, userId, "task.assign.forbidden");
         requireManager(project, userId, "task.assign.forbidden");
-        TaskEntity current = loadTask(projectId, taskId);
-        verifyRevision(current, request.revision());
+        Task task = loadTask(projectId, taskId);
+        verifyRevision(task, request.revision());
 
         String assigneeUserId = normalizeOptionalUserId(request.assigneeUserId());
         if (assigneeUserId == null) {
             throw new IllegalArgumentException("task.assignee.required");
         }
         requireProjectMember(project, assigneeUserId, "task.assignee.not_member");
-        Task task = TaskMapper.toDomain(current);
         task.assign(new Assignee(assigneeUserId));
-        TaskMapper.apply(current, task);
-        return saveAndRespond(current);
+        return TaskResponse.from(taskRepository.save(task));
     }
 
     @Transactional
@@ -164,13 +109,10 @@ public class TaskService {
     ) {
         ProjectResource project = loadProjectForUpdate(projectId, userId, "task.unassign.forbidden");
         requireManager(project, userId, "task.unassign.forbidden");
-        TaskEntity current = loadTask(projectId, taskId);
-        verifyRevision(current, revision);
-
-        Task task = TaskMapper.toDomain(current);
+        Task task = loadTask(projectId, taskId);
+        verifyRevision(task, revision);
         task.unassign();
-        TaskMapper.apply(current, task);
-        return saveAndRespond(current);
+        return TaskResponse.from(taskRepository.save(task));
     }
 
     @Transactional
@@ -181,14 +123,11 @@ public class TaskService {
             final String userId
     ) {
         loadProjectForUpdate(projectId, userId, "task.relinquish.forbidden");
-        TaskEntity current = loadTask(projectId, taskId);
-        verifyRevision(current, revision);
-
-        Task task = TaskMapper.toDomain(current);
+        Task task = loadTask(projectId, taskId);
+        verifyRevision(task, revision);
         requireCurrentAssignee(task, userId);
         task.relinquish();
-        TaskMapper.apply(current, task);
-        return saveAndRespond(current);
+        return TaskResponse.from(taskRepository.save(task));
     }
 
     @Transactional
@@ -200,17 +139,15 @@ public class TaskService {
     ) {
         ProjectResource project = loadProjectForUpdate(projectId, userId, "task.approve.forbidden");
         requireManager(project, userId, "task.approve.forbidden");
-        TaskEntity current = loadTask(projectId, taskId);
-        verifyRevision(current, request.revision());
-        if (current.creatorUserId().equals(userId)) {
+        Task task = loadTask(projectId, taskId);
+        verifyRevision(task, request.revision());
+        if (task.creator().username().equals(userId)) {
             throw new TaskPermissionException("task.self_approval.forbidden");
         }
 
-        Task task = TaskMapper.toDomain(current);
         task.approve();
         applyApprovalAssignment(project, task, request);
-        TaskMapper.apply(current, task);
-        return saveAndRespond(current);
+        return TaskResponse.from(taskRepository.save(task));
     }
 
     @Transactional
@@ -222,13 +159,10 @@ public class TaskService {
     ) {
         ProjectResource project = loadProjectForUpdate(projectId, userId, "task.reject.forbidden");
         requireManager(project, userId, "task.reject.forbidden");
-        TaskEntity current = loadTask(projectId, taskId);
-        verifyRevision(current, request.revision());
-
-        Task task = TaskMapper.toDomain(current);
+        Task task = loadTask(projectId, taskId);
+        verifyRevision(task, request.revision());
         task.reject(normalize(request.rejectionReason()));
-        TaskMapper.apply(current, task);
-        return saveAndRespond(current);
+        return TaskResponse.from(taskRepository.save(task));
     }
 
     @Transactional
@@ -239,16 +173,13 @@ public class TaskService {
             final String userId
     ) {
         loadProjectForUpdate(projectId, userId, "task.resubmit.forbidden");
-        TaskEntity current = loadTask(projectId, taskId);
-        verifyRevision(current, revision);
-
-        Task task = TaskMapper.toDomain(current);
+        Task task = loadTask(projectId, taskId);
+        verifyRevision(task, revision);
         if (!task.creator().username().equals(userId)) {
             throw new TaskPermissionException("task.creator.only");
         }
         task.resubmit();
-        TaskMapper.apply(current, task);
-        return saveAndRespond(current);
+        return TaskResponse.from(taskRepository.save(task));
     }
 
     @Transactional
@@ -259,14 +190,11 @@ public class TaskService {
             final String userId
     ) {
         loadProjectForUpdate(projectId, userId, "task.start.forbidden");
-        TaskEntity current = loadTask(projectId, taskId);
-        verifyRevision(current, revision);
-
-        Task task = TaskMapper.toDomain(current);
+        Task task = loadTask(projectId, taskId);
+        verifyRevision(task, revision);
         requireCurrentAssignee(task, userId);
         task.start();
-        TaskMapper.apply(current, task);
-        return saveAndRespond(current);
+        return TaskResponse.from(taskRepository.save(task));
     }
 
     @Transactional
@@ -277,14 +205,11 @@ public class TaskService {
             final String userId
     ) {
         loadProjectForUpdate(projectId, userId, "task.review.forbidden");
-        TaskEntity current = loadTask(projectId, taskId);
-        verifyRevision(current, revision);
-
-        Task task = TaskMapper.toDomain(current);
+        Task task = loadTask(projectId, taskId);
+        verifyRevision(task, revision);
         requireCurrentAssignee(task, userId);
         task.requestReview();
-        TaskMapper.apply(current, task);
-        return saveAndRespond(current);
+        return TaskResponse.from(taskRepository.save(task));
     }
 
     @Transactional
@@ -296,13 +221,10 @@ public class TaskService {
     ) {
         ProjectResource project = loadProjectForUpdate(projectId, userId, "task.request_changes.forbidden");
         requireManager(project, userId, "task.request_changes.forbidden");
-        TaskEntity current = loadTask(projectId, taskId);
-        verifyRevision(current, revision);
-
-        Task task = TaskMapper.toDomain(current);
+        Task task = loadTask(projectId, taskId);
+        verifyRevision(task, revision);
         task.requestChanges();
-        TaskMapper.apply(current, task);
-        return saveAndRespond(current);
+        return TaskResponse.from(taskRepository.save(task));
     }
 
     @Transactional
@@ -314,13 +236,10 @@ public class TaskService {
     ) {
         ProjectResource project = loadProjectForUpdate(projectId, userId, "task.complete.forbidden");
         requireManager(project, userId, "task.complete.forbidden");
-        TaskEntity current = loadTask(projectId, taskId);
-        verifyRevision(current, revision);
-
-        Task task = TaskMapper.toDomain(current);
+        Task task = loadTask(projectId, taskId);
+        verifyRevision(task, revision);
         task.complete();
-        TaskMapper.apply(current, task);
-        return saveAndRespond(current);
+        return TaskResponse.from(taskRepository.save(task));
     }
 
     @Transactional
@@ -331,16 +250,13 @@ public class TaskService {
             final String userId
     ) {
         ProjectResource project = loadProjectForUpdate(projectId, userId, "task.delete.forbidden");
-        TaskEntity current = loadTask(projectId, taskId);
-        verifyRevision(current, revision);
-
-        Task task = TaskMapper.toDomain(current);
+        Task task = loadTask(projectId, taskId);
+        verifyRevision(task, revision);
         if (!project.isManager(userId)) {
             requireCurrentAssignee(task, userId);
             task.validateWithdrawal();
         }
-        taskRepository.delete(current);
-        taskRepository.flush();
+        taskRepository.delete(task);
     }
 
     private TaskAssignment resolveCreationAssignment(
@@ -382,12 +298,7 @@ public class TaskService {
         }
     }
 
-    private TaskResponse saveAndRespond(final TaskEntity task) {
-        TaskEntity saved = taskRepository.saveAndFlush(task);
-        return TaskResponse.from(saved);
-    }
-
-    private void verifyRevision(final TaskEntity task, final Long requestedRevision) {
+    private void verifyRevision(final Task task, final Long requestedRevision) {
         if (requestedRevision == null || requestedRevision < 0) {
             throw new IllegalArgumentException("task.revision.required");
         }
@@ -406,20 +317,9 @@ public class TaskService {
         }
     }
 
-    private TaskEntity loadTask(final long projectId, final long taskId) {
+    private Task loadTask(final long projectId, final long taskId) {
         return taskRepository.findByTaskIdAndProjectId(taskId, projectId)
                 .orElseThrow(TaskNotFoundException::new);
-    }
-
-    private ProjectResource loadReadableProject(
-            final long projectId,
-            final String userId,
-            final String code
-    ) {
-        ProjectResource project = projectRepository.findById(projectId)
-                .orElseThrow(ProjectNotFoundException::new);
-        requireProjectMember(project, userId, code);
-        return project;
     }
 
     private ProjectResource loadProjectForUpdate(
