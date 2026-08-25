@@ -1,7 +1,7 @@
-package com.example.projectcollab.task.application;
+package com.example.projectcollab.task.api;
 
-import com.example.projectcollab.task.domain.TaskNotFoundException;
-import com.example.projectcollab.task.domain.TaskPermissionException;
+import com.example.projectcollab.task.application.TaskNotFoundException;
+import com.example.projectcollab.task.application.TaskPermissionException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

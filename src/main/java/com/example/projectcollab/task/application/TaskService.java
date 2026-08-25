@@ -14,11 +14,9 @@ import com.example.projectcollab.task.domain.Creator;
 import com.example.projectcollab.task.domain.Task;
 import com.example.projectcollab.task.domain.TaskAssignment;
 import com.example.projectcollab.task.domain.TaskContent;
-import com.example.projectcollab.task.domain.TaskMapper;
-import com.example.projectcollab.task.domain.TaskNotFoundException;
-import com.example.projectcollab.task.domain.TaskPermissionException;
-import com.example.projectcollab.task.domain.TaskRepository;
-import com.example.projectcollab.task.domain.TaskResource;
+import com.example.projectcollab.task.persistence.TaskEntity;
+import com.example.projectcollab.task.persistence.TaskMapper;
+import com.example.projectcollab.task.persistence.TaskRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,7 +47,7 @@ public final class TaskService {
                 ? Task.register(projectId, new Creator(userId), content)
                 : Task.propose(projectId, new Creator(userId), content);
 
-        TaskResource created = TaskMapper.toResource(task);
+        TaskEntity created = TaskMapper.toEntity(task);
         return TaskResponse.from(taskRepository.save(created));
     }
 
@@ -61,7 +59,7 @@ public final class TaskService {
     }
 
     public TaskResponse getTaskDetail(final long projectId, final long taskId, final String userId) {
-        TaskResource current = loadReadableTask(projectId, taskId, userId);
+        TaskEntity current = loadReadableTask(projectId, taskId, userId);
         return TaskResponse.from(current);
     }
 
@@ -71,7 +69,7 @@ public final class TaskService {
             final ReviseTaskRequest request,
             final String userId
     ) {
-        TaskResource current = loadWritableTask(projectId, taskId, userId);
+        TaskEntity current = loadWritableTask(projectId, taskId, userId);
         Task domainTask = TaskMapper.toDomain(current);
         TaskContent content = TaskContent.of(request.title(), request.description());
         domainTask.revise(content);
@@ -85,7 +83,7 @@ public final class TaskService {
             final AssignTaskRequest request,
             final String userId
     ) {
-        TaskResource current = loadWritableTask(projectId, taskId, userId);
+        TaskEntity current = loadWritableTask(projectId, taskId, userId);
         Task domainTask = TaskMapper.toDomain(current);
         domainTask.assign(new Assignee(request.assigneeUserId()));
         TaskMapper.apply(current, domainTask);
@@ -93,7 +91,7 @@ public final class TaskService {
     }
 
     public TaskResponse unassign(final long projectId, final long taskId, final String userId) {
-        TaskResource current = loadWritableTask(projectId, taskId, userId);
+        TaskEntity current = loadWritableTask(projectId, taskId, userId);
         Task domainTask = TaskMapper.toDomain(current);
         domainTask.unassign();
         TaskMapper.apply(current, domainTask);
@@ -101,7 +99,7 @@ public final class TaskService {
     }
 
     public TaskResponse releaseTask(final long projectId, final long taskId, final String userId) {
-        TaskResource current = loadWritableTask(projectId, taskId, userId);
+        TaskEntity current = loadWritableTask(projectId, taskId, userId);
         Task domainTask = TaskMapper.toDomain(current);
         requireCurrentAssignee(domainTask, userId);
         domainTask.relinquish();
@@ -110,7 +108,7 @@ public final class TaskService {
     }
 
     public TaskResponse approve(final long projectId, final long taskId, final String userId) {
-        TaskResource current = loadWritableTask(projectId, taskId, userId);
+        TaskEntity current = loadWritableTask(projectId, taskId, userId);
         Task domainTask = TaskMapper.toDomain(current);
         domainTask.approve();
         TaskMapper.apply(current, domainTask);
@@ -123,7 +121,7 @@ public final class TaskService {
             final RejectTaskRequest request,
             final String userId
     ) {
-        TaskResource current = loadWritableTask(projectId, taskId, userId);
+        TaskEntity current = loadWritableTask(projectId, taskId, userId);
         Task domainTask = TaskMapper.toDomain(current);
         domainTask.reject(request.rejectionReason());
         TaskMapper.apply(current, domainTask);
@@ -131,7 +129,7 @@ public final class TaskService {
     }
 
     public TaskResponse resubmit(final long projectId, final long taskId, final String userId) {
-        TaskResource current = loadWritableTask(projectId, taskId, userId);
+        TaskEntity current = loadWritableTask(projectId, taskId, userId);
         Task domainTask = TaskMapper.toDomain(current);
         domainTask.resubmit();
         TaskMapper.apply(current, domainTask);
@@ -139,7 +137,7 @@ public final class TaskService {
     }
 
     public TaskResponse start(final long projectId, final long taskId, final String userId) {
-        TaskResource current = loadWritableTask(projectId, taskId, userId);
+        TaskEntity current = loadWritableTask(projectId, taskId, userId);
         Task domainTask = TaskMapper.toDomain(current);
         requireCurrentAssignee(domainTask, userId);
         domainTask.start();
@@ -148,7 +146,7 @@ public final class TaskService {
     }
 
     public TaskResponse requestReview(final long projectId, final long taskId, final String userId) {
-        TaskResource current = loadWritableTask(projectId, taskId, userId);
+        TaskEntity current = loadWritableTask(projectId, taskId, userId);
         Task domainTask = TaskMapper.toDomain(current);
         requireCurrentAssignee(domainTask, userId);
         domainTask.requestReview();
@@ -157,7 +155,7 @@ public final class TaskService {
     }
 
     public TaskResponse requestChanges(final long projectId, final long taskId, final String userId) {
-        TaskResource current = loadWritableTask(projectId, taskId, userId);
+        TaskEntity current = loadWritableTask(projectId, taskId, userId);
         Task domainTask = TaskMapper.toDomain(current);
         requireCurrentAssignee(domainTask, userId);
         domainTask.requestChanges();
@@ -166,7 +164,7 @@ public final class TaskService {
     }
 
     public TaskResponse complete(final long projectId, final long taskId, final String userId) {
-        TaskResource current = loadWritableTask(projectId, taskId, userId);
+        TaskEntity current = loadWritableTask(projectId, taskId, userId);
         Task domainTask = TaskMapper.toDomain(current);
         requireCurrentAssignee(domainTask, userId);
         domainTask.complete();
@@ -175,7 +173,7 @@ public final class TaskService {
     }
 
     public void removeTask(final long projectId, final long taskId, final String userId) {
-        TaskResource current = loadWritableTask(projectId, taskId, userId);
+        TaskEntity current = loadWritableTask(projectId, taskId, userId);
         if (!userId.equals(current.creatorUserId())) {
             throw new TaskPermissionException(userId, "task.withdraw.forbidden");
         }
@@ -195,25 +193,25 @@ public final class TaskService {
         }
     }
 
-    private TaskResource loadReadableTask(final long projectId, final long taskId, final String userId) {
+    private TaskEntity loadReadableTask(final long projectId, final long taskId, final String userId) {
         ensureReadableProject(projectId, userId, "task.read.forbidden");
-        TaskResource task = taskRepository.findById(taskId)
+        TaskEntity task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new TaskNotFoundException(taskId));
 
         ensureSameProject(task, projectId, userId);
         return task;
     }
 
-    private TaskResource loadWritableTask(final long projectId, final long taskId, final String userId) {
+    private TaskEntity loadWritableTask(final long projectId, final long taskId, final String userId) {
         ensureModifiableProject(projectId, userId, "task.modify.forbidden");
-        TaskResource task = taskRepository.findById(taskId)
+        TaskEntity task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new TaskNotFoundException(taskId));
 
         ensureSameProject(task, projectId, userId);
         return task;
     }
 
-    private void ensureSameProject(final TaskResource task, final long projectId, final String userId) {
+    private void ensureSameProject(final TaskEntity task, final long projectId, final String userId) {
         if (!task.projectId().equals(projectId)) {
             throw new TaskPermissionException(userId, "task.project.mismatch");
         }

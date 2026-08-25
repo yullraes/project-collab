@@ -1,6 +1,6 @@
 package com.example.projectcollab.task.application.dto;
 
-import com.example.projectcollab.task.domain.TaskResource;
+import com.example.projectcollab.task.persistence.TaskEntity;
 
 import java.time.Instant;
 
@@ -17,18 +17,18 @@ public record TaskResponse(
         Instant updatedAt
 ) {
 
-    public static TaskResponse from(final TaskResource taskResource) {
+    public static TaskResponse from(final TaskEntity taskEntity) {
         return new TaskResponse(
-                taskResource.taskId(),
-                taskResource.projectId(),
-                taskResource.creatorUserId(),
-                taskResource.assigneeUserId(),
-                taskResource.title(),
-                taskResource.description(),
-                taskResource.state(),
-                taskResource.rejectionReason(),
-                taskResource.createdAt(),
-                taskResource.updatedAt()
+                taskEntity.taskId(),
+                taskEntity.projectId(),
+                taskEntity.creatorUserId(),
+                taskEntity.assigneeUserId(),
+                taskEntity.title(),
+                taskEntity.description(),
+                taskEntity.state(),
+                taskEntity.rejectionReason(),
+                taskEntity.createdAt(),
+                taskEntity.updatedAt()
         );
     }
 }

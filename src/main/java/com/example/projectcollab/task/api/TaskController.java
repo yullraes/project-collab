@@ -1,5 +1,6 @@
-package com.example.projectcollab.task.application;
+package com.example.projectcollab.task.api;
 
+import com.example.projectcollab.task.application.TaskService;
 import com.example.projectcollab.task.application.dto.AssignTaskRequest;
 import com.example.projectcollab.task.application.dto.CreateTaskRequest;
 import com.example.projectcollab.task.application.dto.RejectTaskRequest;

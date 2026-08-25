@@ -1,4 +1,4 @@
-package com.example.projectcollab.task.domain;
+package com.example.projectcollab.task.persistence;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +13,7 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "tasks")
-public class TaskResource {
+public class TaskEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long taskId;
@@ -43,10 +43,10 @@ public class TaskResource {
     @Column(nullable = false)
     private Instant updatedAt;
 
-    protected TaskResource() {
+    protected TaskEntity() {
     }
 
-    public TaskResource(
+    TaskEntity(
             final Long projectId,
             final String creatorUserId,
             final String title,
@@ -64,7 +64,7 @@ public class TaskResource {
         this.rejectionReason = rejectionReason;
     }
 
-    public void overwrite(
+    void overwrite(
             final String title,
             final String description,
             final String assigneeUserId,

@@ -1,4 +1,4 @@
-package com.example.projectcollab.task.domain;
+package com.example.projectcollab.task.application;
 
 public final class TaskNotFoundException extends IllegalStateException {
     private final long taskId;

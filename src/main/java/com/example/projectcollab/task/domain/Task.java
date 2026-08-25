@@ -64,6 +64,17 @@ public final class Task {
         );
     }
 
+    public static Task restore(
+            final Long projectId,
+            final Creator creator,
+            final TaskContent content,
+            final TaskAssignment assignment,
+            final TaskState state,
+            final String rejectionReason
+    ) {
+        return new Task(projectId, creator, content, assignment, state, rejectionReason);
+    }
+
     public void approve() {
         requireState(TaskState.PENDING, "승인 대기 상태의 작업만 승인할 수 있습니다.");
         state = TaskState.ACCEPTED;
@@ -171,7 +182,7 @@ public final class Task {
         return state;
     }
 
-    String rejectionReason() {
+    public String rejectionReason() {
         return rejectionReason;
     }
 
