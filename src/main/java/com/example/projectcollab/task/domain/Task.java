@@ -18,7 +18,7 @@ public final class Task {
     private TaskState state;
     private String rejectionReason;
 
-    private Task(
+    Task(
             final Long projectId,
             final Creator creator,
             final TaskContent content,
@@ -169,6 +169,10 @@ public final class Task {
 
     public TaskState state() {
         return state;
+    }
+
+    String rejectionReason() {
+        return rejectionReason;
     }
 
     private void requireState(final TaskState expected, final String message) {
