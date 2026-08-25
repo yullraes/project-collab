@@ -1,14 +1,7 @@
 package com.example.projectcollab.task.application;
 
-public final class TaskNotFoundException extends IllegalStateException {
-    private final long taskId;
-
-    public TaskNotFoundException(final long taskId) {
+public final class TaskNotFoundException extends RuntimeException {
+    public TaskNotFoundException() {
         super("task.not.found");
-        this.taskId = taskId;
-    }
-
-    public long taskId() {
-        return taskId;
     }
 }

@@ -1,6 +1,8 @@
 package com.example.projectcollab.task.application.dto;
 
 public record RejectTaskRequest(
-        String rejectionReason
+        String rejectionReason,
+
+        Long revision
 ) {
 }

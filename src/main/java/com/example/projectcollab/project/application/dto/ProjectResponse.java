@@ -9,6 +9,7 @@ public record ProjectResponse(
         String description,
         String ownerUserId,
         Set<String> adminUserIds,
+        Set<String> memberUserIds,
         Instant createdAt,
         Instant updatedAt
 ) {

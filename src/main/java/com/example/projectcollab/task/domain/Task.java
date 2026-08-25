@@ -1,5 +1,7 @@
 package com.example.projectcollab.task.domain;
 
+import java.util.Set;
+
 public final class Task {
     public enum TaskState {
         PENDING,
@@ -9,6 +11,13 @@ public final class Task {
         IN_REVIEW,
         DONE
     }
+
+    private static final Set<TaskState> ASSIGNMENT_CHANGEABLE_STATES = Set.of(
+            TaskState.ACCEPTED,
+            TaskState.IN_PROGRESS,
+            TaskState.IN_REVIEW,
+            TaskState.DONE
+    );
 
     private final Long projectId;
     private final Creator creator;
@@ -39,11 +48,12 @@ public final class Task {
             final Creator creator,
             final TaskContent content
     ) {
+        Creator validatedCreator = Require.notNull(creator, "생성자는 필수입니다.");
         return new Task(
                 projectId,
-                creator,
+                validatedCreator,
                 content,
-                TaskAssignment.assigned(Assignee.from(creator)),
+                new TaskAssignment.Assigned(new Assignee(validatedCreator.username())),
                 TaskState.PENDING,
                 null
         );
@@ -54,11 +64,26 @@ public final class Task {
             final Creator creator,
             final TaskContent content
     ) {
+        Creator validatedCreator = Require.notNull(creator, "생성자는 필수입니다.");
+        return register(
+                projectId,
+                validatedCreator,
+                content,
+                new TaskAssignment.Assigned(new Assignee(validatedCreator.username()))
+        );
+    }
+
+    public static Task register(
+            final Long projectId,
+            final Creator creator,
+            final TaskContent content,
+            final TaskAssignment assignment
+    ) {
         return new Task(
                 projectId,
                 creator,
                 content,
-                TaskAssignment.assigned(Assignee.from(creator)),
+                assignment,
                 TaskState.ACCEPTED,
                 null
         );
@@ -76,13 +101,13 @@ public final class Task {
     }
 
     public void approve() {
-        requireState(TaskState.PENDING, "승인 대기 상태의 작업만 승인할 수 있습니다.");
+        Require.state(state == TaskState.PENDING, "승인 대기 상태의 작업만 승인할 수 있습니다.");
         state = TaskState.ACCEPTED;
         rejectionReason = null;
     }
 
     public void reject(final String rejectionReason) {
-        requireState(TaskState.PENDING, "승인 대기 상태의 작업만 반려할 수 있습니다.");
+        Require.state(state == TaskState.PENDING, "승인 대기 상태의 작업만 반려할 수 있습니다.");
         String validatedReason = Require.notBlank(rejectionReason, "반려 사유는 필수입니다.");
 
         state = TaskState.REJECTED;
@@ -108,47 +133,71 @@ public final class Task {
     }
 
     public void assign(final Assignee assignee) {
-        requireActive("승인 대기, 반려 또는 완료 상태에서는 담당자를 직접 지정할 수 없습니다.");
-        assignment = TaskAssignment.assigned(
-                Require.notNull(assignee, "담당자는 필수입니다.")
+        Require.state(
+                ASSIGNMENT_CHANGEABLE_STATES.contains(state),
+                "승인 대기 또는 반려 상태에서는 담당자를 직접 지정할 수 없습니다."
         );
+        assignment = new TaskAssignment.Assigned(Require.notNull(assignee, "담당자는 필수입니다."));
     }
 
     public void unassign() {
-        requireActive("승인 대기, 반려 또는 완료 상태에서는 담당자를 직접 해제할 수 없습니다.");
+        Require.state(
+                ASSIGNMENT_CHANGEABLE_STATES.contains(state),
+                "승인 대기 또는 반려 상태에서는 담당자를 직접 해제할 수 없습니다."
+        );
+        Require.state(
+                assignment instanceof TaskAssignment.Assigned,
+                "담당자가 없는 작업은 담당자를 해제할 수 없습니다."
+        );
         detachAssignee();
     }
 
     public void relinquish() {
-        requireActive("승인 대기, 반려 또는 완료 상태에서는 담당을 포기할 수 없습니다.");
+        Require.state(
+                ASSIGNMENT_CHANGEABLE_STATES.contains(state),
+                "승인 대기 또는 반려 상태에서는 담당을 포기할 수 없습니다."
+        );
+        detachAssignee();
+    }
+
+    public void removeAssigneeForMembershipEnd() {
         detachAssignee();
     }
 
     public void start() {
-        requireState(TaskState.ACCEPTED, "승인된 작업만 시작할 수 있습니다.");
-        requireAssignee("담당자가 없는 작업은 시작할 수 없습니다.");
+        Require.state(state == TaskState.ACCEPTED, "승인된 작업만 시작할 수 있습니다.");
+        Require.state(
+                assignment instanceof TaskAssignment.Assigned,
+                "담당자가 없는 작업은 시작할 수 없습니다."
+        );
         state = TaskState.IN_PROGRESS;
     }
 
     public void requestReview() {
-        requireState(TaskState.IN_PROGRESS, "진행 중인 작업만 검토를 요청할 수 있습니다.");
-        requireAssignee("담당자가 없는 작업은 검토를 요청할 수 없습니다.");
+        Require.state(state == TaskState.IN_PROGRESS, "진행 중인 작업만 검토를 요청할 수 있습니다.");
+        Require.state(
+                assignment instanceof TaskAssignment.Assigned,
+                "담당자가 없는 작업은 검토를 요청할 수 없습니다."
+        );
         state = TaskState.IN_REVIEW;
     }
 
     public void complete() {
-        requireState(TaskState.IN_REVIEW, "검토 중인 작업만 완료할 수 있습니다.");
+        Require.state(state == TaskState.IN_REVIEW, "검토 중인 작업만 완료할 수 있습니다.");
         state = TaskState.DONE;
     }
 
     public void requestChanges() {
-        requireState(TaskState.IN_REVIEW, "검토 중인 작업에만 보완을 요청할 수 있습니다.");
-        requireAssignee("담당자가 없는 작업에는 보완을 요청할 수 없습니다.");
+        Require.state(state == TaskState.IN_REVIEW, "검토 중인 작업에만 보완을 요청할 수 있습니다.");
+        Require.state(
+                assignment instanceof TaskAssignment.Assigned,
+                "담당자가 없는 작업에는 보완을 요청할 수 없습니다."
+        );
         state = TaskState.IN_PROGRESS;
     }
 
     private void detachAssignee() {
-        assignment = TaskAssignment.unassigned();
+        assignment = TaskAssignment.Unassigned.INSTANCE;
 
         if (state == TaskState.IN_PROGRESS || state == TaskState.IN_REVIEW) {
             state = TaskState.ACCEPTED;
@@ -184,22 +233,5 @@ public final class Task {
 
     public String rejectionReason() {
         return rejectionReason;
-    }
-
-    private void requireState(final TaskState expected, final String message) {
-        Require.state(state == expected, message);
-    }
-
-    private void requireActive(final String message) {
-        Require.state(
-                state == TaskState.ACCEPTED
-                        || state == TaskState.IN_PROGRESS
-                        || state == TaskState.IN_REVIEW,
-                message
-        );
-    }
-
-    private void requireAssignee(final String message) {
-        Require.state(assignment instanceof TaskAssignment.Assigned, message);
     }
 }

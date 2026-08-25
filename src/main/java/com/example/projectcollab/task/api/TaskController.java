@@ -1,11 +1,14 @@
 package com.example.projectcollab.task.api;
 
 import com.example.projectcollab.task.application.TaskService;
+import com.example.projectcollab.task.application.dto.ApproveTaskRequest;
 import com.example.projectcollab.task.application.dto.AssignTaskRequest;
 import com.example.projectcollab.task.application.dto.CreateTaskRequest;
 import com.example.projectcollab.task.application.dto.RejectTaskRequest;
 import com.example.projectcollab.task.application.dto.ReviseTaskRequest;
+import com.example.projectcollab.task.application.dto.TaskPageResponse;
 import com.example.projectcollab.task.application.dto.TaskResponse;
+import com.example.projectcollab.task.domain.Task;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,8 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -42,11 +43,15 @@ public final class TaskController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TaskResponse>> listTasks(
+    public ResponseEntity<TaskPageResponse> listTasks(
             @PathVariable final long projectId,
-            @RequestParam(name = "userId") final String userId
+            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "keyword", required = false) final String keyword,
+            @RequestParam(name = "state", required = false) final Task.TaskState state,
+            @RequestParam(name = "page", defaultValue = "0") final int page,
+            @RequestParam(name = "size", defaultValue = "20") final int size
     ) {
-        return ResponseEntity.ok(taskService.listTasks(projectId, userId));
+        return ResponseEntity.ok(taskService.listTasks(projectId, userId, keyword, state, page, size));
     }
 
     @GetMapping(path = "/{taskId}")
@@ -72,9 +77,10 @@ public final class TaskController {
     public ResponseEntity<Void> removeTask(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId
+            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "revision") final long revision
     ) {
-        taskService.removeTask(projectId, taskId, userId);
+        taskService.removeTask(projectId, taskId, revision, userId);
         return ResponseEntity.noContent().build();
     }
 
@@ -92,27 +98,30 @@ public final class TaskController {
     public ResponseEntity<TaskResponse> unassign(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId
+            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "revision") final long revision
     ) {
-        return ResponseEntity.ok(taskService.unassign(projectId, taskId, userId));
+        return ResponseEntity.ok(taskService.unassign(projectId, taskId, revision, userId));
     }
 
     @PostMapping(path = "/{taskId}/relinquish")
     public ResponseEntity<TaskResponse> releaseTask(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId
+            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "revision") final long revision
     ) {
-        return ResponseEntity.ok(taskService.releaseTask(projectId, taskId, userId));
+        return ResponseEntity.ok(taskService.releaseTask(projectId, taskId, revision, userId));
     }
 
-    @PostMapping(path = "/{taskId}/approve")
+    @PostMapping(path = "/{taskId}/approve", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<TaskResponse> approve(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId
+            @RequestParam(name = "userId") final String userId,
+            @RequestBody final ApproveTaskRequest request
     ) {
-        return ResponseEntity.ok(taskService.approve(projectId, taskId, userId));
+        return ResponseEntity.ok(taskService.approve(projectId, taskId, request, userId));
     }
 
     @PostMapping(path = "/{taskId}/reject", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
@@ -129,44 +138,49 @@ public final class TaskController {
     public ResponseEntity<TaskResponse> resubmit(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId
+            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "revision") final long revision
     ) {
-        return ResponseEntity.ok(taskService.resubmit(projectId, taskId, userId));
+        return ResponseEntity.ok(taskService.resubmit(projectId, taskId, revision, userId));
     }
 
     @PostMapping(path = "/{taskId}/start")
     public ResponseEntity<TaskResponse> start(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId
+            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "revision") final long revision
     ) {
-        return ResponseEntity.ok(taskService.start(projectId, taskId, userId));
+        return ResponseEntity.ok(taskService.start(projectId, taskId, revision, userId));
     }
 
     @PostMapping(path = "/{taskId}/request-review")
     public ResponseEntity<TaskResponse> requestReview(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId
+            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "revision") final long revision
     ) {
-        return ResponseEntity.ok(taskService.requestReview(projectId, taskId, userId));
+        return ResponseEntity.ok(taskService.requestReview(projectId, taskId, revision, userId));
     }
 
     @PostMapping(path = "/{taskId}/request-changes")
     public ResponseEntity<TaskResponse> requestChanges(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId
+            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "revision") final long revision
     ) {
-        return ResponseEntity.ok(taskService.requestChanges(projectId, taskId, userId));
+        return ResponseEntity.ok(taskService.requestChanges(projectId, taskId, revision, userId));
     }
 
     @PostMapping(path = "/{taskId}/complete")
     public ResponseEntity<TaskResponse> complete(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId
+            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "revision") final long revision
     ) {
-        return ResponseEntity.ok(taskService.complete(projectId, taskId, userId));
+        return ResponseEntity.ok(taskService.complete(projectId, taskId, revision, userId));
     }
 }

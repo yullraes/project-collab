@@ -12,15 +12,15 @@ public final class TaskMapper {
 
     public static Task toDomain(final TaskEntity taskEntity) {
         TaskAssignment assignment = taskEntity.assigneeUserId() == null
-                ? TaskAssignment.unassigned()
-                : TaskAssignment.assigned(new Assignee(taskEntity.assigneeUserId()));
+                ? TaskAssignment.Unassigned.INSTANCE
+                : new TaskAssignment.Assigned(new Assignee(taskEntity.assigneeUserId()));
 
         Task.TaskState state = Task.TaskState.valueOf(taskEntity.state());
 
         return Task.restore(
                 taskEntity.projectId(),
                 new Creator(taskEntity.creatorUserId()),
-                TaskContent.of(taskEntity.title(), taskEntity.description()),
+                new TaskContent(taskEntity.title(), taskEntity.description()),
                 assignment,
                 state,
                 taskEntity.rejectionReason()

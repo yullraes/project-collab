@@ -5,6 +5,8 @@ public record CreateTaskRequest(
 
         String description,
 
-        Boolean acceptImmediately
+        String assigneeUserId,
+
+        Boolean unassigned
 ) {
 }

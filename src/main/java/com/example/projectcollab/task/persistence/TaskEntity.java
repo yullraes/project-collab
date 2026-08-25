@@ -8,6 +8,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
+import jakarta.persistence.Version;
 
 import java.time.Instant;
 
@@ -17,6 +18,10 @@ public class TaskEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long taskId;
+
+    @Version
+    @Column(nullable = false)
+    private Long revision;
 
     @Column(nullable = false)
     private Long projectId;
@@ -92,6 +97,10 @@ public class TaskEntity {
 
     public Long taskId() {
         return taskId;
+    }
+
+    public Long revision() {
+        return revision;
     }
 
     public Long projectId() {

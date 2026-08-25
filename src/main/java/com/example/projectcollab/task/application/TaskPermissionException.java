@@ -1,14 +1,7 @@
 package com.example.projectcollab.task.application;
 
-public final class TaskPermissionException extends IllegalStateException {
-    private final String actorUserId;
-
-    public TaskPermissionException(final String actorUserId, final String code) {
+public final class TaskPermissionException extends RuntimeException {
+    public TaskPermissionException(final String code) {
         super(code);
-        this.actorUserId = actorUserId;
-    }
-
-    public String actorUserId() {
-        return actorUserId;
     }
 }

@@ -1,7 +1,9 @@
 package com.example.projectcollab.task.api;
 
+import com.example.projectcollab.task.application.TaskConflictException;
 import com.example.projectcollab.task.application.TaskNotFoundException;
 import com.example.projectcollab.task.application.TaskPermissionException;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -9,6 +11,20 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public final class TaskExceptionHandler {
+    @ExceptionHandler(TaskConflictException.class)
+    public ResponseEntity<TaskErrorResponse> onConflict(final TaskConflictException ex) {
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(new TaskErrorResponse("task.revision.conflict", ex.getMessage()));
+    }
+
+    @ExceptionHandler(ObjectOptimisticLockingFailureException.class)
+    public ResponseEntity<TaskErrorResponse> onOptimisticLock(final ObjectOptimisticLockingFailureException ex) {
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(new TaskErrorResponse("task.revision.conflict", "task.revision.conflict"));
+    }
+
     @ExceptionHandler(TaskPermissionException.class)
     public ResponseEntity<TaskErrorResponse> onPermission(final TaskPermissionException ex) {
         return ResponseEntity

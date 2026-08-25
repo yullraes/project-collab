@@ -7,6 +7,7 @@ import java.time.Instant;
 public record TaskResponse(
         Long taskId,
         Long projectId,
+        Long revision,
         String creatorUserId,
         String assigneeUserId,
         String title,
@@ -21,6 +22,7 @@ public record TaskResponse(
         return new TaskResponse(
                 taskEntity.taskId(),
                 taskEntity.projectId(),
+                taskEntity.revision(),
                 taskEntity.creatorUserId(),
                 taskEntity.assigneeUserId(),
                 taskEntity.title(),
