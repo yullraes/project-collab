@@ -2,8 +2,6 @@ package com.example.projectcollab.task.application;
 
 import com.example.projectcollab.project.domain.ProjectNotFoundException;
 import com.example.projectcollab.project.domain.ProjectPermissionException;
-import com.example.projectcollab.project.domain.ProjectRepository;
-import com.example.projectcollab.project.domain.ProjectResource;
 import com.example.projectcollab.task.application.dto.ApproveTaskRequest;
 import com.example.projectcollab.task.application.dto.AssignTaskRequest;
 import com.example.projectcollab.task.application.dto.CreateTaskRequest;
@@ -15,6 +13,7 @@ import com.example.projectcollab.task.domain.Creator;
 import com.example.projectcollab.task.domain.Task;
 import com.example.projectcollab.task.domain.TaskAssignment;
 import com.example.projectcollab.task.domain.TaskContent;
+import com.example.projectcollab.task.domain.TaskProjectSnapshot;
 import com.example.projectcollab.task.domain.TaskRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,14 +21,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class TaskWriteService {
     private final TaskRepository taskRepository;
-    private final ProjectRepository projectRepository;
 
-    public TaskWriteService(
-            final TaskRepository taskRepository,
-            final ProjectRepository projectRepository
-    ) {
+    public TaskWriteService(final TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
-        this.projectRepository = projectRepository;
     }
 
     @Transactional
@@ -38,7 +32,7 @@ public class TaskWriteService {
             final CreateTaskRequest request,
             final String userId
     ) {
-        ProjectResource project = loadProjectForUpdate(projectId, userId, "task.create.forbidden");
+        TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.create.forbidden");
         TaskContent content = new TaskContent(normalize(request.title()), normalize(request.description()));
         Creator creator = new Creator(userId);
 
@@ -64,7 +58,7 @@ public class TaskWriteService {
             final ReviseTaskRequest request,
             final String userId
     ) {
-        ProjectResource project = loadProjectForUpdate(projectId, userId, "task.modify.forbidden");
+        TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.modify.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, request.revision());
         TaskContent content = new TaskContent(normalize(request.title()), normalize(request.description()));
@@ -86,7 +80,7 @@ public class TaskWriteService {
             final AssignTaskRequest request,
             final String userId
     ) {
-        ProjectResource project = loadProjectForUpdate(projectId, userId, "task.assign.forbidden");
+        TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.assign.forbidden");
         requireManager(project, userId, "task.assign.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, request.revision());
@@ -107,7 +101,7 @@ public class TaskWriteService {
             final long revision,
             final String userId
     ) {
-        ProjectResource project = loadProjectForUpdate(projectId, userId, "task.unassign.forbidden");
+        TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.unassign.forbidden");
         requireManager(project, userId, "task.unassign.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, revision);
@@ -137,7 +131,7 @@ public class TaskWriteService {
             final ApproveTaskRequest request,
             final String userId
     ) {
-        ProjectResource project = loadProjectForUpdate(projectId, userId, "task.approve.forbidden");
+        TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.approve.forbidden");
         requireManager(project, userId, "task.approve.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, request.revision());
@@ -157,7 +151,7 @@ public class TaskWriteService {
             final RejectTaskRequest request,
             final String userId
     ) {
-        ProjectResource project = loadProjectForUpdate(projectId, userId, "task.reject.forbidden");
+        TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.reject.forbidden");
         requireManager(project, userId, "task.reject.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, request.revision());
@@ -219,7 +213,7 @@ public class TaskWriteService {
             final long revision,
             final String userId
     ) {
-        ProjectResource project = loadProjectForUpdate(projectId, userId, "task.request_changes.forbidden");
+        TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.request_changes.forbidden");
         requireManager(project, userId, "task.request_changes.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, revision);
@@ -234,7 +228,7 @@ public class TaskWriteService {
             final long revision,
             final String userId
     ) {
-        ProjectResource project = loadProjectForUpdate(projectId, userId, "task.complete.forbidden");
+        TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.complete.forbidden");
         requireManager(project, userId, "task.complete.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, revision);
@@ -249,7 +243,7 @@ public class TaskWriteService {
             final long revision,
             final String userId
     ) {
-        ProjectResource project = loadProjectForUpdate(projectId, userId, "task.delete.forbidden");
+        TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.delete.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, revision);
         if (!project.isManager(userId)) {
@@ -260,7 +254,7 @@ public class TaskWriteService {
     }
 
     private TaskAssignment resolveCreationAssignment(
-            final ProjectResource project,
+            final TaskProjectSnapshot project,
             final String creatorUserId,
             final CreateTaskRequest request
     ) {
@@ -279,7 +273,7 @@ public class TaskWriteService {
     }
 
     private void applyApprovalAssignment(
-            final ProjectResource project,
+            final TaskProjectSnapshot project,
             final Task task,
             final ApproveTaskRequest request
     ) {
@@ -322,19 +316,19 @@ public class TaskWriteService {
                 .orElseThrow(TaskNotFoundException::new);
     }
 
-    private ProjectResource loadProjectForUpdate(
+    private TaskProjectSnapshot loadProjectForUpdate(
             final long projectId,
             final String userId,
             final String code
     ) {
-        ProjectResource project = projectRepository.findByIdForUpdate(projectId)
+        TaskProjectSnapshot project = taskRepository.findProjectSnapshotForUpdate(projectId)
                 .orElseThrow(ProjectNotFoundException::new);
         requireProjectMember(project, userId, code);
         return project;
     }
 
     private void requireManager(
-            final ProjectResource project,
+            final TaskProjectSnapshot project,
             final String userId,
             final String code
     ) {
@@ -344,7 +338,7 @@ public class TaskWriteService {
     }
 
     private void requireProjectMember(
-            final ProjectResource project,
+            final TaskProjectSnapshot project,
             final String userId,
             final String code
     ) {

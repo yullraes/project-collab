@@ -2,11 +2,11 @@ package com.example.projectcollab.task.application;
 
 import com.example.projectcollab.project.domain.ProjectNotFoundException;
 import com.example.projectcollab.project.domain.ProjectPermissionException;
-import com.example.projectcollab.project.domain.ProjectRepository;
-import com.example.projectcollab.project.domain.ProjectResource;
 import com.example.projectcollab.task.application.dto.TaskPageResponse;
 import com.example.projectcollab.task.application.dto.TaskResponse;
 import com.example.projectcollab.task.domain.Task;
+import com.example.projectcollab.task.domain.TaskProjectSnapshot;
+import com.example.projectcollab.task.domain.TaskRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,14 +16,14 @@ public class TaskReadService {
     private static final int MAX_PAGE_SIZE = 100;
 
     private final TaskQueryRepository taskQueryRepository;
-    private final ProjectRepository projectRepository;
+    private final TaskRepository taskRepository;
 
     public TaskReadService(
             final TaskQueryRepository taskQueryRepository,
-            final ProjectRepository projectRepository
+            final TaskRepository taskRepository
     ) {
         this.taskQueryRepository = taskQueryRepository;
-        this.projectRepository = projectRepository;
+        this.taskRepository = taskRepository;
     }
 
     public TaskPageResponse listTasks(
@@ -63,7 +63,7 @@ public class TaskReadService {
     }
 
     private void requireProjectMember(final long projectId, final String userId) {
-        ProjectResource project = projectRepository.findById(projectId)
+        TaskProjectSnapshot project = taskRepository.findProjectSnapshot(projectId)
                 .orElseThrow(ProjectNotFoundException::new);
         if (!project.isMember(userId)) {
             throw new ProjectPermissionException("task.read.forbidden");

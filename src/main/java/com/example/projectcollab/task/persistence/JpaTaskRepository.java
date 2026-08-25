@@ -1,6 +1,9 @@
 package com.example.projectcollab.task.persistence;
 
+import com.example.projectcollab.project.domain.ProjectRepository;
+import com.example.projectcollab.project.domain.ProjectResource;
 import com.example.projectcollab.task.domain.Task;
+import com.example.projectcollab.task.domain.TaskProjectSnapshot;
 import com.example.projectcollab.task.domain.TaskRepository;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Repository;
@@ -12,9 +15,24 @@ import java.util.Optional;
 @Repository
 public class JpaTaskRepository implements TaskRepository {
     private final SpringDataTaskRepository springDataRepository;
+    private final ProjectRepository projectRepository;
 
-    public JpaTaskRepository(final SpringDataTaskRepository springDataRepository) {
+    public JpaTaskRepository(
+            final SpringDataTaskRepository springDataRepository,
+            final ProjectRepository projectRepository
+    ) {
         this.springDataRepository = springDataRepository;
+        this.projectRepository = projectRepository;
+    }
+
+    @Override
+    public Optional<TaskProjectSnapshot> findProjectSnapshot(final long projectId) {
+        return projectRepository.findById(projectId).map(this::toTaskProjectSnapshot);
+    }
+
+    @Override
+    public Optional<TaskProjectSnapshot> findProjectSnapshotForUpdate(final long projectId) {
+        return projectRepository.findByIdForUpdate(projectId).map(this::toTaskProjectSnapshot);
     }
 
     @Override
@@ -80,5 +98,13 @@ public class JpaTaskRepository implements TaskRepository {
         if (!Objects.equals(entity.revision(), task.revision())) {
             throw new ObjectOptimisticLockingFailureException(TaskEntity.class, task.taskId());
         }
+    }
+
+    private TaskProjectSnapshot toTaskProjectSnapshot(final ProjectResource project) {
+        return new TaskProjectSnapshot(
+                project.ownerUserId(),
+                project.adminUserIds(),
+                project.memberUserIds()
+        );
     }
 }
