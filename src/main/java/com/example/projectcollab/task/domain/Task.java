@@ -158,6 +158,20 @@ public final class Task {
         this.content = Require.notNull(content, "작업 내용은 필수입니다.");
     }
 
+    public void requestReapproval(final TaskContent content) {
+        Require.state(
+                ASSIGNMENT_CHANGEABLE_STATES.contains(state),
+                "승인된 작업만 재승인을 요청할 수 있습니다."
+        );
+        Require.state(
+                assignment instanceof TaskAssignment.Assigned,
+                "담당자가 없는 작업은 재승인을 요청할 수 없습니다."
+        );
+        this.content = Require.notNull(content, "작업 내용은 필수입니다.");
+        this.state = TaskState.PENDING;
+        this.rejectionReason = null;
+    }
+
     public void resubmit() {
         Require.state(state == TaskState.REJECTED, "반려 상태의 작업만 다시 요청할 수 있습니다.");
         state = TaskState.PENDING;

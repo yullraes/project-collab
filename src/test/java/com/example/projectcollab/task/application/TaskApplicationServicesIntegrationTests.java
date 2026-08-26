@@ -210,6 +210,52 @@ class TaskApplicationServicesIntegrationTests {
     }
 
     @Test
+    void assigneeCanEditAnApprovedTaskAndSendItBackToPending() {
+        long projectId = projectWithMember();
+        TaskResponse accepted = taskWriteService.createTask(
+                projectId,
+                new CreateTaskRequest("관리자 작업", "설명", memberId(), false),
+                OWNER
+        );
+
+        TaskResponse revised = taskWriteService.editTask(
+                projectId,
+                accepted.taskId(),
+                new ReviseTaskRequest("담당자 수정", "재승인 필요", accepted.revision()),
+                MEMBER
+        );
+
+        assertThat(revised.state()).isEqualTo(Task.TaskState.PENDING.name());
+        assertThat(revised.title()).isEqualTo("담당자 수정");
+        assertThat(revised.description()).isEqualTo("재승인 필요");
+        assertThat(revised.assigneeUserId()).isEqualTo(MEMBER);
+        assertThat(revised.revision()).isGreaterThan(accepted.revision());
+    }
+
+    @Test
+    void approvedTaskCreatorCannotEditWhenTheyAreNotTheCurrentAssignee() {
+        long projectId = projectWithMember();
+        TaskResponse proposed = taskWriteService.createTask(
+                projectId,
+                new CreateTaskRequest("멤버 제안", "설명", null, false),
+                MEMBER
+        );
+        TaskResponse accepted = taskWriteService.approve(
+                projectId,
+                proposed.taskId(),
+                new ApproveTaskRequest(ownerId(), false, proposed.revision()),
+                OWNER
+        );
+
+        assertThatThrownBy(() -> taskWriteService.editTask(
+                projectId,
+                accepted.taskId(),
+                new ReviseTaskRequest("생성자 수정", "허용되지 않음", accepted.revision()),
+                MEMBER
+        )).isInstanceOf(TaskPermissionException.class);
+    }
+
+    @Test
     void removingMemberUnassignsAndNormalizesTheirTasks() {
         long projectId = projectWithMember();
         TaskResponse proposed = taskWriteService.createTask(

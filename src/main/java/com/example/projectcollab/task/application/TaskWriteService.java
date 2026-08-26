@@ -56,10 +56,15 @@ public class TaskWriteService {
         if (project.isManager(userId)) {
             task.edit(content);
         } else {
-            if (!isCreator(task, userId)) {
-                throw new TaskPermissionException("task.creator.only");
+            if (task.state() == Task.TaskState.PENDING || task.state() == Task.TaskState.REJECTED) {
+                if (!isCreator(task, userId)) {
+                    throw new TaskPermissionException("task.creator.only");
+                }
+                task.revise(content);
+            } else {
+                requireCurrentAssignee(task, userId);
+                task.requestReapproval(content);
             }
-            task.revise(content);
         }
         return TaskResponse.from(taskRepository.save(task));
     }
