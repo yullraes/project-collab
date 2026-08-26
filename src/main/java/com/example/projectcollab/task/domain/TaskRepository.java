@@ -6,8 +6,6 @@ import java.util.Optional;
 public interface TaskRepository {
     Optional<TaskProjectSnapshot> findProjectSnapshot(long projectId);
 
-    Optional<TaskProjectSnapshot> findProjectSnapshotForUpdate(long projectId);
-
     Task save(Task task);
 
     void saveAll(List<Task> tasks);

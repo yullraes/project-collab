@@ -63,7 +63,7 @@ public class ProjectService {
             final UpdateProjectRequest request,
             final long actorUserId
     ) {
-        ProjectEntity project = loadForUpdate(projectId);
+        ProjectEntity project = loadProject(projectId);
         requireManager(projectId, actorUserId);
         if (request == null) {
             throw new ProjectValidationException("project.input.required");
@@ -92,7 +92,7 @@ public class ProjectService {
 
     @Transactional
     public void deleteProject(final long projectId, final long actorUserId) {
-        ProjectEntity project = loadForUpdate(projectId);
+        ProjectEntity project = loadProject(projectId);
         requireOwner(projectId, actorUserId);
 
         taskProjectCoordinator.deleteProjectTasks(projectId);
@@ -108,7 +108,7 @@ public class ProjectService {
             final long actorUserId,
             final AddProjectMemberRequest request
     ) {
-        loadForUpdate(projectId);
+        ProjectEntity project = loadProject(projectId);
         requireManager(projectId, actorUserId);
         if (request == null || request.userId() <= 0) {
             throw new ProjectValidationException("project.member.user_id.required");
@@ -123,6 +123,8 @@ public class ProjectService {
             member = projectMemberRepository.saveAndFlush(
                     ProjectMemberEntity.create(projectId, request.userId(), ProjectRole.MEMBER)
             );
+            project.markMembershipChanged();
+            projectRepository.saveAndFlush(project);
         } catch (DataIntegrityViolationException exception) {
             throw new ProjectMemberAlreadyExistsException();
         }
@@ -144,37 +146,44 @@ public class ProjectService {
             final long targetUserId,
             final ChangeProjectRoleRequest request
     ) {
-        loadForUpdate(projectId);
+        ProjectEntity project = loadProject(projectId);
         requireManager(projectId, actorUserId);
         ProjectMemberEntity target = requireTargetMember(projectId, targetUserId);
-        if (request == null || request.role() == null || request.role() == ProjectRole.OWNER) {
+        if (request == null || request.role() == null) {
             throw new ProjectValidationException("project.member.role.invalid");
         }
-        if (target.role() == ProjectRole.OWNER || target.role() == request.role()) {
+        if (target.role() == request.role()) {
             throw new ProjectValidationException("project.member.role.invalid");
+        }
+        if (target.role() == ProjectRole.OWNER && request.role() != ProjectRole.OWNER) {
+            requireAnotherOwner(projectId);
         }
 
         target.changeRole(request.role());
+        project.markMembershipChanged();
         projectMemberRepository.flush();
+        projectRepository.flush();
         return toMemberResponse(target);
     }
 
     @Transactional
     public void removeMember(final long projectId, final long actorUserId, final long targetUserId) {
-        loadForUpdate(projectId);
+        ProjectEntity project = loadProject(projectId);
         requireManager(projectId, actorUserId);
         ProjectMemberEntity target = requireTargetMember(projectId, targetUserId);
         if (target.role() == ProjectRole.OWNER) {
-            throw new ProjectPermissionException("project.owner.cannot_remove");
+            requireAnotherOwner(projectId);
         }
 
         taskProjectCoordinator.normalizeAssignments(projectId, targetUserId);
         projectMemberRepository.delete(target);
+        project.markMembershipChanged();
         projectMemberRepository.flush();
+        projectRepository.flush();
     }
 
-    private ProjectEntity loadForUpdate(final long projectId) {
-        return projectRepository.findByIdForUpdate(projectId)
+    private ProjectEntity loadProject(final long projectId) {
+        return projectRepository.findById(projectId)
                 .orElseThrow(ProjectNotFoundException::new);
     }
 
@@ -202,6 +211,12 @@ public class ProjectService {
             throw new ProjectPermissionException("project.owner.required");
         }
         return member;
+    }
+
+    private void requireAnotherOwner(final long projectId) {
+        if (projectMemberRepository.countByProjectIdAndRole(projectId, ProjectRole.OWNER) <= 1) {
+            throw new ProjectPermissionException("project.owner.required");
+        }
     }
 
     private void requireUser(final long userId) {

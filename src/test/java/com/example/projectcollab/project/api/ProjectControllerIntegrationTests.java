@@ -58,7 +58,7 @@ class ProjectControllerIntegrationTests {
     @DisplayName("프로젝트를 생성하면 생성자가 OWNER가 되고 멤버십 목록에서 조회된다")
     void createsProjectAndOwnerMembership() throws Exception {
         String response = mockMvc.perform(post("/api/projects")
-                        .queryParam("actorUserId", String.valueOf(ownerId))
+                        .queryParam("userId", String.valueOf(ownerId))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"name\":\"  프로젝트  \",\"description\":\"  설명  \"}"))
                 .andExpect(status().isCreated())
@@ -73,7 +73,7 @@ class ProjectControllerIntegrationTests {
         long projectId = objectMapper.readTree(response).get("projectId").asLong();
 
         mockMvc.perform(get("/api/projects/{projectId}/members", projectId)
-                        .queryParam("actorUserId", String.valueOf(ownerId)))
+                        .queryParam("userId", String.valueOf(ownerId)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].userId").value(ownerId))
                 .andExpect(jsonPath("$[0].role").value("OWNER"))
@@ -86,7 +86,7 @@ class ProjectControllerIntegrationTests {
         long projectId = createProject();
 
         mockMvc.perform(post("/api/projects/{projectId}/members", projectId)
-                        .queryParam("actorUserId", String.valueOf(ownerId))
+                        .queryParam("userId", String.valueOf(ownerId))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"userId\":" + memberId + "}"))
                 .andExpect(status().isCreated())
@@ -94,7 +94,7 @@ class ProjectControllerIntegrationTests {
                 .andExpect(jsonPath("$.role").value("MEMBER"));
 
         mockMvc.perform(put("/api/projects/{projectId}/members/{userId}/role", projectId, memberId)
-                        .queryParam("actorUserId", String.valueOf(ownerId))
+                        .queryParam("userId", String.valueOf(ownerId))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"role\":\"ADMIN\"}"))
                 .andExpect(status().isOk())
@@ -108,20 +108,20 @@ class ProjectControllerIntegrationTests {
         String memberRequest = "{\"userId\":" + memberId + "}";
 
         mockMvc.perform(post("/api/projects/{projectId}/members", projectId)
-                        .queryParam("actorUserId", String.valueOf(ownerId))
+                        .queryParam("userId", String.valueOf(ownerId))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(memberRequest))
                 .andExpect(status().isCreated());
 
         mockMvc.perform(post("/api/projects/{projectId}/members", projectId)
-                        .queryParam("actorUserId", String.valueOf(ownerId))
+                        .queryParam("userId", String.valueOf(ownerId))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(memberRequest))
                 .andExpect(status().isConflict())
                 .andExpect(jsonPath("$.code").value("project.member.already_exists"));
 
         mockMvc.perform(get("/api/projects/{projectId}", projectId)
-                        .queryParam("actorUserId", String.valueOf(outsiderId)))
+                        .queryParam("userId", String.valueOf(outsiderId)))
                 .andExpect(status().isForbidden())
                 .andExpect(jsonPath("$.code").value("project.access.forbidden"));
     }
@@ -133,19 +133,19 @@ class ProjectControllerIntegrationTests {
         long secondProjectId = createProject();
 
         mockMvc.perform(post("/api/projects/{projectId}/members", firstProjectId)
-                        .queryParam("actorUserId", String.valueOf(ownerId))
+                        .queryParam("userId", String.valueOf(ownerId))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"userId\":" + memberId + "}"))
                 .andExpect(status().isCreated());
 
         mockMvc.perform(get("/api/projects")
-                        .queryParam("actorUserId", String.valueOf(memberId)))
+                        .queryParam("userId", String.valueOf(memberId)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].projectId").value(firstProjectId))
                 .andExpect(jsonPath("$[1]").doesNotExist());
 
         mockMvc.perform(get("/api/projects")
-                        .queryParam("actorUserId", String.valueOf(ownerId)))
+                        .queryParam("userId", String.valueOf(ownerId)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].projectId").value(secondProjectId))
                 .andExpect(jsonPath("$[1].projectId").value(firstProjectId));
@@ -157,29 +157,62 @@ class ProjectControllerIntegrationTests {
         long projectId = createProject();
 
         mockMvc.perform(post("/api/projects/{projectId}/members", projectId)
-                        .queryParam("actorUserId", String.valueOf(ownerId))
+                        .queryParam("userId", String.valueOf(ownerId))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"userId\":" + memberId + "}"))
                 .andExpect(status().isCreated());
 
         mockMvc.perform(put("/api/projects/{projectId}", projectId)
-                        .queryParam("actorUserId", String.valueOf(memberId))
+                        .queryParam("userId", String.valueOf(memberId))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"name\":\"변경\",\"description\":\"변경\"}"))
                 .andExpect(status().isForbidden())
                 .andExpect(jsonPath("$.code").value("project.access.forbidden"));
 
         mockMvc.perform(delete("/api/projects/{projectId}/members/{targetUserId}", projectId, ownerId)
-                        .queryParam("actorUserId", String.valueOf(ownerId)))
+                        .queryParam("userId", String.valueOf(ownerId)))
                 .andExpect(status().isForbidden())
-                .andExpect(jsonPath("$.code").value("project.owner.cannot_remove"));
+                .andExpect(jsonPath("$.code").value("project.owner.required"));
+    }
+
+    @Test
+    @DisplayName("복수 OWNER를 허용하고 마지막 OWNER의 강등은 거부한다")
+    void managesMultipleOwners() throws Exception {
+        long projectId = createProject();
+
+        mockMvc.perform(post("/api/projects/{projectId}/members", projectId)
+                        .queryParam("userId", String.valueOf(ownerId))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"userId\":" + memberId + "}"))
+                .andExpect(status().isCreated());
+
+        mockMvc.perform(put("/api/projects/{projectId}/members/{userId}/role", projectId, memberId)
+                        .queryParam("userId", String.valueOf(ownerId))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"role\":\"OWNER\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.role").value("OWNER"));
+
+        mockMvc.perform(put("/api/projects/{projectId}/members/{userId}/role", projectId, ownerId)
+                        .queryParam("userId", String.valueOf(memberId))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"role\":\"ADMIN\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.role").value("ADMIN"));
+
+        mockMvc.perform(put("/api/projects/{projectId}/members/{userId}/role", projectId, memberId)
+                        .queryParam("userId", String.valueOf(memberId))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"role\":\"ADMIN\"}"))
+                .andExpect(status().isForbidden())
+                .andExpect(jsonPath("$.code").value("project.owner.required"));
     }
 
     @Test
     @DisplayName("등록되지 않은 사용자는 프로젝트를 만들거나 멤버로 추가할 수 없다")
     void rejectsUnknownUsers() throws Exception {
         mockMvc.perform(post("/api/projects")
-                        .queryParam("actorUserId", "999999")
+                        .queryParam("userId", "999999")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"name\":\"프로젝트\",\"description\":\"설명\"}"))
                 .andExpect(status().isNotFound())
@@ -187,7 +220,7 @@ class ProjectControllerIntegrationTests {
 
         long projectId = createProject();
         mockMvc.perform(post("/api/projects/{projectId}/members", projectId)
-                        .queryParam("actorUserId", String.valueOf(ownerId))
+                        .queryParam("userId", String.valueOf(ownerId))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"userId\":999999}"))
                 .andExpect(status().isNotFound())
@@ -200,24 +233,24 @@ class ProjectControllerIntegrationTests {
         long projectId = createProject();
 
         mockMvc.perform(put("/api/projects/{projectId}", projectId)
-                        .queryParam("actorUserId", String.valueOf(ownerId))
+                        .queryParam("userId", String.valueOf(ownerId))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"name\":\"변경된 프로젝트\",\"description\":\"변경된 설명\"}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("변경된 프로젝트"));
 
         mockMvc.perform(delete("/api/projects/{projectId}", projectId)
-                        .queryParam("actorUserId", String.valueOf(ownerId)))
+                        .queryParam("userId", String.valueOf(ownerId)))
                 .andExpect(status().isNoContent());
 
         mockMvc.perform(get("/api/projects/{projectId}", projectId)
-                        .queryParam("actorUserId", String.valueOf(ownerId)))
+                        .queryParam("userId", String.valueOf(ownerId)))
                 .andExpect(status().isNotFound());
     }
 
     private long createProject() throws Exception {
         String response = mockMvc.perform(post("/api/projects")
-                        .queryParam("actorUserId", String.valueOf(ownerId))
+                        .queryParam("userId", String.valueOf(ownerId))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"name\":\"프로젝트\",\"description\":\"설명\"}"))
                 .andExpect(status().isCreated())

@@ -410,6 +410,46 @@ class TaskApplicationServicesIntegrationTests {
     }
 
     @Test
+    void managerCannotEditACompletedTask() {
+        long projectId = projectWithMember();
+        TaskResponse accepted = taskWriteService.createTask(
+                projectId,
+                new CreateTaskRequest("완료 전 제목", "완료 전 설명", MEMBER, false),
+                OWNER
+        );
+        TaskResponse started = taskWriteService.start(projectId, accepted.taskId(), accepted.revision(), MEMBER);
+        TaskResponse inReview = taskWriteService.requestReview(projectId, accepted.taskId(), started.revision(), MEMBER);
+        TaskResponse done = taskWriteService.complete(projectId, accepted.taskId(), inReview.revision(), OWNER);
+
+        assertThatThrownBy(() -> taskWriteService.editTask(
+                projectId,
+                done.taskId(),
+                new ReviseTaskRequest("완료 후 변경", "허용되지 않음", done.revision()),
+                OWNER
+        )).isInstanceOf(IllegalStateException.class)
+                .hasMessage("완료된 작업은 수정할 수 없습니다.");
+
+        assertThatThrownBy(() -> taskWriteService.editTask(
+                projectId,
+                done.taskId(),
+                new ReviseTaskRequest("담당자의 완료 후 변경", "허용되지 않음", done.revision()),
+                MEMBER
+        )).isInstanceOf(IllegalStateException.class);
+
+        assertThatThrownBy(() -> taskWriteService.assign(
+                projectId,
+                done.taskId(),
+                new AssignTaskRequest(OWNER, done.revision()),
+                OWNER
+        )).isInstanceOf(IllegalStateException.class);
+
+        TaskResponse unchanged = taskReadService.getTaskDetail(projectId, done.taskId(), OWNER);
+        assertThat(unchanged.title()).isEqualTo("완료 전 제목");
+        assertThat(unchanged.state()).isEqualTo(Task.TaskState.DONE.name());
+        assertThat(unchanged.revision()).isEqualTo(done.revision());
+    }
+
+    @Test
     void jpaVersionRejectsAChangeThatRacesAfterTheExplicitRevisionCheck() {
         long projectId = createProject();
         TaskResponse created = taskWriteService.createTask(

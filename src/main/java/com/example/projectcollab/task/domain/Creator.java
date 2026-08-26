@@ -1,7 +1,7 @@
 package com.example.projectcollab.task.domain;
 
-public record Creator(String username) {
+public record Creator(long userId) {
     public Creator {
-        username = Require.notBlank(username, "생성자 사용자 이름은 필수입니다.");
+        Require.positive(userId, "생성자 사용자 ID는 양수여야 합니다.");
     }
 }

@@ -16,8 +16,7 @@ public final class Task {
     private static final Set<TaskState> ASSIGNMENT_CHANGEABLE_STATES = Set.of(
             TaskState.ACCEPTED,
             TaskState.IN_PROGRESS,
-            TaskState.IN_REVIEW,
-            TaskState.DONE
+            TaskState.IN_REVIEW
     );
 
     private final Long taskId;
@@ -68,7 +67,7 @@ public final class Task {
                 projectId,
                 validatedCreator,
                 content,
-                new TaskAssignment.Assigned(new Assignee(validatedCreator.username())),
+                new TaskAssignment.Assigned(new Assignee(validatedCreator.userId())),
                 TaskState.PENDING,
                 null,
                 null,
@@ -86,7 +85,7 @@ public final class Task {
                 projectId,
                 validatedCreator,
                 content,
-                new TaskAssignment.Assigned(new Assignee(validatedCreator.username()))
+                new TaskAssignment.Assigned(new Assignee(validatedCreator.userId()))
         );
     }
 
@@ -179,6 +178,7 @@ public final class Task {
     }
 
     public void edit(final TaskContent content) {
+        Require.state(state != TaskState.DONE, "완료된 작업은 수정할 수 없습니다.");
         this.content = Require.notNull(content, "작업 내용은 필수입니다.");
     }
 

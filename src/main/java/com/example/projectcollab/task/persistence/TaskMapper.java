@@ -13,7 +13,7 @@ final class TaskMapper {
     static Task toDomain(final TaskEntity taskEntity) {
         TaskAssignment assignment = taskEntity.assigneeUserId() == null
                 ? TaskAssignment.Unassigned.INSTANCE
-                : new TaskAssignment.Assigned(new Assignee(String.valueOf(taskEntity.assigneeUserId())));
+                : new TaskAssignment.Assigned(new Assignee(taskEntity.assigneeUserId()));
 
         Task.TaskState state = Task.TaskState.valueOf(taskEntity.state());
 
@@ -21,7 +21,7 @@ final class TaskMapper {
                 taskEntity.taskId(),
                 taskEntity.revision(),
                 taskEntity.projectId(),
-                new Creator(String.valueOf(taskEntity.creatorUserId())),
+                new Creator(taskEntity.creatorUserId()),
                 new TaskContent(taskEntity.title(), taskEntity.description()),
                 assignment,
                 state,
@@ -33,12 +33,12 @@ final class TaskMapper {
 
     static TaskEntity toEntity(final Task task) {
         Long assigneeUserId = task.assignment() instanceof TaskAssignment.Assigned assigned
-                ? Long.valueOf(assigned.assignee().username())
+                ? assigned.assignee().userId()
                 : null;
 
         return new TaskEntity(
                 task.projectId(),
-                Long.valueOf(task.creator().username()),
+                task.creator().userId(),
                 task.content().title(),
                 task.content().description(),
                 assigneeUserId,
@@ -49,7 +49,7 @@ final class TaskMapper {
 
     static void apply(final TaskEntity taskEntity, final Task task) {
         Long assigneeUserId = task.assignment() instanceof TaskAssignment.Assigned assigned
-                ? Long.valueOf(assigned.assignee().username())
+                ? assigned.assignee().userId()
                 : null;
 
         taskEntity.overwrite(

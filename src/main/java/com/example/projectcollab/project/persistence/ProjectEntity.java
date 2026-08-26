@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 import java.time.Instant;
 
@@ -17,6 +18,10 @@ public class ProjectEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long projectId;
+
+    @Version
+    @Column(nullable = false)
+    private Long revision;
 
     @Column(nullable = false)
     private String name;
@@ -45,6 +50,10 @@ public class ProjectEntity {
     public void changeBasicInfo(final String name, final String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public void markMembershipChanged() {
+        this.updatedAt = Instant.now();
     }
 
     @PrePersist

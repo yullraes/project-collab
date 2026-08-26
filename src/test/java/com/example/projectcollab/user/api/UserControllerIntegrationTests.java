@@ -75,7 +75,9 @@ class UserControllerIntegrationTests {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"name\":\"Alice\",\"email\":\"not-an-email\"}"))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.code").value("user.input.invalid"));
+                .andExpect(jsonPath("$.code").value("request.invalid"))
+                .andExpect(jsonPath("$.violations[0].field").isNotEmpty())
+                .andExpect(jsonPath("$.violations[0].reason").isNotEmpty());
     }
 
     @Test

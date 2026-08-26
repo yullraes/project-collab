@@ -39,11 +39,6 @@ public class JpaTaskRepository implements TaskRepository {
     }
 
     @Override
-    public Optional<TaskProjectSnapshot> findProjectSnapshotForUpdate(final long projectId) {
-        return projectRepository.findByIdForUpdate(projectId).map(this::toTaskProjectSnapshot);
-    }
-
-    @Override
     public Task save(final Task task) {
         TaskEntity entity;
         if (task.taskId() == null) {
@@ -74,7 +69,7 @@ public class JpaTaskRepository implements TaskRepository {
 
     @Override
     public List<Task> findAssignedTasksForMembershipEnd(final long projectId, final long assigneeUserId) {
-        return springDataRepository.findAssignedTasksForUpdate(projectId, assigneeUserId).stream()
+        return springDataRepository.findAssignedTasks(projectId, assigneeUserId).stream()
                 .map(TaskMapper::toDomain)
                 .toList();
     }
@@ -111,11 +106,10 @@ public class JpaTaskRepository implements TaskRepository {
     private TaskProjectSnapshot toTaskProjectSnapshot(final ProjectEntity project) {
         List<ProjectMemberEntity> members = projectMemberRepository
                 .findAllByProjectIdOrderByProjectMemberId(project.projectId());
-        Long ownerUserId = members.stream()
+        Set<Long> ownerUserIds = members.stream()
                 .filter(member -> member.role() == ProjectRole.OWNER)
                 .map(ProjectMemberEntity::userId)
-                .findFirst()
-                .orElse(null);
+                .collect(Collectors.toSet());
         Set<Long> adminUserIds = members.stream()
                 .filter(member -> member.role() == ProjectRole.ADMIN)
                 .map(ProjectMemberEntity::userId)
@@ -125,7 +119,7 @@ public class JpaTaskRepository implements TaskRepository {
                 .map(ProjectMemberEntity::userId)
                 .collect(Collectors.toSet());
         return new TaskProjectSnapshot(
-                ownerUserId,
+                ownerUserIds,
                 adminUserIds,
                 memberUserIds
         );

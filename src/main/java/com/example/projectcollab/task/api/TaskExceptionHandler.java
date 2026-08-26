@@ -1,5 +1,9 @@
 package com.example.projectcollab.task.api;
 
+import com.example.projectcollab.common.api.ApiErrorResponse;
+
+import com.example.projectcollab.project.domain.ProjectNotFoundException;
+import com.example.projectcollab.project.domain.ProjectPermissionException;
 import com.example.projectcollab.task.application.TaskConflictException;
 import com.example.projectcollab.task.application.TaskNotFoundException;
 import com.example.projectcollab.task.application.TaskPermissionException;
@@ -9,47 +13,61 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@RestControllerAdvice
+@RestControllerAdvice(assignableTypes = TaskController.class)
 public final class TaskExceptionHandler {
+    @ExceptionHandler(ProjectPermissionException.class)
+    public ResponseEntity<ApiErrorResponse> onProjectPermission(final ProjectPermissionException ex) {
+        return ResponseEntity
+                .status(HttpStatus.FORBIDDEN)
+                .body(ApiErrorResponse.of("task.forbidden", ex.getMessage()));
+    }
+
+    @ExceptionHandler(ProjectNotFoundException.class)
+    public ResponseEntity<ApiErrorResponse> onProjectNotFound(final ProjectNotFoundException ex) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(ApiErrorResponse.of("project.not_found", ex.getMessage()));
+    }
+
     @ExceptionHandler(TaskConflictException.class)
-    public ResponseEntity<TaskErrorResponse> onConflict(final TaskConflictException ex) {
+    public ResponseEntity<ApiErrorResponse> onConflict(final TaskConflictException ex) {
         return ResponseEntity
                 .status(HttpStatus.CONFLICT)
-                .body(new TaskErrorResponse("task.revision.conflict", ex.getMessage()));
+                .body(ApiErrorResponse.of("task.revision.conflict", ex.getMessage()));
     }
 
     @ExceptionHandler(ObjectOptimisticLockingFailureException.class)
-    public ResponseEntity<TaskErrorResponse> onOptimisticLock(final ObjectOptimisticLockingFailureException ex) {
+    public ResponseEntity<ApiErrorResponse> onOptimisticLock(final ObjectOptimisticLockingFailureException ex) {
         return ResponseEntity
                 .status(HttpStatus.CONFLICT)
-                .body(new TaskErrorResponse("task.revision.conflict", "task.revision.conflict"));
+                .body(ApiErrorResponse.of("task.revision.conflict", TaskConflictException.MESSAGE));
     }
 
     @ExceptionHandler(TaskPermissionException.class)
-    public ResponseEntity<TaskErrorResponse> onPermission(final TaskPermissionException ex) {
+    public ResponseEntity<ApiErrorResponse> onPermission(final TaskPermissionException ex) {
         return ResponseEntity
                 .status(HttpStatus.FORBIDDEN)
-                .body(new TaskErrorResponse("task.forbidden", ex.getMessage()));
+                .body(ApiErrorResponse.of("task.forbidden", ex.getMessage()));
     }
 
     @ExceptionHandler(TaskNotFoundException.class)
-    public ResponseEntity<TaskErrorResponse> onNotFound(final TaskNotFoundException ex) {
+    public ResponseEntity<ApiErrorResponse> onNotFound(final TaskNotFoundException ex) {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
-                .body(new TaskErrorResponse("task.notFound", ex.getMessage()));
+                .body(ApiErrorResponse.of("task.notFound", ex.getMessage()));
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<TaskErrorResponse> onIllegalArgument(final IllegalArgumentException ex) {
+    public ResponseEntity<ApiErrorResponse> onIllegalArgument(final IllegalArgumentException ex) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(new TaskErrorResponse("task.illegal_argument", ex.getMessage()));
+                .body(ApiErrorResponse.of("task.illegal_argument", ex.getMessage()));
     }
 
     @ExceptionHandler(IllegalStateException.class)
-    public ResponseEntity<TaskErrorResponse> onIllegalState(final IllegalStateException ex) {
+    public ResponseEntity<ApiErrorResponse> onIllegalState(final IllegalStateException ex) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(new TaskErrorResponse("task.illegal_state", ex.getMessage()));
+                .body(ApiErrorResponse.of("task.illegal_state", ex.getMessage()));
     }
 }

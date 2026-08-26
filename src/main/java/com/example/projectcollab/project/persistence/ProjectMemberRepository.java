@@ -1,5 +1,6 @@
 package com.example.projectcollab.project.persistence;
 
+import com.example.projectcollab.project.domain.ProjectRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -9,6 +10,8 @@ public interface ProjectMemberRepository extends JpaRepository<ProjectMemberEnti
     Optional<ProjectMemberEntity> findByProjectIdAndUserId(long projectId, long userId);
 
     boolean existsByProjectIdAndUserId(long projectId, long userId);
+
+    long countByProjectIdAndRole(long projectId, ProjectRole role);
 
     List<ProjectMemberEntity> findAllByProjectIdOrderByProjectMemberId(long projectId);
 

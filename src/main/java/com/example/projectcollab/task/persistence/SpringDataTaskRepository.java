@@ -1,10 +1,8 @@
 package com.example.projectcollab.task.persistence;
 
-import jakarta.persistence.LockModeType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -54,13 +52,12 @@ public interface SpringDataTaskRepository extends JpaRepository<TaskEntity, Long
             Pageable pageable
     );
 
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("""
             SELECT t FROM TaskEntity t
             WHERE t.projectId = :projectId AND t.assigneeUserId = :assigneeUserId
             ORDER BY t.taskId ASC
             """)
-    List<TaskEntity> findAssignedTasksForUpdate(
+    List<TaskEntity> findAssignedTasks(
             @Param("projectId") long projectId,
             @Param("assigneeUserId") long assigneeUserId
     );
