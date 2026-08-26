@@ -14,7 +14,7 @@ public interface TaskRepository {
 
     Optional<Task> findByTaskIdAndProjectId(long taskId, long projectId);
 
-    List<Task> findAssignedTasksForMembershipEnd(long projectId, String assigneeUserId);
+    List<Task> findAssignedTasksForMembershipEnd(long projectId, long assigneeUserId);
 
     void delete(Task task);
 

@@ -27,7 +27,7 @@ public class TaskEntity {
     private Long projectId;
 
     @Column(nullable = false)
-    private String creatorUserId;
+    private Long creatorUserId;
 
     @Column(nullable = false)
     private String title;
@@ -35,7 +35,7 @@ public class TaskEntity {
     @Column(length = 1000, nullable = false)
     private String description;
 
-    private String assigneeUserId;
+    private Long assigneeUserId;
 
     @Column(nullable = false)
     private String state;
@@ -53,10 +53,10 @@ public class TaskEntity {
 
     TaskEntity(
             final Long projectId,
-            final String creatorUserId,
+            final Long creatorUserId,
             final String title,
             final String description,
-            final String assigneeUserId,
+            final Long assigneeUserId,
             final String state,
             final String rejectionReason
     ) {
@@ -72,7 +72,7 @@ public class TaskEntity {
     void overwrite(
             final String title,
             final String description,
-            final String assigneeUserId,
+            final Long assigneeUserId,
             final String state,
             final String rejectionReason
     ) {
@@ -107,7 +107,7 @@ public class TaskEntity {
         return projectId;
     }
 
-    public String creatorUserId() {
+    public Long creatorUserId() {
         return creatorUserId;
     }
 
@@ -119,7 +119,7 @@ public class TaskEntity {
         return description;
     }
 
-    public String assigneeUserId() {
+    public Long assigneeUserId() {
         return assigneeUserId;
     }
 

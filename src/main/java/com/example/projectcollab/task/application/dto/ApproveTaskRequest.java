@@ -1,7 +1,7 @@
 package com.example.projectcollab.task.application.dto;
 
 public record ApproveTaskRequest(
-        String assigneeUserId,
+        Long assigneeUserId,
 
         Boolean unassigned,
 

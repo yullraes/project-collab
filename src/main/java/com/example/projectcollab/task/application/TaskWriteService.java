@@ -27,14 +27,10 @@ public class TaskWriteService {
     }
 
     @Transactional
-    public TaskResponse createTask(
-            final long projectId,
-            final CreateTaskRequest request,
-            final String userId
-    ) {
+    public TaskResponse createTask(final long projectId, final CreateTaskRequest request, final long userId) {
         TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.create.forbidden");
         TaskContent content = new TaskContent(normalize(request.title()), normalize(request.description()));
-        Creator creator = new Creator(userId);
+        Creator creator = new Creator(String.valueOf(userId));
 
         Task task;
         if (project.isManager(userId)) {
@@ -52,12 +48,7 @@ public class TaskWriteService {
     }
 
     @Transactional
-    public TaskResponse editTask(
-            final long projectId,
-            final long taskId,
-            final ReviseTaskRequest request,
-            final String userId
-    ) {
+    public TaskResponse editTask(final long projectId, final long taskId, final ReviseTaskRequest request, final long userId) {
         TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.modify.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, request.revision());
@@ -65,7 +56,7 @@ public class TaskWriteService {
         if (project.isManager(userId)) {
             task.edit(content);
         } else {
-            if (!task.creator().username().equals(userId)) {
+            if (!isCreator(task, userId)) {
                 throw new TaskPermissionException("task.creator.only");
             }
             task.revise(content);
@@ -74,33 +65,23 @@ public class TaskWriteService {
     }
 
     @Transactional
-    public TaskResponse assign(
-            final long projectId,
-            final long taskId,
-            final AssignTaskRequest request,
-            final String userId
-    ) {
+    public TaskResponse assign(final long projectId, final long taskId, final AssignTaskRequest request, final long userId) {
         TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.assign.forbidden");
         requireManager(project, userId, "task.assign.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, request.revision());
 
-        String assigneeUserId = normalizeOptionalUserId(request.assigneeUserId());
+        Long assigneeUserId = normalizeOptionalUserId(request.assigneeUserId());
         if (assigneeUserId == null) {
             throw new IllegalArgumentException("task.assignee.required");
         }
         requireProjectMember(project, assigneeUserId, "task.assignee.not_member");
-        task.assign(new Assignee(assigneeUserId));
+        task.assign(new Assignee(String.valueOf(assigneeUserId)));
         return TaskResponse.from(taskRepository.save(task));
     }
 
     @Transactional
-    public TaskResponse unassign(
-            final long projectId,
-            final long taskId,
-            final long revision,
-            final String userId
-    ) {
+    public TaskResponse unassign(final long projectId, final long taskId, final long revision, final long userId) {
         TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.unassign.forbidden");
         requireManager(project, userId, "task.unassign.forbidden");
         Task task = loadTask(projectId, taskId);
@@ -110,12 +91,7 @@ public class TaskWriteService {
     }
 
     @Transactional
-    public TaskResponse releaseTask(
-            final long projectId,
-            final long taskId,
-            final long revision,
-            final String userId
-    ) {
+    public TaskResponse releaseTask(final long projectId, final long taskId, final long revision, final long userId) {
         loadProjectForUpdate(projectId, userId, "task.relinquish.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, revision);
@@ -125,17 +101,12 @@ public class TaskWriteService {
     }
 
     @Transactional
-    public TaskResponse approve(
-            final long projectId,
-            final long taskId,
-            final ApproveTaskRequest request,
-            final String userId
-    ) {
+    public TaskResponse approve(final long projectId, final long taskId, final ApproveTaskRequest request, final long userId) {
         TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.approve.forbidden");
         requireManager(project, userId, "task.approve.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, request.revision());
-        if (task.creator().username().equals(userId)) {
+        if (isCreator(task, userId)) {
             throw new TaskPermissionException("task.self_approval.forbidden");
         }
 
@@ -145,12 +116,7 @@ public class TaskWriteService {
     }
 
     @Transactional
-    public TaskResponse reject(
-            final long projectId,
-            final long taskId,
-            final RejectTaskRequest request,
-            final String userId
-    ) {
+    public TaskResponse reject(final long projectId, final long taskId, final RejectTaskRequest request, final long userId) {
         TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.reject.forbidden");
         requireManager(project, userId, "task.reject.forbidden");
         Task task = loadTask(projectId, taskId);
@@ -160,16 +126,11 @@ public class TaskWriteService {
     }
 
     @Transactional
-    public TaskResponse resubmit(
-            final long projectId,
-            final long taskId,
-            final long revision,
-            final String userId
-    ) {
+    public TaskResponse resubmit(final long projectId, final long taskId, final long revision, final long userId) {
         loadProjectForUpdate(projectId, userId, "task.resubmit.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, revision);
-        if (!task.creator().username().equals(userId)) {
+        if (!isCreator(task, userId)) {
             throw new TaskPermissionException("task.creator.only");
         }
         task.resubmit();
@@ -177,12 +138,7 @@ public class TaskWriteService {
     }
 
     @Transactional
-    public TaskResponse start(
-            final long projectId,
-            final long taskId,
-            final long revision,
-            final String userId
-    ) {
+    public TaskResponse start(final long projectId, final long taskId, final long revision, final long userId) {
         loadProjectForUpdate(projectId, userId, "task.start.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, revision);
@@ -192,12 +148,7 @@ public class TaskWriteService {
     }
 
     @Transactional
-    public TaskResponse requestReview(
-            final long projectId,
-            final long taskId,
-            final long revision,
-            final String userId
-    ) {
+    public TaskResponse requestReview(final long projectId, final long taskId, final long revision, final long userId) {
         loadProjectForUpdate(projectId, userId, "task.review.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, revision);
@@ -207,12 +158,7 @@ public class TaskWriteService {
     }
 
     @Transactional
-    public TaskResponse requestChanges(
-            final long projectId,
-            final long taskId,
-            final long revision,
-            final String userId
-    ) {
+    public TaskResponse requestChanges(final long projectId, final long taskId, final long revision, final long userId) {
         TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.request_changes.forbidden");
         requireManager(project, userId, "task.request_changes.forbidden");
         Task task = loadTask(projectId, taskId);
@@ -222,12 +168,7 @@ public class TaskWriteService {
     }
 
     @Transactional
-    public TaskResponse complete(
-            final long projectId,
-            final long taskId,
-            final long revision,
-            final String userId
-    ) {
+    public TaskResponse complete(final long projectId, final long taskId, final long revision, final long userId) {
         TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.complete.forbidden");
         requireManager(project, userId, "task.complete.forbidden");
         Task task = loadTask(projectId, taskId);
@@ -237,12 +178,7 @@ public class TaskWriteService {
     }
 
     @Transactional
-    public void removeTask(
-            final long projectId,
-            final long taskId,
-            final long revision,
-            final String userId
-    ) {
+    public void removeTask(final long projectId, final long taskId, final long revision, final long userId) {
         TaskProjectSnapshot project = loadProjectForUpdate(projectId, userId, "task.delete.forbidden");
         Task task = loadTask(projectId, taskId);
         verifyRevision(task, revision);
@@ -255,10 +191,10 @@ public class TaskWriteService {
 
     private TaskAssignment resolveCreationAssignment(
             final TaskProjectSnapshot project,
-            final String creatorUserId,
+            final long creatorUserId,
             final CreateTaskRequest request
     ) {
-        String assigneeUserId = normalizeOptionalUserId(request.assigneeUserId());
+        Long assigneeUserId = normalizeOptionalUserId(request.assigneeUserId());
         boolean unassigned = Boolean.TRUE.equals(request.unassigned());
         if (unassigned && assigneeUserId != null) {
             throw new IllegalArgumentException("task.assignee.choice.conflict");
@@ -267,9 +203,9 @@ public class TaskWriteService {
             return TaskAssignment.Unassigned.INSTANCE;
         }
 
-        String selectedAssignee = assigneeUserId == null ? creatorUserId : assigneeUserId;
+        long selectedAssignee = assigneeUserId == null ? creatorUserId : assigneeUserId;
         requireProjectMember(project, selectedAssignee, "task.assignee.not_member");
-        return new TaskAssignment.Assigned(new Assignee(selectedAssignee));
+        return new TaskAssignment.Assigned(new Assignee(String.valueOf(selectedAssignee)));
     }
 
     private void applyApprovalAssignment(
@@ -277,7 +213,7 @@ public class TaskWriteService {
             final Task task,
             final ApproveTaskRequest request
     ) {
-        String assigneeUserId = normalizeOptionalUserId(request.assigneeUserId());
+        Long assigneeUserId = normalizeOptionalUserId(request.assigneeUserId());
         boolean unassigned = Boolean.TRUE.equals(request.unassigned());
         if (unassigned && assigneeUserId != null) {
             throw new IllegalArgumentException("task.assignee.choice.conflict");
@@ -288,7 +224,7 @@ public class TaskWriteService {
         }
         if (assigneeUserId != null) {
             requireProjectMember(project, assigneeUserId, "task.assignee.not_member");
-            task.assign(new Assignee(assigneeUserId));
+            task.assign(new Assignee(String.valueOf(assigneeUserId)));
         }
     }
 
@@ -302,11 +238,11 @@ public class TaskWriteService {
         }
     }
 
-    private void requireCurrentAssignee(final Task task, final String userId) {
+    private void requireCurrentAssignee(final Task task, final long userId) {
         if (!(task.assignment() instanceof TaskAssignment.Assigned assigned)) {
             throw new TaskPermissionException("task.assignee.required");
         }
-        if (!assigned.assignee().username().equals(userId)) {
+        if (Long.parseLong(assigned.assignee().username()) != userId) {
             throw new TaskPermissionException("task.assignee.only");
         }
     }
@@ -316,46 +252,37 @@ public class TaskWriteService {
                 .orElseThrow(TaskNotFoundException::new);
     }
 
-    private TaskProjectSnapshot loadProjectForUpdate(
-            final long projectId,
-            final String userId,
-            final String code
-    ) {
+    private TaskProjectSnapshot loadProjectForUpdate(final long projectId, final long userId, final String code) {
         TaskProjectSnapshot project = taskRepository.findProjectSnapshotForUpdate(projectId)
                 .orElseThrow(ProjectNotFoundException::new);
         requireProjectMember(project, userId, code);
         return project;
     }
 
-    private void requireManager(
-            final TaskProjectSnapshot project,
-            final String userId,
-            final String code
-    ) {
+    private void requireManager(final TaskProjectSnapshot project, final long userId, final String code) {
         if (!project.isManager(userId)) {
             throw new TaskPermissionException(code);
         }
     }
 
-    private void requireProjectMember(
-            final TaskProjectSnapshot project,
-            final String userId,
-            final String code
-    ) {
+    private void requireProjectMember(final TaskProjectSnapshot project, final long userId, final String code) {
         if (!project.isMember(userId)) {
             throw new ProjectPermissionException(code);
         }
     }
 
-    private String normalizeOptionalUserId(final String value) {
+    private Long normalizeOptionalUserId(final Long value) {
         if (value == null) {
             return null;
         }
-        String normalized = value.trim();
-        if (normalized.isBlank()) {
+        if (value <= 0) {
             throw new IllegalArgumentException("task.assignee.required");
         }
-        return normalized;
+        return value;
+    }
+
+    private boolean isCreator(final Task task, final long userId) {
+        return Long.parseLong(task.creator().username()) == userId;
     }
 
     private String normalize(final String value) {

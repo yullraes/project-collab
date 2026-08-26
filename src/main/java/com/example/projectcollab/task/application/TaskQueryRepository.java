@@ -7,11 +7,11 @@ import org.springframework.data.domain.Page;
 import java.util.Optional;
 
 public interface TaskQueryRepository {
-    Optional<TaskResponse> findReadableTask(long projectId, long taskId, String requesterId);
+    Optional<TaskResponse> findReadableTask(long projectId, long taskId, long requesterId);
 
     Page<TaskResponse> searchReadable(
             long projectId,
-            String requesterId,
+            long requesterId,
             String keyword,
             Task.TaskState state,
             int page,

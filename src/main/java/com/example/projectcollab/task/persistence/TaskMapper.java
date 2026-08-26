@@ -13,7 +13,7 @@ final class TaskMapper {
     static Task toDomain(final TaskEntity taskEntity) {
         TaskAssignment assignment = taskEntity.assigneeUserId() == null
                 ? TaskAssignment.Unassigned.INSTANCE
-                : new TaskAssignment.Assigned(new Assignee(taskEntity.assigneeUserId()));
+                : new TaskAssignment.Assigned(new Assignee(String.valueOf(taskEntity.assigneeUserId())));
 
         Task.TaskState state = Task.TaskState.valueOf(taskEntity.state());
 
@@ -21,7 +21,7 @@ final class TaskMapper {
                 taskEntity.taskId(),
                 taskEntity.revision(),
                 taskEntity.projectId(),
-                new Creator(taskEntity.creatorUserId()),
+                new Creator(String.valueOf(taskEntity.creatorUserId())),
                 new TaskContent(taskEntity.title(), taskEntity.description()),
                 assignment,
                 state,
@@ -32,13 +32,13 @@ final class TaskMapper {
     }
 
     static TaskEntity toEntity(final Task task) {
-        String assigneeUserId = task.assignment() instanceof TaskAssignment.Assigned assigned
-                ? assigned.assignee().username()
+        Long assigneeUserId = task.assignment() instanceof TaskAssignment.Assigned assigned
+                ? Long.valueOf(assigned.assignee().username())
                 : null;
 
         return new TaskEntity(
                 task.projectId(),
-                task.creator().username(),
+                Long.valueOf(task.creator().username()),
                 task.content().title(),
                 task.content().description(),
                 assigneeUserId,
@@ -48,8 +48,8 @@ final class TaskMapper {
     }
 
     static void apply(final TaskEntity taskEntity, final Task task) {
-        String assigneeUserId = task.assignment() instanceof TaskAssignment.Assigned assigned
-                ? assigned.assignee().username()
+        Long assigneeUserId = task.assignment() instanceof TaskAssignment.Assigned assigned
+                ? Long.valueOf(assigned.assignee().username())
                 : null;
 
         taskEntity.overwrite(

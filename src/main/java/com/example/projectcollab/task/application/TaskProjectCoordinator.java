@@ -17,7 +17,7 @@ public class TaskProjectCoordinator {
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
-    public void normalizeAssignments(final long projectId, final String removedUserId) {
+    public void normalizeAssignments(final long projectId, final long removedUserId) {
         List<Task> tasks = taskRepository.findAssignedTasksForMembershipEnd(projectId, removedUserId);
         tasks.forEach(Task::removeAssigneeForMembershipEnd);
         taskRepository.saveAll(tasks);

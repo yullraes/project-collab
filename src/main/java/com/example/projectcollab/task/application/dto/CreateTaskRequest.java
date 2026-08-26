@@ -5,7 +5,7 @@ public record CreateTaskRequest(
 
         String description,
 
-        String assigneeUserId,
+        Long assigneeUserId,
 
         Boolean unassigned
 ) {

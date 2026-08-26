@@ -28,7 +28,7 @@ public class TaskReadService {
 
     public TaskPageResponse listTasks(
             final long projectId,
-            final String userId,
+            final long userId,
             final String keyword,
             final Task.TaskState state,
             final int page,
@@ -56,13 +56,13 @@ public class TaskReadService {
         ));
     }
 
-    public TaskResponse getTaskDetail(final long projectId, final long taskId, final String userId) {
+    public TaskResponse getTaskDetail(final long projectId, final long taskId, final long userId) {
         requireProjectMember(projectId, userId);
         return taskQueryRepository.findReadableTask(projectId, taskId, userId)
                 .orElseThrow(TaskNotFoundException::new);
     }
 
-    private void requireProjectMember(final long projectId, final String userId) {
+    private void requireProjectMember(final long projectId, final long userId) {
         TaskProjectSnapshot project = taskRepository.findProjectSnapshot(projectId)
                 .orElseThrow(ProjectNotFoundException::new);
         if (!project.isMember(userId)) {

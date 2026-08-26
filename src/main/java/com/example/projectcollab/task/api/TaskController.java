@@ -41,7 +41,7 @@ public final class TaskController {
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<TaskResponse> createTask(
             @PathVariable final long projectId,
-            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "userId") final long userId,
             @RequestBody final CreateTaskRequest request
     ) {
         TaskResponse response = taskWriteService.createTask(projectId, request, userId);
@@ -51,7 +51,7 @@ public final class TaskController {
     @GetMapping
     public ResponseEntity<TaskPageResponse> listTasks(
             @PathVariable final long projectId,
-            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "userId") final long userId,
             @RequestParam(name = "keyword", required = false) final String keyword,
             @RequestParam(name = "state", required = false) final Task.TaskState state,
             @RequestParam(name = "page", defaultValue = "0") final int page,
@@ -64,7 +64,7 @@ public final class TaskController {
     public ResponseEntity<TaskResponse> getTaskDetail(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId
+            @RequestParam(name = "userId") final long userId
     ) {
         return ResponseEntity.ok(taskReadService.getTaskDetail(projectId, taskId, userId));
     }
@@ -73,7 +73,7 @@ public final class TaskController {
     public ResponseEntity<TaskResponse> editTask(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "userId") final long userId,
             @RequestBody final ReviseTaskRequest request
     ) {
         return ResponseEntity.ok(taskWriteService.editTask(projectId, taskId, request, userId));
@@ -83,7 +83,7 @@ public final class TaskController {
     public ResponseEntity<Void> removeTask(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "userId") final long userId,
             @RequestParam(name = "revision") final long revision
     ) {
         taskWriteService.removeTask(projectId, taskId, revision, userId);
@@ -94,7 +94,7 @@ public final class TaskController {
     public ResponseEntity<TaskResponse> assign(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "userId") final long userId,
             @RequestBody final AssignTaskRequest request
     ) {
         return ResponseEntity.ok(taskWriteService.assign(projectId, taskId, request, userId));
@@ -104,7 +104,7 @@ public final class TaskController {
     public ResponseEntity<TaskResponse> unassign(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "userId") final long userId,
             @RequestParam(name = "revision") final long revision
     ) {
         return ResponseEntity.ok(taskWriteService.unassign(projectId, taskId, revision, userId));
@@ -114,7 +114,7 @@ public final class TaskController {
     public ResponseEntity<TaskResponse> releaseTask(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "userId") final long userId,
             @RequestParam(name = "revision") final long revision
     ) {
         return ResponseEntity.ok(taskWriteService.releaseTask(projectId, taskId, revision, userId));
@@ -124,7 +124,7 @@ public final class TaskController {
     public ResponseEntity<TaskResponse> approve(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "userId") final long userId,
             @RequestBody final ApproveTaskRequest request
     ) {
         return ResponseEntity.ok(taskWriteService.approve(projectId, taskId, request, userId));
@@ -134,7 +134,7 @@ public final class TaskController {
     public ResponseEntity<TaskResponse> reject(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "userId") final long userId,
             @RequestBody final RejectTaskRequest request
     ) {
         return ResponseEntity.ok(taskWriteService.reject(projectId, taskId, request, userId));
@@ -144,7 +144,7 @@ public final class TaskController {
     public ResponseEntity<TaskResponse> resubmit(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "userId") final long userId,
             @RequestParam(name = "revision") final long revision
     ) {
         return ResponseEntity.ok(taskWriteService.resubmit(projectId, taskId, revision, userId));
@@ -154,7 +154,7 @@ public final class TaskController {
     public ResponseEntity<TaskResponse> start(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "userId") final long userId,
             @RequestParam(name = "revision") final long revision
     ) {
         return ResponseEntity.ok(taskWriteService.start(projectId, taskId, revision, userId));
@@ -164,7 +164,7 @@ public final class TaskController {
     public ResponseEntity<TaskResponse> requestReview(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "userId") final long userId,
             @RequestParam(name = "revision") final long revision
     ) {
         return ResponseEntity.ok(taskWriteService.requestReview(projectId, taskId, revision, userId));
@@ -174,7 +174,7 @@ public final class TaskController {
     public ResponseEntity<TaskResponse> requestChanges(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "userId") final long userId,
             @RequestParam(name = "revision") final long revision
     ) {
         return ResponseEntity.ok(taskWriteService.requestChanges(projectId, taskId, revision, userId));
@@ -184,7 +184,7 @@ public final class TaskController {
     public ResponseEntity<TaskResponse> complete(
             @PathVariable final long projectId,
             @PathVariable final long taskId,
-            @RequestParam(name = "userId") final String userId,
+            @RequestParam(name = "userId") final long userId,
             @RequestParam(name = "revision") final long revision
     ) {
         return ResponseEntity.ok(taskWriteService.complete(projectId, taskId, revision, userId));

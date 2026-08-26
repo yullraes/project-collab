@@ -34,8 +34,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @SpringBootTest
 class TaskApplicationServicesIntegrationTests {
-    private String OWNER;
-    private String MEMBER;
+    private long OWNER;
+    private long MEMBER;
 
     @Autowired
     private TaskWriteService taskWriteService;
@@ -76,8 +76,8 @@ class TaskApplicationServicesIntegrationTests {
 
         UserEntity owner = userRepository.saveAndFlush(UserEntity.create("owner", "owner@example.com"));
         UserEntity member = userRepository.saveAndFlush(UserEntity.create("member", "member@example.com"));
-        OWNER = String.valueOf(owner.userId());
-        MEMBER = String.valueOf(member.userId());
+        OWNER = owner.userId();
+        MEMBER = member.userId();
     }
 
     @Test
@@ -143,7 +143,7 @@ class TaskApplicationServicesIntegrationTests {
         assertThatThrownBy(() -> taskWriteService.assign(
                 projectId,
                 accepted.taskId(),
-                new AssignTaskRequest("outsider", accepted.revision()),
+                new AssignTaskRequest(999999L, accepted.revision()),
                 OWNER
         )).isInstanceOf(ProjectPermissionException.class);
 
@@ -404,10 +404,10 @@ class TaskApplicationServicesIntegrationTests {
     }
 
     private long ownerId() {
-        return Long.parseLong(OWNER);
+        return OWNER;
     }
 
     private long memberId() {
-        return Long.parseLong(MEMBER);
+        return MEMBER;
     }
 }

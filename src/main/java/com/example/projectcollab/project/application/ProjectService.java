@@ -168,7 +168,7 @@ public class ProjectService {
             throw new ProjectPermissionException("project.owner.cannot_remove");
         }
 
-        taskProjectCoordinator.normalizeAssignments(projectId, String.valueOf(targetUserId));
+        taskProjectCoordinator.normalizeAssignments(projectId, targetUserId);
         projectMemberRepository.delete(target);
         projectMemberRepository.flush();
     }

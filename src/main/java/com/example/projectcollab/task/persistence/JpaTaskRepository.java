@@ -73,7 +73,7 @@ public class JpaTaskRepository implements TaskRepository {
     }
 
     @Override
-    public List<Task> findAssignedTasksForMembershipEnd(final long projectId, final String assigneeUserId) {
+    public List<Task> findAssignedTasksForMembershipEnd(final long projectId, final long assigneeUserId) {
         return springDataRepository.findAssignedTasksForUpdate(projectId, assigneeUserId).stream()
                 .map(TaskMapper::toDomain)
                 .toList();
@@ -111,21 +111,18 @@ public class JpaTaskRepository implements TaskRepository {
     private TaskProjectSnapshot toTaskProjectSnapshot(final ProjectEntity project) {
         List<ProjectMemberEntity> members = projectMemberRepository
                 .findAllByProjectIdOrderByProjectMemberId(project.projectId());
-        String ownerUserId = members.stream()
+        Long ownerUserId = members.stream()
                 .filter(member -> member.role() == ProjectRole.OWNER)
                 .map(ProjectMemberEntity::userId)
-                .map(String::valueOf)
                 .findFirst()
                 .orElse(null);
-        Set<String> adminUserIds = members.stream()
+        Set<Long> adminUserIds = members.stream()
                 .filter(member -> member.role() == ProjectRole.ADMIN)
                 .map(ProjectMemberEntity::userId)
-                .map(String::valueOf)
                 .collect(Collectors.toSet());
-        Set<String> memberUserIds = members.stream()
+        Set<Long> memberUserIds = members.stream()
                 .filter(member -> member.role() == ProjectRole.MEMBER)
                 .map(ProjectMemberEntity::userId)
-                .map(String::valueOf)
                 .collect(Collectors.toSet());
         return new TaskProjectSnapshot(
                 ownerUserId,

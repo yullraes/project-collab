@@ -62,7 +62,7 @@ public interface SpringDataTaskRepository extends JpaRepository<TaskEntity, Long
             """)
     List<TaskEntity> findAssignedTasksForUpdate(
             @Param("projectId") long projectId,
-            @Param("assigneeUserId") String assigneeUserId
+            @Param("assigneeUserId") long assigneeUserId
     );
 
     @Modifying
