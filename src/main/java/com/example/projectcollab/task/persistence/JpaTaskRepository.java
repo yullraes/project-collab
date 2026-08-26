@@ -1,7 +1,10 @@
 package com.example.projectcollab.task.persistence;
 
-import com.example.projectcollab.project.domain.ProjectRepository;
-import com.example.projectcollab.project.domain.ProjectResource;
+import com.example.projectcollab.project.domain.ProjectRole;
+import com.example.projectcollab.project.persistence.ProjectEntity;
+import com.example.projectcollab.project.persistence.ProjectMemberEntity;
+import com.example.projectcollab.project.persistence.ProjectMemberRepository;
+import com.example.projectcollab.project.persistence.ProjectRepository;
 import com.example.projectcollab.task.domain.Task;
 import com.example.projectcollab.task.domain.TaskProjectSnapshot;
 import com.example.projectcollab.task.domain.TaskRepository;
@@ -11,18 +14,23 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Repository
 public class JpaTaskRepository implements TaskRepository {
     private final SpringDataTaskRepository springDataRepository;
     private final ProjectRepository projectRepository;
+    private final ProjectMemberRepository projectMemberRepository;
 
     public JpaTaskRepository(
             final SpringDataTaskRepository springDataRepository,
-            final ProjectRepository projectRepository
+            final ProjectRepository projectRepository,
+            final ProjectMemberRepository projectMemberRepository
     ) {
         this.springDataRepository = springDataRepository;
         this.projectRepository = projectRepository;
+        this.projectMemberRepository = projectMemberRepository;
     }
 
     @Override
@@ -100,11 +108,29 @@ public class JpaTaskRepository implements TaskRepository {
         }
     }
 
-    private TaskProjectSnapshot toTaskProjectSnapshot(final ProjectResource project) {
+    private TaskProjectSnapshot toTaskProjectSnapshot(final ProjectEntity project) {
+        List<ProjectMemberEntity> members = projectMemberRepository
+                .findAllByProjectIdOrderByProjectMemberId(project.projectId());
+        String ownerUserId = members.stream()
+                .filter(member -> member.role() == ProjectRole.OWNER)
+                .map(ProjectMemberEntity::userId)
+                .map(String::valueOf)
+                .findFirst()
+                .orElse(null);
+        Set<String> adminUserIds = members.stream()
+                .filter(member -> member.role() == ProjectRole.ADMIN)
+                .map(ProjectMemberEntity::userId)
+                .map(String::valueOf)
+                .collect(Collectors.toSet());
+        Set<String> memberUserIds = members.stream()
+                .filter(member -> member.role() == ProjectRole.MEMBER)
+                .map(ProjectMemberEntity::userId)
+                .map(String::valueOf)
+                .collect(Collectors.toSet());
         return new TaskProjectSnapshot(
-                project.ownerUserId(),
-                project.adminUserIds(),
-                project.memberUserIds()
+                ownerUserId,
+                adminUserIds,
+                memberUserIds
         );
     }
 }

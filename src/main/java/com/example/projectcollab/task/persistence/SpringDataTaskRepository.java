@@ -20,32 +20,24 @@ public interface SpringDataTaskRepository extends JpaRepository<TaskEntity, Long
             WHERE t.taskId = :taskId
               AND t.projectId = :projectId
               AND EXISTS (
-                    SELECT p.projectId FROM ProjectResource p
-                    WHERE p.projectId = t.projectId
-                      AND (
-                            p.ownerUserId = :requesterId
-                            OR :requesterId MEMBER OF p.adminUserIds
-                            OR :requesterId MEMBER OF p.memberUserIds
-                          )
+                    SELECT pm.projectMemberId FROM ProjectMemberEntity pm
+                    WHERE pm.projectId = t.projectId
+                      AND pm.userId = :requesterId
                   )
             """)
     Optional<TaskEntity> findReadableTask(
             @Param("projectId") long projectId,
             @Param("taskId") long taskId,
-            @Param("requesterId") String requesterId
+            @Param("requesterId") long requesterId
     );
 
     @Query("""
             SELECT t FROM TaskEntity t
             WHERE t.projectId = :projectId
               AND EXISTS (
-                    SELECT p.projectId FROM ProjectResource p
-                    WHERE p.projectId = t.projectId
-                      AND (
-                            p.ownerUserId = :requesterId
-                            OR :requesterId MEMBER OF p.adminUserIds
-                            OR :requesterId MEMBER OF p.memberUserIds
-                          )
+                    SELECT pm.projectMemberId FROM ProjectMemberEntity pm
+                    WHERE pm.projectId = t.projectId
+                      AND pm.userId = :requesterId
                   )
               AND (:state IS NULL OR t.state = :state)
               AND (
@@ -56,7 +48,7 @@ public interface SpringDataTaskRepository extends JpaRepository<TaskEntity, Long
             """)
     Page<TaskEntity> searchReadable(
             @Param("projectId") long projectId,
-            @Param("requesterId") String requesterId,
+            @Param("requesterId") long requesterId,
             @Param("keyword") String keyword,
             @Param("state") String state,
             Pageable pageable

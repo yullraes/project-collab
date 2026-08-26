@@ -5,8 +5,9 @@ import com.example.projectcollab.project.application.dto.AddProjectMemberRequest
 import com.example.projectcollab.project.application.dto.ChangeProjectRoleRequest;
 import com.example.projectcollab.project.application.dto.CreateProjectRequest;
 import com.example.projectcollab.project.domain.ProjectPermissionException;
-import com.example.projectcollab.project.domain.ProjectRepository;
 import com.example.projectcollab.project.domain.ProjectRole;
+import com.example.projectcollab.project.persistence.ProjectMemberRepository;
+import com.example.projectcollab.project.persistence.ProjectRepository;
 import com.example.projectcollab.task.application.dto.ApproveTaskRequest;
 import com.example.projectcollab.task.application.dto.AssignTaskRequest;
 import com.example.projectcollab.task.application.dto.CreateTaskRequest;
@@ -18,6 +19,8 @@ import com.example.projectcollab.task.domain.Task;
 import com.example.projectcollab.task.domain.TaskContent;
 import com.example.projectcollab.task.domain.TaskRepository;
 import com.example.projectcollab.task.persistence.SpringDataTaskRepository;
+import com.example.projectcollab.user.persistence.UserEntity;
+import com.example.projectcollab.user.persistence.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +34,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @SpringBootTest
 class TaskApplicationServicesIntegrationTests {
-    private static final String OWNER = "owner";
-    private static final String MEMBER = "member";
+    private String OWNER;
+    private String MEMBER;
 
     @Autowired
     private TaskWriteService taskWriteService;
@@ -56,12 +59,25 @@ class TaskApplicationServicesIntegrationTests {
     private ProjectRepository projectRepository;
 
     @Autowired
+    private ProjectMemberRepository projectMemberRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private PlatformTransactionManager transactionManager;
 
     @BeforeEach
     void cleanDatabase() {
         springDataTaskRepository.deleteAll();
+        projectMemberRepository.deleteAll();
         projectRepository.deleteAll();
+        userRepository.deleteAll();
+
+        UserEntity owner = userRepository.saveAndFlush(UserEntity.create("owner", "owner@example.com"));
+        UserEntity member = userRepository.saveAndFlush(UserEntity.create("member", "member@example.com"));
+        OWNER = String.valueOf(owner.userId());
+        MEMBER = String.valueOf(member.userId());
     }
 
     @Test
@@ -138,8 +154,8 @@ class TaskApplicationServicesIntegrationTests {
         );
         projectService.changeMemberRole(
                 projectId,
-                OWNER,
-                MEMBER,
+                ownerId(),
+                memberId(),
                 new ChangeProjectRoleRequest(ProjectRole.ADMIN)
         );
 
@@ -209,7 +225,7 @@ class TaskApplicationServicesIntegrationTests {
         );
         TaskResponse inProgress = taskWriteService.start(projectId, proposed.taskId(), approved.revision(), MEMBER);
 
-        projectService.removeMember(projectId, OWNER, MEMBER);
+        projectService.removeMember(projectId, ownerId(), memberId());
 
         TaskResponse normalized = taskReadService.getTaskDetail(projectId, proposed.taskId(), OWNER);
         assertThat(normalized.state()).isEqualTo(Task.TaskState.ACCEPTED.name());
@@ -228,7 +244,7 @@ class TaskApplicationServicesIntegrationTests {
                 OWNER
         );
 
-        projectService.deleteProject(projectId, OWNER);
+        projectService.deleteProject(projectId, ownerId());
 
         assertThat(springDataTaskRepository.count()).isZero();
         assertThat(projectRepository.findById(projectId)).isEmpty();
@@ -301,11 +317,12 @@ class TaskApplicationServicesIntegrationTests {
         TransactionTemplate transaction = new TransactionTemplate(transactionManager);
         boolean wasMember = transaction.execute(status -> projectRepository
                 .findById(projectId)
-                .orElseThrow()
-                .isMember(MEMBER));
+                .map(project -> projectMemberRepository
+                        .existsByProjectIdAndUserId(project.projectId(), memberId()))
+                .orElse(false));
         assertThat(wasMember).isTrue();
 
-        projectService.removeMember(projectId, OWNER, MEMBER);
+        projectService.removeMember(projectId, ownerId(), memberId());
 
         boolean detailVisible = transaction.execute(status -> taskQueryRepository
                 .findReadableTask(projectId, task.taskId(), MEMBER)
@@ -375,14 +392,22 @@ class TaskApplicationServicesIntegrationTests {
 
     private long projectWithMember() {
         long projectId = createProject();
-        projectService.addMember(projectId, OWNER, new AddProjectMemberRequest(MEMBER));
+        projectService.addMember(projectId, ownerId(), new AddProjectMemberRequest(memberId()));
         return projectId;
     }
 
     private long createProject() {
         return projectService.createProject(
                 new CreateProjectRequest("프로젝트", "설명"),
-                OWNER
+                ownerId()
         ).projectId();
+    }
+
+    private long ownerId() {
+        return Long.parseLong(OWNER);
+    }
+
+    private long memberId() {
+        return Long.parseLong(MEMBER);
     }
 }

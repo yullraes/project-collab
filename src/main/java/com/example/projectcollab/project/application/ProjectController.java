@@ -33,7 +33,7 @@ public final class ProjectController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<ProjectResponse> createProject(
-            @RequestParam(name = "actorUserId") final String actorUserId,
+            @RequestParam(name = "actorUserId") final long actorUserId,
             @RequestBody final CreateProjectRequest request
     ) {
         ProjectResponse response = projectService.createProject(request, actorUserId);
@@ -43,7 +43,7 @@ public final class ProjectController {
     @PutMapping(path = "/{projectId}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<ProjectResponse> updateProject(
             @PathVariable final long projectId,
-            @RequestParam(name = "actorUserId") final String actorUserId,
+            @RequestParam(name = "actorUserId") final long actorUserId,
             @RequestBody final UpdateProjectRequest request
     ) {
         ProjectResponse response = projectService.updateProject(projectId, request, actorUserId);
@@ -52,7 +52,7 @@ public final class ProjectController {
 
     @GetMapping
     public ResponseEntity<java.util.List<ProjectResponse>> getMyProjects(
-            @RequestParam(name = "actorUserId") final String actorUserId
+            @RequestParam(name = "actorUserId") final long actorUserId
     ) {
         return ResponseEntity.ok(projectService.getMyProjects(actorUserId));
     }
@@ -60,7 +60,7 @@ public final class ProjectController {
     @GetMapping(path = "/{projectId}")
     public ResponseEntity<ProjectResponse> getProject(
             @PathVariable final long projectId,
-            @RequestParam(name = "actorUserId") final String actorUserId
+            @RequestParam(name = "actorUserId") final long actorUserId
     ) {
         return ResponseEntity.ok(projectService.getProject(projectId, actorUserId));
     }
@@ -68,7 +68,7 @@ public final class ProjectController {
     @DeleteMapping(path = "/{projectId}")
     public ResponseEntity<Void> deleteProject(
             @PathVariable final long projectId,
-            @RequestParam(name = "actorUserId") final String actorUserId
+            @RequestParam(name = "actorUserId") final long actorUserId
     ) {
         projectService.deleteProject(projectId, actorUserId);
         return ResponseEntity.noContent().build();
@@ -77,7 +77,7 @@ public final class ProjectController {
     @PostMapping(path = "/{projectId}/members", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<ProjectMemberResponse> addMember(
             @PathVariable final long projectId,
-            @RequestParam(name = "actorUserId") final String actorUserId,
+            @RequestParam(name = "actorUserId") final long actorUserId,
             @RequestBody final AddProjectMemberRequest request
     ) {
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -87,7 +87,7 @@ public final class ProjectController {
     @GetMapping(path = "/{projectId}/members", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ProjectMemberResponse>> getMembers(
             @PathVariable final long projectId,
-            @RequestParam(name = "actorUserId") final String actorUserId
+            @RequestParam(name = "actorUserId") final long actorUserId
     ) {
         return ResponseEntity.ok(projectService.getMembers(projectId, actorUserId));
     }
@@ -95,8 +95,8 @@ public final class ProjectController {
     @PutMapping(path = "/{projectId}/members/{targetUserId}/role", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<ProjectMemberResponse> changeMemberRole(
             @PathVariable final long projectId,
-            @PathVariable final String targetUserId,
-            @RequestParam(name = "actorUserId") final String actorUserId,
+            @PathVariable final long targetUserId,
+            @RequestParam(name = "actorUserId") final long actorUserId,
             @RequestBody final ChangeProjectRoleRequest request
     ) {
         return ResponseEntity.ok(projectService.changeMemberRole(projectId, actorUserId, targetUserId, request));
@@ -105,8 +105,8 @@ public final class ProjectController {
     @DeleteMapping(path = "/{projectId}/members/{targetUserId}")
     public ResponseEntity<Void> removeMember(
             @PathVariable final long projectId,
-            @PathVariable final String targetUserId,
-            @RequestParam(name = "actorUserId") final String actorUserId
+            @PathVariable final long targetUserId,
+            @RequestParam(name = "actorUserId") final long actorUserId
     ) {
         projectService.removeMember(projectId, actorUserId, targetUserId);
         return ResponseEntity.noContent().build();

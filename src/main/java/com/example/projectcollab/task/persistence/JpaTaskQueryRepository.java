@@ -24,7 +24,7 @@ public class JpaTaskQueryRepository implements TaskQueryRepository {
             final long taskId,
             final String requesterId
     ) {
-        return springDataRepository.findReadableTask(projectId, taskId, requesterId)
+        return springDataRepository.findReadableTask(projectId, taskId, parseUserId(requesterId))
                 .map(this::toResponse);
     }
 
@@ -44,7 +44,7 @@ public class JpaTaskQueryRepository implements TaskQueryRepository {
         );
         return springDataRepository.searchReadable(
                         projectId,
-                        requesterId,
+                        parseUserId(requesterId),
                         keyword,
                         state == null ? null : state.name(),
                         pageRequest
@@ -66,5 +66,13 @@ public class JpaTaskQueryRepository implements TaskQueryRepository {
                 entity.createdAt(),
                 entity.updatedAt()
         );
+    }
+
+    private long parseUserId(final String userId) {
+        try {
+            return Long.parseLong(userId);
+        } catch (NumberFormatException exception) {
+            return -1L;
+        }
     }
 }
