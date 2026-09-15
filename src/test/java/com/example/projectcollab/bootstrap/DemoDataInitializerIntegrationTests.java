@@ -6,7 +6,7 @@ import com.example.projectcollab.project.persistence.ProjectMemberEntity;
 import com.example.projectcollab.project.persistence.ProjectMemberRepository;
 import com.example.projectcollab.project.persistence.ProjectRepository;
 import com.example.projectcollab.task.persistence.SpringDataTaskRepository;
-import com.example.projectcollab.task.persistence.TaskEntity;
+import com.example.projectcollab.task.domain.Task;
 import com.example.projectcollab.user.persistence.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +58,7 @@ class DemoDataInitializerIntegrationTests {
                 .extracting(ProjectMemberEntity::role)
                 .containsExactly(ProjectRole.OWNER, ProjectRole.ADMIN, ProjectRole.MEMBER);
         assertThat(taskRepository.findAll())
-                .extracting(TaskEntity::state)
+                .extracting(Task::state)
                 .containsExactlyInAnyOrder(
                         "PENDING",
                         "REJECTED",
@@ -89,7 +89,7 @@ class DemoDataInitializerIntegrationTests {
                 .findFirst()
                 .orElseThrow()
                 .userId();
-        TaskEntity pending = taskRepository.findAll().stream()
+        Task pending = taskRepository.findAll().stream()
                 .filter(task -> "PENDING".equals(task.state()))
                 .findFirst()
                 .orElseThrow();

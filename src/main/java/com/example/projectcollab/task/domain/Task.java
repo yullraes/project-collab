@@ -1,9 +1,23 @@
 package com.example.projectcollab.task.domain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
+import jakarta.persistence.Table;
+import jakarta.persistence.Version;
+
 import java.time.Instant;
 import java.util.Set;
 
-public final class Task {
+@Entity(name = "TaskEntity")
+@Table(name = "tasks")
+public class Task {
     public enum TaskState {
         PENDING,
         REJECTED,
@@ -19,17 +33,20 @@ public final class Task {
             TaskState.IN_REVIEW
     );
 
-    private final Long taskId;
-    private final Long revision;
-    private final Long projectId;
-    private final Creator creator;
-    private final Instant createdAt;
-    private final Instant updatedAt;
-
-    private TaskContent content;
-    private TaskAssignment assignment;
-    private TaskState state;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long taskId;
+    @Version @Column(nullable = false) private Long revision;
+    @Column(nullable = false) private Long projectId;
+    @Column(nullable = false) private Long creatorUserId;
+    @Column(nullable = false) private String title;
+    @Column(length = 1000, nullable = false) private String description;
+    private Long assigneeUserId;
+    @Enumerated(EnumType.STRING) @Column(nullable = false) private TaskState state;
     private String rejectionReason;
+    @Column(nullable = false, updatable = false) private Instant createdAt;
+    @Column(nullable = false) private Instant updatedAt;
+
+    protected Task() {
+    }
 
     Task(
             final Long taskId,
@@ -46,13 +63,17 @@ public final class Task {
         this.taskId = taskId;
         this.revision = revision;
         this.projectId = Require.positive(projectId, "프로젝트 ID는 양수여야 합니다.");
-        this.creator = Require.notNull(creator, "생성자는 필수입니다.");
-        this.content = Require.notNull(content, "작업 내용은 필수입니다.");
-        this.assignment = Require.notNull(assignment, "담당자 배정 정보는 필수입니다.");
+        this.creatorUserId = Require.notNull(creator, "생성자는 필수입니다.").userId();
+        applyContent(content);
+        this.assigneeUserId = assigneeUserId(Require.notNull(assignment, "담당자 배정 정보는 필수입니다."));
         this.state = Require.notNull(state, "작업 상태는 필수입니다.");
         this.rejectionReason = rejectionReason;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+    }
+
+    private static Long assigneeUserId(final TaskAssignment assignment) {
+        return assignment instanceof TaskAssignment.Assigned assigned ? assigned.assignee().userId() : null;
     }
 
     public static Task propose(
@@ -154,7 +175,7 @@ public final class Task {
                 state == TaskState.PENDING || state == TaskState.REJECTED,
                 "승인 대기 또는 반려 상태의 작업만 수정할 수 있습니다."
         );
-        this.content = Require.notNull(content, "작업 내용은 필수입니다.");
+        applyContent(content);
     }
 
     public void requestReapproval(final TaskContent content) {
@@ -163,10 +184,10 @@ public final class Task {
                 "승인된 작업만 재승인을 요청할 수 있습니다."
         );
         Require.state(
-                assignment instanceof TaskAssignment.Assigned,
+                assignment() instanceof TaskAssignment.Assigned,
                 "담당자가 없는 작업은 재승인을 요청할 수 없습니다."
         );
-        this.content = Require.notNull(content, "작업 내용은 필수입니다.");
+        applyContent(content);
         this.state = TaskState.PENDING;
         this.rejectionReason = null;
     }
@@ -179,7 +200,7 @@ public final class Task {
 
     public void edit(final TaskContent content) {
         Require.state(state != TaskState.DONE, "완료된 작업은 수정할 수 없습니다.");
-        this.content = Require.notNull(content, "작업 내용은 필수입니다.");
+        applyContent(content);
     }
 
     public void assign(final Assignee assignee) {
@@ -187,7 +208,7 @@ public final class Task {
                 ASSIGNMENT_CHANGEABLE_STATES.contains(state),
                 "승인 대기 또는 반려 상태에서는 담당자를 직접 지정할 수 없습니다."
         );
-        assignment = new TaskAssignment.Assigned(Require.notNull(assignee, "담당자는 필수입니다."));
+        assigneeUserId = Require.notNull(assignee, "담당자는 필수입니다.").userId();
     }
 
     public void unassign() {
@@ -196,7 +217,7 @@ public final class Task {
                 "승인 대기 또는 반려 상태에서는 담당자를 직접 해제할 수 없습니다."
         );
         Require.state(
-                assignment instanceof TaskAssignment.Assigned,
+                assignment() instanceof TaskAssignment.Assigned,
                 "담당자가 없는 작업은 담당자를 해제할 수 없습니다."
         );
         detachAssignee();
@@ -217,7 +238,7 @@ public final class Task {
     public void start() {
         Require.state(state == TaskState.ACCEPTED, "승인된 작업만 시작할 수 있습니다.");
         Require.state(
-                assignment instanceof TaskAssignment.Assigned,
+                assignment() instanceof TaskAssignment.Assigned,
                 "담당자가 없는 작업은 시작할 수 없습니다."
         );
         state = TaskState.IN_PROGRESS;
@@ -226,7 +247,7 @@ public final class Task {
     public void requestReview() {
         Require.state(state == TaskState.IN_PROGRESS, "진행 중인 작업만 검토를 요청할 수 있습니다.");
         Require.state(
-                assignment instanceof TaskAssignment.Assigned,
+                assignment() instanceof TaskAssignment.Assigned,
                 "담당자가 없는 작업은 검토를 요청할 수 없습니다."
         );
         state = TaskState.IN_REVIEW;
@@ -240,14 +261,14 @@ public final class Task {
     public void requestChanges() {
         Require.state(state == TaskState.IN_REVIEW, "검토 중인 작업에만 보완을 요청할 수 있습니다.");
         Require.state(
-                assignment instanceof TaskAssignment.Assigned,
+                assignment() instanceof TaskAssignment.Assigned,
                 "담당자가 없는 작업에는 보완을 요청할 수 없습니다."
         );
         state = TaskState.IN_PROGRESS;
     }
 
     private void detachAssignee() {
-        assignment = TaskAssignment.Unassigned.INSTANCE;
+        assigneeUserId = null;
 
         if (state == TaskState.IN_PROGRESS || state == TaskState.IN_REVIEW) {
             state = TaskState.ACCEPTED;
@@ -274,15 +295,15 @@ public final class Task {
     }
 
     public Creator creator() {
-        return creator;
+        return new Creator(creatorUserId);
     }
 
     public TaskContent content() {
-        return content;
+        return new TaskContent(title, description);
     }
 
     public TaskAssignment assignment() {
-        return assignment;
+        return assigneeUserId == null ? TaskAssignment.Unassigned.INSTANCE : new TaskAssignment.Assigned(new Assignee(assigneeUserId));
     }
 
     public TaskState state() {
@@ -299,5 +320,26 @@ public final class Task {
 
     public Instant updatedAt() {
         return updatedAt;
+    }
+
+    public Long creatorUserId() { return creatorUserId; }
+    public String title() { return title; }
+    public String description() { return description; }
+    public Long assigneeUserId() { return assigneeUserId; }
+
+    @PrePersist
+    private void onCreate() {
+        Instant now = Instant.now();
+        createdAt = now;
+        updatedAt = now;
+    }
+
+    @PreUpdate
+    private void onUpdate() { updatedAt = Instant.now(); }
+
+    private void applyContent(final TaskContent content) {
+        TaskContent validatedContent = Require.notNull(content, "작업 내용은 필수입니다.");
+        title = validatedContent.title();
+        description = validatedContent.description();
     }
 }
