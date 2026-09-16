@@ -6,12 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import com.example.projectcollab.task.domain.Task;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface SpringDataTaskRepository extends JpaRepository<TaskEntity, Long> {
-    Optional<TaskEntity> findByTaskIdAndProjectId(long taskId, long projectId);
+public interface SpringDataTaskRepository extends JpaRepository<Task, Long> {
+    Optional<Task> findByTaskIdAndProjectId(long taskId, long projectId);
 
     @Query("""
             SELECT t FROM TaskEntity t
@@ -23,7 +24,7 @@ public interface SpringDataTaskRepository extends JpaRepository<TaskEntity, Long
                       AND pm.userId = :requesterId
                   )
             """)
-    Optional<TaskEntity> findReadableTask(
+    Optional<Task> findReadableTask(
             @Param("projectId") long projectId,
             @Param("taskId") long taskId,
             @Param("requesterId") long requesterId
@@ -44,11 +45,11 @@ public interface SpringDataTaskRepository extends JpaRepository<TaskEntity, Long
                     OR LOWER(t.description) LIKE LOWER(CONCAT('%', :keyword, '%'))
                   )
             """)
-    Page<TaskEntity> searchReadable(
+    Page<Task> searchReadable(
             @Param("projectId") long projectId,
             @Param("requesterId") long requesterId,
             @Param("keyword") String keyword,
-            @Param("state") String state,
+            @Param("state") Task.TaskState state,
             Pageable pageable
     );
 
@@ -57,7 +58,7 @@ public interface SpringDataTaskRepository extends JpaRepository<TaskEntity, Long
             WHERE t.projectId = :projectId AND t.assigneeUserId = :assigneeUserId
             ORDER BY t.taskId ASC
             """)
-    List<TaskEntity> findAssignedTasks(
+    List<Task> findAssignedTasks(
             @Param("projectId") long projectId,
             @Param("assigneeUserId") long assigneeUserId
     );

@@ -6,7 +6,7 @@ import com.example.projectcollab.project.persistence.ProjectMemberEntity;
 import com.example.projectcollab.project.persistence.ProjectMemberRepository;
 import com.example.projectcollab.project.persistence.ProjectRepository;
 import com.example.projectcollab.task.persistence.SpringDataTaskRepository;
-import com.example.projectcollab.task.persistence.TaskEntity;
+import com.example.projectcollab.task.domain.Task;
 import com.example.projectcollab.user.persistence.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,14 +58,14 @@ class DemoDataInitializerIntegrationTests {
                 .extracting(ProjectMemberEntity::role)
                 .containsExactly(ProjectRole.OWNER, ProjectRole.ADMIN, ProjectRole.MEMBER);
         assertThat(taskRepository.findAll())
-                .extracting(TaskEntity::state)
+                .extracting(Task::state)
                 .containsExactlyInAnyOrder(
-                        "PENDING",
-                        "REJECTED",
-                        "ACCEPTED",
-                        "IN_PROGRESS",
-                        "IN_REVIEW",
-                        "DONE"
+                        Task.TaskState.PENDING,
+                        Task.TaskState.REJECTED,
+                        Task.TaskState.ACCEPTED,
+                        Task.TaskState.IN_PROGRESS,
+                        Task.TaskState.IN_REVIEW,
+                        Task.TaskState.DONE
                 );
 
         mockMvc.perform(get("/swagger-ui/index.html"))
@@ -89,8 +89,8 @@ class DemoDataInitializerIntegrationTests {
                 .findFirst()
                 .orElseThrow()
                 .userId();
-        TaskEntity pending = taskRepository.findAll().stream()
-                .filter(task -> "PENDING".equals(task.state()))
+        Task pending = taskRepository.findAll().stream()
+                .filter(task -> task.state() == Task.TaskState.PENDING)
                 .findFirst()
                 .orElseThrow();
         String approveBody = "{\"revision\":" + pending.revision() + "}";

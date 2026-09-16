@@ -46,13 +46,13 @@ public class JpaTaskQueryRepository implements TaskQueryRepository {
                         projectId,
                         requesterId,
                         keyword,
-                        state == null ? null : state.name(),
+                        state,
                         pageRequest
                 )
                 .map(this::toResponse);
     }
 
-    private TaskResponse toResponse(final TaskEntity entity) {
+    private TaskResponse toResponse(final Task entity) {
         return new TaskResponse(
                 entity.taskId(),
                 entity.projectId(),
@@ -61,7 +61,7 @@ public class JpaTaskQueryRepository implements TaskQueryRepository {
                 entity.assigneeUserId(),
                 entity.title(),
                 entity.description(),
-                entity.state(),
+                entity.state().name(),
                 entity.rejectionReason(),
                 entity.createdAt(),
                 entity.updatedAt()
