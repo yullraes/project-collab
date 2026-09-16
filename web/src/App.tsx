@@ -1,122 +1,48 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import type { ReactNode } from "react";
+import { ProjectsPage } from "./pages/ProjectsPage";
+import { TasksPage } from "./pages/TasksPage";
+import { MembersPage } from "./pages/MembersPage";
+import { SettingsPage } from "./pages/SettingsPage";
+import { ForbiddenPage } from "./pages/ForbiddenPage";
+import { MobileTaskPage } from "./pages/MobileTaskPage";
+import { DesignSystemPreview, GalleryPreview } from "./preview/PreviewPages";
 
-function App() {
-  const [count, setCount] = useState(0)
+// App은 정적 시안에 맞는 Page만 선택한다. 데이터와 컴포넌트 조합은 Page가 담당한다.
+const screens: Record<string, ReactNode> = {
+  "01": <ProjectsPage />,
+  "02": <ProjectsPage create />,
+  "03": <TasksPage />,
+  "04": <TasksPage detail="pending" />,
+  "05": <TasksPage detail="rejected" />,
+  "06": <TasksPage detail="accepted" />,
+  "07": <TasksPage detail="inProgress" />,
+  "08": <TasksPage detail="inReview" />,
+  "09": <TasksPage detail="done" />,
+  "10": <TasksPage dialog="proposeTask" />,
+  "11": <TasksPage dialog="registerTask" />,
+  "12": <TasksPage detail="inProgress" dialog="editTask" />,
+  "13": <TasksPage detail="pending" dialog="approveTask" />,
+  "14": <TasksPage detail="pending" dialog="rejectTask" />,
+  "15": <TasksPage detail="inReview" dialog="requestChanges" />,
+  "16": <MembersPage />,
+  "17": <MembersPage dialog="addMember" />,
+  "18": <MembersPage dialog="changeRole" />,
+  "19": <SettingsPage />,
+  "20": <TasksPage detail="inProgress" dialog="conflict" />,
+  "21": <TasksPage mode="empty" />,
+  "22": <TasksPage mode="loading" />,
+  "23": <ForbiddenPage />,
+  "24": <TasksPage detail="selfApproval" />,
+  "25": <TasksPage detail="unassigned" dialog="assignTask" />,
+  "26": <MembersPage dialog="removeMember" />,
+  "27": <SettingsPage confirmDelete />,
+  "28": <MobileTaskPage />,
+  gallery: <GalleryPreview />,
+  system: <DesignSystemPreview />,
+};
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+export default function App() {
+  const screen =
+    new URLSearchParams(window.location.search).get("screen") ?? "03";
+  return screens[screen] ?? <GalleryPreview />;
 }
-
-export default App

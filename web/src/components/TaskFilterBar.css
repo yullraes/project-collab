@@ -1,0 +1,32 @@
+.filters {
+  padding: var(--space-4);
+  display: flex;
+  gap: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.filters select {
+  width: 140px;
+}
+
+.search-field {
+  flex: 1;
+  max-width: 420px;
+}
+
+@media (max-width: 760px) {
+  .filters {
+    padding: 12px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .filters select {
+    width: 110px;
+  }
+
+  .search-field {
+    flex: 1;
+    min-width: 130px;
+  }
+}

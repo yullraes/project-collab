@@ -1,0 +1,7 @@
+.access-state {
+  max-width: 640px;
+  margin: 100px auto;
+  display: grid;
+  gap: var(--space-6);
+  justify-items: start;
+}

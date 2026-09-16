@@ -1,0 +1,39 @@
+.status {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.status--pending {
+  color: var(--color-warning);
+  background: var(--color-warning-subtle);
+}
+
+.status--rejected {
+  color: var(--color-danger);
+  background: var(--color-danger-subtle);
+}
+
+.status--accepted {
+  color: var(--color-primary);
+  background: var(--color-primary-subtle);
+}
+
+.status--in_progress {
+  color: var(--color-progress);
+  background: var(--color-progress-subtle);
+}
+
+.status--in_review {
+  color: var(--color-review);
+  background: var(--color-review-subtle);
+}
+
+.status--done {
+  color: var(--color-done);
+  background: var(--color-done-subtle);
+}

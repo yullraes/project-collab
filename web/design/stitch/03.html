@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Project Collab - 작업 목록</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#245C45',
+              hover: '#1e4d3a',
+              light: '#EBF2EE',
+              text: '#202622',
+              muted: '#626B65',
+              subtle: '#8C948F',
+              bg: '#F7F8F7',
+              border: '#DDE2DE',
+            }
+          },
+          borderRadius: {
+            DEFAULT: "0.125rem",
+            lg: "0.25rem",
+            xl: "0.5rem",
+            full: "0.75rem"
+          },
+          fontFamily: {
+            headline: ["Noto Sans KR", "Public Sans", "sans-serif"],
+            display: ["Noto Sans KR", "Public Sans", "sans-serif"],
+            body: ["Noto Sans KR", "Public Sans", "sans-serif"],
+            label: ["Noto Sans KR", "Public Sans", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: #202622;
+      background-color: #F7F8F7;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .material-symbols-outlined {
+      font-size: 18px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-brand-bg text-brand-text flex">
+  <!-- 왼쪽 사이드바 (216px 고정 너비) -->
+  <aside
+    class="w-[216px] min-w-[216px] h-screen fixed left-0 top-0 bg-white border-r border-brand-border flex flex-col justify-between select-none z-20">
+    <div class="p-4 flex flex-col">
+      <!-- 헤더 로고 영역 -->
+      <div class="mb-5 px-2">
+        <div class="text-[16px] font-bold tracking-tight text-neutral-900 leading-snug">Project Collab</div>
+        <div class="text-xs text-brand-muted mt-0.5">업무 협업 도구</div>
+      </div>
+      <!-- 상위 이동 링크 -->
+      <div class="mb-6 px-2">
+        <a class="inline-flex items-center gap-1.5 text-xs text-brand-muted hover:text-brand transition-colors duration-150 py-1"
+          href="#">
+          <span class="material-symbols-outlined text-[15px]" data-icon="arrow_back">arrow_back</span>
+          <span>내 프로젝트로</span>
+        </a>
+      </div>
+      <!-- 현재 프로젝트 정보 & 메뉴 섹션 -->
+      <div class="space-y-1">
+        <div class="px-2 pb-2 text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+          결제 안정화
+        </div>
+        <nav class="space-y-0.5">
+          <!-- '작업' (활성 상태) -->
+          <a class="flex items-center gap-2.5 px-3 py-2 text-sm font-semibold text-brand bg-brand-light rounded transition-colors duration-150"
+            href="#">
+            <span class="material-symbols-outlined text-[18px] text-brand" data-icon="check_box" data-weight="fill"
+              style="font-variation-settings: 'FILL' 1;">check_box</span>
+            <span>작업</span>
+          </a>
+          <!-- '멤버' (비활성) -->
+          <a class="flex items-center gap-2.5 px-3 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-50 rounded transition-colors duration-150"
+            href="#">
+            <span class="material-symbols-outlined text-[18px] text-neutral-400" data-icon="group">group</span>
+            <span>멤버</span>
+          </a>
+          <!-- '설정' (비활성) -->
+          <a class="flex items-center gap-2.5 px-3 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-50 rounded transition-colors duration-150"
+            href="#">
+            <span class="material-symbols-outlined text-[18px] text-neutral-400" data-icon="settings">settings</span>
+            <span>설정</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  <!-- 메인 컨테이너 (사이드바 216px 오프셋) -->
+  <div class="flex-1 ml-[216px] min-h-screen flex flex-col bg-brand-bg">
+    <!-- 상단 헤더 (64px) -->
+    <header class="h-16 bg-white border-b border-brand-border px-8 flex items-center justify-between sticky top-0 z-10">
+      <div class="text-sm font-medium text-brand-muted">
+        프로젝트 개요
+      </div>
+      <div class="flex items-center">
+        <span class="text-xs text-brand-muted font-normal">이민지 · 멤버</span>
+      </div>
+    </header>
+    <!-- 본문 영역 (여백 32px) -->
+    <main class="p-8 max-w-[1224px] w-full flex flex-col gap-6">
+      <!-- 프로젝트 컨텍스트 헤더 -->
+      <section class="bg-white border border-brand-border p-6 rounded">
+        <div class="flex flex-col gap-2">
+          <div class="flex items-baseline justify-between">
+            <h2 class="text-xl font-bold text-brand-text tracking-tight">결제 안정화</h2>
+            <div class="text-xs text-brand-subtle flex items-center gap-3">
+              <span>생성일 2026.09.15</span>
+              <span class="text-neutral-300">|</span>
+              <span>수정일 2026.09.16</span>
+            </div>
+          </div>
+          <p class="text-sm text-brand-muted leading-relaxed">
+            결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다.
+          </p>
+        </div>
+      </section>
+      <!-- 작업 목록 컨테이너 -->
+      <section class="bg-white border border-brand-border rounded flex flex-col">
+        <!-- 섹션 타이틀 및 작업 만들기 버튼 -->
+        <div class="p-6 pb-4 flex items-center justify-between border-b border-neutral-100">
+          <h1 class="text-2xl font-bold text-brand-text tracking-tight">작업</h1>
+          <button
+            class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-brand hover:bg-brand-hover rounded transition-colors duration-150"
+            type="button">
+            + 작업 만들기
+          </button>
+        </div>
+        <!-- 필터 및 검색 바 -->
+        <div class="px-6 py-3.5 bg-neutral-50/50 border-b border-brand-border flex items-center gap-3">
+          <!-- 상태 셀렉트 -->
+          <div class="w-36">
+            <select
+              class="w-full h-9 text-xs border border-brand-border bg-white text-brand-text px-3 py-1.5 rounded focus:outline-none focus:border-brand focus:ring-0">
+              <option selected="" value="all">전체</option>
+              <option value="pending">승인 대기</option>
+              <option value="rejected">반려됨</option>
+              <option value="approved">승인됨</option>
+              <option value="in_progress">진행 중</option>
+              <option value="in_review">검토 중</option>
+              <option value="completed">완료</option>
+            </select>
+          </div>
+          <!-- 검색창 및 검색 버튼 -->
+          <div class="flex items-center gap-2 flex-1 max-w-md">
+            <input
+              class="flex-1 h-9 text-xs border border-brand-border bg-white text-brand-text px-3 py-1.5 rounded placeholder-neutral-400 focus:outline-none focus:border-brand focus:ring-0"
+              placeholder="제목 또는 내용 검색" type="text" />
+            <button
+              class="h-9 px-4 text-xs font-medium border border-brand-border bg-white text-brand-text hover:bg-neutral-50 rounded transition-colors duration-150"
+              type="button">
+              검색
+            </button>
+          </div>
+        </div>
+        <!-- 작업 테이블 -->
+        <div class="w-full overflow-x-auto">
+          <table class="w-full border-collapse text-left">
+            <thead>
+              <tr class="h-11 border-b border-brand-border bg-neutral-50/70 text-xs text-brand-muted font-medium">
+                <th class="w-24 px-6 text-center font-medium">작업 번호</th>
+                <th class="px-6 font-medium">제목</th>
+                <th class="w-32 px-6 font-medium text-center">상태</th>
+                <th class="w-28 px-6 font-medium text-center">담당자</th>
+                <th class="w-28 px-6 font-medium text-center">생성자</th>
+                <th class="w-32 px-6 font-medium text-right">최근 수정일</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-brand-border text-xs text-brand-text">
+              <!-- 1) #107 -->
+              <tr class="h-14 hover:bg-neutral-50/80 cursor-pointer transition-colors duration-100">
+                <td class="px-6 text-center font-normal text-brand-subtle">#107</td>
+                <td class="px-6 font-medium text-neutral-900 text-sm">결제 취소 흐름 점검</td>
+                <td class="px-6 text-center">
+                  <span
+                    class="inline-block px-2.5 py-0.5 text-xs text-emerald-800 bg-emerald-50 border border-emerald-200 rounded">
+                    승인됨
+                  </span>
+                </td>
+                <td class="px-6 text-center text-brand-subtle">미할당</td>
+                <td class="px-6 text-center text-brand-muted">김서연</td>
+                <td class="px-6 text-right text-brand-subtle">2026.09.16</td>
+              </tr>
+              <!-- 2) #106 -->
+              <tr class="h-14 hover:bg-neutral-50/80 cursor-pointer transition-colors duration-100">
+                <td class="px-6 text-center font-normal text-brand-subtle">#106</td>
+                <td class="px-6 font-medium text-neutral-900 text-sm">결제 로그 누락 수정</td>
+                <td class="px-6 text-center">
+                  <span
+                    class="inline-block px-2.5 py-0.5 text-xs text-neutral-700 bg-neutral-100 border border-neutral-200 rounded">
+                    완료
+                  </span>
+                </td>
+                <td class="px-6 text-center text-brand-muted">이민지</td>
+                <td class="px-6 text-center text-brand-muted">김서연</td>
+                <td class="px-6 text-right text-brand-subtle">2026.09.16</td>
+              </tr>
+              <!-- 3) #105 -->
+              <tr class="h-14 hover:bg-neutral-50/80 cursor-pointer transition-colors duration-100">
+                <td class="px-6 text-center font-normal text-brand-subtle">#105</td>
+                <td class="px-6 font-medium text-neutral-900 text-sm">결제 오류 수정 검토</td>
+                <td class="px-6 text-center">
+                  <span
+                    class="inline-block px-2.5 py-0.5 text-xs text-purple-800 bg-purple-50 border border-purple-200 rounded">
+                    검토 중
+                  </span>
+                </td>
+                <td class="px-6 text-center text-brand-muted">이민지</td>
+                <td class="px-6 text-center text-brand-muted">김서연</td>
+                <td class="px-6 text-right text-brand-subtle">2026.09.16</td>
+              </tr>
+              <!-- 4) #104 -->
+              <tr class="h-14 hover:bg-neutral-50/80 cursor-pointer transition-colors duration-100">
+                <td class="px-6 text-center font-normal text-brand-subtle">#104</td>
+                <td class="px-6 font-medium text-neutral-900 text-sm">중복 결제 방지 처리</td>
+                <td class="px-6 text-center">
+                  <span
+                    class="inline-block px-2.5 py-0.5 text-xs text-blue-800 bg-blue-50 border border-blue-200 rounded">
+                    진행 중
+                  </span>
+                </td>
+                <td class="px-6 text-center text-brand-muted">이민지</td>
+                <td class="px-6 text-center text-brand-muted">김서연</td>
+                <td class="px-6 text-right text-brand-subtle">2026.09.16</td>
+              </tr>
+              <!-- 5) #103 -->
+              <tr class="h-14 hover:bg-neutral-50/80 cursor-pointer transition-colors duration-100">
+                <td class="px-6 text-center font-normal text-brand-subtle">#103</td>
+                <td class="px-6 font-medium text-neutral-900 text-sm">결제 재시도 조건 정리</td>
+                <td class="px-6 text-center">
+                  <span
+                    class="inline-block px-2.5 py-0.5 text-xs text-emerald-800 bg-emerald-50 border border-emerald-200 rounded">
+                    승인됨
+                  </span>
+                </td>
+                <td class="px-6 text-center text-brand-muted">이민지</td>
+                <td class="px-6 text-center text-brand-muted">김서연</td>
+                <td class="px-6 text-right text-brand-subtle">2026.09.16</td>
+              </tr>
+              <!-- 6) #102 -->
+              <tr class="h-14 hover:bg-neutral-50/80 cursor-pointer transition-colors duration-100">
+                <td class="px-6 text-center font-normal text-brand-subtle">#102</td>
+                <td class="px-6 font-medium text-neutral-900 text-sm">결제 실패 안내 개선</td>
+                <td class="px-6 text-center">
+                  <span
+                    class="inline-block px-2.5 py-0.5 text-xs text-rose-800 bg-rose-50 border border-rose-200 rounded">
+                    반려됨
+                  </span>
+                </td>
+                <td class="px-6 text-center text-brand-muted">이민지</td>
+                <td class="px-6 text-center text-brand-muted">이민지</td>
+                <td class="px-6 text-right text-brand-subtle">2026.09.16</td>
+              </tr>
+              <!-- 7) #101 -->
+              <tr class="h-14 hover:bg-neutral-50/80 cursor-pointer transition-colors duration-100">
+                <td class="px-6 text-center font-normal text-brand-subtle">#101</td>
+                <td class="px-6 font-medium text-neutral-900 text-sm">결제 오류 재현</td>
+                <td class="px-6 text-center">
+                  <span
+                    class="inline-block px-2.5 py-0.5 text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded">
+                    승인 대기
+                  </span>
+                </td>
+                <td class="px-6 text-center text-brand-muted">이민지</td>
+                <td class="px-6 text-center text-brand-muted">이민지</td>
+                <td class="px-6 text-right text-brand-subtle">2026.09.16</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- 하단 페이지네이션 바 -->
+        <div
+          class="px-6 py-3.5 border-t border-brand-border flex items-center justify-between text-xs text-brand-muted">
+          <!-- 좌측: 총 건수 -->
+          <div>
+            총 <span class="font-medium text-brand-text">7</span>개
+          </div>
+          <!-- 우측: 페이지네이션 및 단위 -->
+          <div class="flex items-center gap-6">
+            <span>20개씩 보기</span>
+            <div class="flex items-center gap-3">
+              <span class="text-neutral-500">1 / 1페이지</span>
+              <div class="flex items-center gap-1">
+                <button aria-label="이전 페이지" class="p-1 text-neutral-300 cursor-not-allowed rounded" disabled=""
+                  type="button">
+                  <span class="material-symbols-outlined text-[16px]" data-icon="chevron_left">chevron_left</span>
+                </button>
+                <button aria-label="다음 페이지" class="p-1 text-neutral-300 cursor-not-allowed rounded" disabled=""
+                  type="button">
+                  <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>

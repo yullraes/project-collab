@@ -1,0 +1,4046 @@
+[
+  {
+    "file": "01.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "내 프로젝트",
+        "line": 102
+      }
+    ],
+    "layers": [
+      {
+        "tag": "aside",
+        "line": 74,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-surface-base border-r border-line flex flex-col justify-between select-none z-20",
+        "text": "Project Collab 내 프로젝트"
+      },
+      {
+        "tag": "header",
+        "line": 91,
+        "class": "fixed top-0 left-[216px] right-0 h-16 bg-surface-base border-b border-line flex justify-end items-center px-8 z-10",
+        "text": "이민지"
+      },
+      {
+        "tag": "main",
+        "line": 98,
+        "class": "ml-[216px] pt-16 min-h-screen bg-surface-base flex flex-col",
+        "text": "내 프로젝트 프로젝트 만들기 프로젝트 이름 설명 최근 수정일 결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 2026.09.16"
+      }
+    ],
+    "tables": [
+      {
+        "line": 111,
+        "headers": [
+          "프로젝트 이름",
+          "설명",
+          "최근 수정일"
+        ],
+        "rows": 1,
+        "class": "w-full text-left border-collapse table-fixed"
+      }
+    ],
+    "inputs": [],
+    "buttons": [
+      {
+        "line": 103,
+        "text": "프로젝트 만들기",
+        "disabled": false,
+        "class": "inline-flex items-center justify-center px-4 py-2.5 bg-brand hover:bg-brand-hover text-white text-sm font-medium rounded transition-colors duration-150"
+      }
+    ],
+    "labels": [],
+    "explicitWidthReferences": [
+      {
+        "line": 75,
+        "html": "class=\"fixed left-0 top-0 h-screen w-[216px] bg-surface-base border-r border-line flex flex-col justify-between select-none z-20\">"
+      },
+      {
+        "line": 99,
+        "html": "<div class=\"p-8 max-w-[1224px] w-full mx-auto\">"
+      },
+      {
+        "line": 114,
+        "html": "<th class=\"w-[280px] px-6 text-xs font-semibold text-txt-muted tracking-normal\" scope=\"col\">프로젝트 이름</th>"
+      },
+      {
+        "line": 116,
+        "html": "<th class=\"w-[140px] px-6 text-xs font-semibold text-txt-muted tracking-normal text-right\" scope=\"col\">최근"
+      }
+    ]
+  },
+  {
+    "file": "02.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "내 프로젝트",
+        "line": 92
+      },
+      {
+        "tag": "h2",
+        "text": "프로젝트 만들기",
+        "line": 126
+      }
+    ],
+    "layers": [
+      {
+        "tag": "body",
+        "line": 58,
+        "class": "bg-white text-[#202622] antialiased overflow-hidden min-w-[1440px]",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트 프로젝트 개요 이민지 내 프로젝트 프로젝트 만들기 프로젝트 이름 설명 최근 수정일 결제 안정화 결제 오류를 재현하고 수정 작"
+      },
+      {
+        "tag": "div",
+        "line": 60,
+        "class": "relative w-[1440px] h-[1000px] mx-auto bg-white flex overflow-hidden",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트 프로젝트 개요 이민지 내 프로젝트 프로젝트 만들기 프로젝트 이름 설명 최근 수정일 결제 안정화 결제 오류를 재현하고 수정 작"
+      },
+      {
+        "tag": "aside",
+        "line": 62,
+        "class": "w-[216px] h-full bg-white border-r border-[#DDE2DE] flex flex-col justify-between p-4 select-none shrink-0 z-10",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트"
+      },
+      {
+        "tag": "header",
+        "line": 81,
+        "class": "h-16 border-b border-[#DDE2DE] px-8 flex items-center justify-between bg-white shrink-0",
+        "text": "프로젝트 개요 이민지"
+      },
+      {
+        "tag": "main",
+        "line": 90,
+        "class": "flex-1 p-8 bg-white overflow-y-auto",
+        "text": "내 프로젝트 프로젝트 만들기 프로젝트 이름 설명 최근 수정일 결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 2026.09.16"
+      },
+      {
+        "tag": "div",
+        "line": 121,
+        "class": "absolute inset-0 bg-[#202622]/40 backdrop-blur-[0.5px] z-50 flex items-center justify-center",
+        "text": "프로젝트 만들기 프로젝트 이름 * 프로젝트 설명 * 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 프로젝트를 만들면 소유자가 됩니다. 취소 만들기"
+      },
+      {
+        "tag": "div",
+        "line": 123,
+        "class": "w-[580px] bg-white rounded-xl shadow-xl border border-[#DDE2DE] flex flex-col overflow-hidden",
+        "text": "프로젝트 만들기 프로젝트 이름 * 프로젝트 설명 * 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 프로젝트를 만들면 소유자가 됩니다. 취소 만들기"
+      }
+    ],
+    "tables": [
+      {
+        "line": 101,
+        "headers": [
+          "프로젝트 이름",
+          "설명",
+          "최근 수정일"
+        ],
+        "rows": 1,
+        "class": "w-full text-left border-collapse"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "input",
+        "line": 139,
+        "id": "project-name",
+        "name": "projectName",
+        "type": "text",
+        "value": "결제 안정화",
+        "text": ""
+      },
+      {
+        "tag": "textarea",
+        "line": 149,
+        "id": "project-desc",
+        "name": "projectDescription",
+        "text": "결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다."
+      }
+    ],
+    "buttons": [
+      {
+        "line": 93,
+        "text": "프로젝트 만들기",
+        "disabled": false,
+        "class": "px-4 py-2 bg-[#245C45] text-white text-sm font-medium rounded hover:bg-[#1e4d3a] transition-colors"
+      },
+      {
+        "line": 127,
+        "text": "",
+        "disabled": false,
+        "class": "text-[#202622]/60 hover:text-[#202622] transition-colors p-1 rounded"
+      },
+      {
+        "line": 159,
+        "text": "취소",
+        "disabled": false,
+        "class": "px-4 py-2 text-sm font-medium text-[#202622]/80 hover:text-[#202622] bg-white border border-[#DDE2DE] rounded hover:bg-[#F7F8F7] transition-colors"
+      },
+      {
+        "line": 164,
+        "text": "만들기",
+        "disabled": false,
+        "class": "px-5 py-2 text-sm font-medium text-white bg-[#245C45] rounded hover:bg-[#1d4c38] transition-colors shadow-sm"
+      }
+    ],
+    "labels": [
+      "프로젝트 이름 *",
+      "프로젝트 설명 *"
+    ],
+    "explicitWidthReferences": [
+      {
+        "line": 58,
+        "html": "<body class=\"bg-white text-[#202622] antialiased overflow-hidden min-w-[1440px]\">"
+      },
+      {
+        "line": 60,
+        "html": "<div class=\"relative w-[1440px] h-[1000px] mx-auto bg-white flex overflow-hidden\">"
+      },
+      {
+        "line": 63,
+        "html": "class=\"w-[216px] h-full bg-white border-r border-[#DDE2DE] flex flex-col justify-between p-4 select-none shrink-0 z-10\">"
+      },
+      {
+        "line": 123,
+        "html": "<div class=\"w-[580px] bg-white rounded-xl shadow-xl border border-[#DDE2DE] flex flex-col overflow-hidden\">"
+      }
+    ]
+  },
+  {
+    "file": "03.html",
+    "headings": [
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 136
+      },
+      {
+        "tag": "h1",
+        "text": "작업",
+        "line": 152
+      }
+    ],
+    "layers": [
+      {
+        "tag": "aside",
+        "line": 74,
+        "class": "w-[216px] min-w-[216px] h-screen fixed left-0 top-0 bg-white border-r border-brand-border flex flex-col justify-between select-none z-20",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 122,
+        "class": "h-16 bg-white border-b border-brand-border px-8 flex items-center justify-between sticky top-0 z-10",
+        "text": "프로젝트 개요 이민지 · 멤버"
+      },
+      {
+        "tag": "main",
+        "line": 131,
+        "class": "p-8 max-w-[1224px] w-full flex flex-col gap-6",
+        "text": "결제 안정화 생성일 2026.09.15 | 수정일 2026.09.16 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 작업 + 작업 만들기 전체 승인 대기 반려됨 승인"
+      }
+    ],
+    "tables": [
+      {
+        "line": 188,
+        "headers": [
+          "작업 번호",
+          "제목",
+          "상태",
+          "담당자",
+          "생성자",
+          "최근 수정일"
+        ],
+        "rows": 7,
+        "class": "w-full border-collapse text-left"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "select",
+        "line": 163,
+        "text": "전체 승인 대기 반려됨 승인됨 진행 중 검토 중 완료"
+      },
+      {
+        "tag": "input",
+        "line": 176,
+        "placeholder": "제목 또는 내용 검색",
+        "type": "text",
+        "text": ""
+      }
+    ],
+    "buttons": [
+      {
+        "line": 153,
+        "text": "+ 작업 만들기",
+        "disabled": false,
+        "class": "inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-brand hover:bg-brand-hover rounded transition-colors duration-150"
+      },
+      {
+        "line": 179,
+        "text": "검색",
+        "disabled": false,
+        "class": "h-9 px-4 text-xs font-medium border border-brand-border bg-white text-brand-text hover:bg-neutral-50 rounded transition-colors duration-150"
+      },
+      {
+        "line": 314,
+        "text": "이전 페이지",
+        "disabled": true,
+        "class": "p-1 text-neutral-300 cursor-not-allowed rounded"
+      },
+      {
+        "line": 318,
+        "text": "다음 페이지",
+        "disabled": true,
+        "class": "p-1 text-neutral-300 cursor-not-allowed rounded"
+      }
+    ],
+    "labels": [],
+    "explicitWidthReferences": [
+      {
+        "line": 75,
+        "html": "class=\"w-[216px] min-w-[216px] h-screen fixed left-0 top-0 bg-white border-r border-brand-border flex flex-col justify-between select-none z-20\">"
+      },
+      {
+        "line": 131,
+        "html": "<main class=\"p-8 max-w-[1224px] w-full flex flex-col gap-6\">"
+      }
+    ]
+  },
+  {
+    "file": "04.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Project Collab",
+        "line": 61
+      },
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 126
+      },
+      {
+        "tag": "h3",
+        "text": "작업",
+        "line": 139
+      },
+      {
+        "tag": "h2",
+        "text": "결제 오류 재현",
+        "line": 296
+      },
+      {
+        "tag": "h3",
+        "text": "작업 내용",
+        "line": 329
+      },
+      {
+        "tag": "h3",
+        "text": "작업 정보",
+        "line": 339
+      }
+    ],
+    "layers": [
+      {
+        "tag": "body",
+        "line": 54,
+        "class": "w-[1440px] min-h-[1000px] flex bg-white text-font-main relative overflow-hidden",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 결제 안정화 작업 멤버 설정 프로젝트 개요 박준호 · 관리자 결제 안정화 생성일 2026.09.15 수정일 2026.09."
+      },
+      {
+        "tag": "aside",
+        "line": 56,
+        "class": "w-[216px] min-w-[216px] h-screen border-r border-surface-border flex flex-col justify-between p-4 bg-white select-none shrink-0 z-10",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 113,
+        "class": "h-16 border-b border-surface-border bg-white flex items-center justify-between px-8 shrink-0 z-10",
+        "text": "프로젝트 개요 박준호 · 관리자"
+      },
+      {
+        "tag": "main",
+        "line": 121,
+        "class": "flex-1 overflow-y-auto p-8 relative",
+        "text": "결제 안정화 생성일 2026.09.15 수정일 2026.09.16 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 작업 + 작업 만들기 전체 제목 또는 내용 검색 검색"
+      },
+      {
+        "tag": "div",
+        "line": 246,
+        "class": "absolute inset-0 bg-black/20 z-20 pointer-events-none",
+        "text": ""
+      },
+      {
+        "tag": "aside",
+        "line": 248,
+        "class": "absolute top-0 right-0 w-[680px] h-full bg-white border-l border-surface-border shadow-xl z-30 flex flex-col justify-between",
+        "text": "#101 작업 상세 정보 작업 삭제 승인 대기 결제 오류 재현 내용과 담당자를 확인한 뒤 승인하거나 반려하세요. 승인 반려 내용 수정 작업 내용 실패 조건을 재현하고 원인을 기록합"
+      }
+    ],
+    "tables": [
+      {
+        "line": 160,
+        "headers": [
+          "작업 번호",
+          "제목",
+          "상태",
+          "담당자"
+        ],
+        "rows": 7,
+        "class": "w-full text-left text-sm"
+      }
+    ],
+    "inputs": [],
+    "buttons": [
+      {
+        "line": 140,
+        "text": "+ 작업 만들기",
+        "disabled": false,
+        "class": "bg-brand hover:bg-brand-hover text-white text-sm font-medium px-4 py-2 rounded flex items-center gap-1.5 transition-colors"
+      },
+      {
+        "line": 154,
+        "text": "검색",
+        "disabled": false,
+        "class": "border border-surface-border bg-surface-muted text-font-main text-sm px-4 py-1.5 rounded hover:bg-gray-100"
+      },
+      {
+        "line": 231,
+        "text": "",
+        "disabled": true,
+        "class": "p-1 rounded text-font-muted border border-surface-border bg-surface-muted cursor-not-allowed"
+      },
+      {
+        "line": 235,
+        "text": "",
+        "disabled": true,
+        "class": "p-1 rounded text-font-muted border border-surface-border bg-surface-muted cursor-not-allowed"
+      },
+      {
+        "line": 261,
+        "text": "",
+        "disabled": false,
+        "class": "p-1.5 text-font-sub hover:text-font-main rounded hover:bg-surface-muted transition-colors"
+      },
+      {
+        "line": 272,
+        "text": "작업 삭제",
+        "disabled": false,
+        "class": "w-full text-left px-4 py-2 text-xs text-rose-600 hover:bg-rose-50 transition-colors"
+      },
+      {
+        "line": 278,
+        "text": "",
+        "disabled": false,
+        "class": "p-1.5 text-font-sub hover:text-font-main rounded hover:bg-surface-muted transition-colors"
+      },
+      {
+        "line": 311,
+        "text": "승인",
+        "disabled": false,
+        "class": "bg-brand hover:bg-brand-hover text-white text-sm font-medium px-5 py-2.5 rounded transition-colors shadow-sm"
+      },
+      {
+        "line": 316,
+        "text": "반려",
+        "disabled": false,
+        "class": "border border-surface-border bg-white hover:bg-gray-50 text-font-main text-sm font-medium px-5 py-2.5 rounded transition-colors"
+      },
+      {
+        "line": 321,
+        "text": "내용 수정",
+        "disabled": false,
+        "class": "text-font-sub hover:text-font-main text-sm font-medium px-3 py-2.5 rounded transition-colors ml-auto hover:bg-white border border-transparent hover:border-surface-border"
+      },
+      {
+        "line": 367,
+        "text": "닫기",
+        "disabled": false,
+        "class": "text-font-sub hover:text-font-main px-3 py-1.5 rounded border border-surface-border bg-white hover:bg-gray-50 text-xs font-medium"
+      }
+    ],
+    "labels": [],
+    "explicitWidthReferences": [
+      {
+        "line": 54,
+        "html": "<body class=\"w-[1440px] min-h-[1000px] flex bg-white text-font-main relative overflow-hidden\">"
+      },
+      {
+        "line": 57,
+        "html": "class=\"w-[216px] min-w-[216px] h-screen border-r border-surface-border flex flex-col justify-between p-4 bg-white select-none shrink-0 z-10\">"
+      },
+      {
+        "line": 122,
+        "html": "<div class=\"flex flex-col gap-6 max-w-[1160px]\">"
+      },
+      {
+        "line": 249,
+        "html": "class=\"absolute top-0 right-0 w-[680px] h-full bg-white border-l border-surface-border shadow-xl z-30 flex flex-col justify-between\">"
+      }
+    ]
+  },
+  {
+    "file": "05.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Project Collab",
+        "line": 87
+      },
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 147
+      },
+      {
+        "tag": "h3",
+        "text": "작업 상세 정보",
+        "line": 299
+      },
+      {
+        "tag": "h2",
+        "text": "결제 실패 안내 개선",
+        "line": 326
+      },
+      {
+        "tag": "h4",
+        "text": "작업 메타 정보",
+        "line": 376
+      }
+    ],
+    "layers": [
+      {
+        "tag": "body",
+        "line": 79,
+        "class": "w-[1440px] min-h-[1000px] overflow-hidden bg-neutral-50 text-neutral-800 text-[14px] antialiased relative selection:bg-brand/10 selection:text-brand",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정 프로젝트 개요 이 이민지 · 멤버 결제 안정화 결제 오류를 재현하고 수정 작업의"
+      },
+      {
+        "tag": "aside",
+        "line": 82,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-neutral-200 flex flex-col justify-between select-none z-30",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 128,
+        "class": "fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-neutral-200 flex justify-between items-center px-8 z-20",
+        "text": "프로젝트 개요 이 이민지 · 멤버"
+      },
+      {
+        "tag": "main",
+        "line": 142,
+        "class": "ml-[216px] mt-16 p-8 min-h-[calc(1000px-64px)] relative",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 전체 승인 대기 반려됨 승인됨 진행 중 검토 중 완료 검색 총 7개 번호 제목 상태 담당자 생성자 최근 수"
+      },
+      {
+        "tag": "div",
+        "line": 144,
+        "class": "absolute inset-0 bg-neutral-900/10 pointer-events-none z-10 transition-opacity",
+        "text": ""
+      },
+      {
+        "tag": "aside",
+        "line": 292,
+        "class": "fixed right-0 top-0 bottom-0 w-[680px] bg-white border-l border-neutral-200 shadow-2xl z-40 flex flex-col justify-between",
+        "text": "#102 작업 상세 정보 반려됨 결제 실패 안내 개선 반려 사유를 확인하고 필요하면 내용을 수정한 뒤 다시 제출하세요. 다시 제출 내용 수정 반려 사유 완료 조건을 더 구체적으로 "
+      }
+    ],
+    "tables": [
+      {
+        "line": 188,
+        "headers": [
+          "번호",
+          "제목",
+          "상태",
+          "담당자",
+          "생성자",
+          "최근 수정일"
+        ],
+        "rows": 7,
+        "class": "w-full text-left text-sm border-collapse"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "select",
+        "line": 159,
+        "text": "전체 승인 대기 반려됨 승인됨 진행 중 검토 중 완료"
+      },
+      {
+        "tag": "input",
+        "line": 174,
+        "placeholder": "제목 또는 내용 검색",
+        "readonly": "",
+        "type": "text",
+        "value": "",
+        "text": ""
+      }
+    ],
+    "buttons": [
+      {
+        "line": 178,
+        "text": "검색",
+        "disabled": false,
+        "class": "px-3 py-2 text-xs font-medium border border-neutral-300 text-neutral-700 bg-white hover:bg-neutral-50 rounded transition-colors duration-150"
+      },
+      {
+        "line": 280,
+        "text": "",
+        "disabled": true,
+        "class": "px-2 py-1 border border-neutral-200 rounded text-neutral-300 bg-neutral-50 cursor-not-allowed"
+      },
+      {
+        "line": 283,
+        "text": "",
+        "disabled": true,
+        "class": "px-2 py-1 border border-neutral-200 rounded text-neutral-300 bg-neutral-50 cursor-not-allowed"
+      },
+      {
+        "line": 303,
+        "text": "",
+        "disabled": false,
+        "class": "w-8 h-8 flex items-center justify-center rounded hover:bg-neutral-100 text-neutral-500 hover:text-neutral-800 transition-colors"
+      },
+      {
+        "line": 309,
+        "text": "",
+        "disabled": false,
+        "class": "w-8 h-8 flex items-center justify-center rounded hover:bg-neutral-100 text-neutral-500 hover:text-neutral-800 transition-colors"
+      },
+      {
+        "line": 340,
+        "text": "다시 제출",
+        "disabled": false,
+        "class": "px-3.5 py-1.5 text-xs font-semibold text-white bg-brand hover:bg-brand-hover rounded transition-colors duration-150"
+      },
+      {
+        "line": 346,
+        "text": "내용 수정",
+        "disabled": false,
+        "class": "px-3.5 py-1.5 text-xs font-medium text-neutral-700 bg-white border border-neutral-300 hover:bg-neutral-100 rounded transition-colors duration-150"
+      }
+    ],
+    "labels": [
+      "반려 사유",
+      "작업 내용"
+    ],
+    "explicitWidthReferences": [
+      {
+        "line": 80,
+        "html": "class=\"w-[1440px] min-h-[1000px] overflow-hidden bg-neutral-50 text-neutral-800 text-[14px] antialiased relative selection:bg-brand/10 selection:text-brand\">"
+      },
+      {
+        "line": 83,
+        "html": "class=\"fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-neutral-200 flex flex-col justify-between select-none z-30\">"
+      },
+      {
+        "line": 293,
+        "html": "class=\"fixed right-0 top-0 bottom-0 w-[680px] bg-white border-l border-neutral-200 shadow-2xl z-40 flex flex-col justify-between\">"
+      }
+    ]
+  },
+  {
+    "file": "06.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Project Collab",
+        "line": 87
+      },
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 147
+      },
+      {
+        "tag": "h3",
+        "text": "작업 상세 정보",
+        "line": 297
+      },
+      {
+        "tag": "h2",
+        "text": "결제 재시도 조건 정리",
+        "line": 323
+      },
+      {
+        "tag": "h4",
+        "text": "작업 메타 정보",
+        "line": 365
+      }
+    ],
+    "layers": [
+      {
+        "tag": "body",
+        "line": 79,
+        "class": "w-[1440px] min-h-[1000px] overflow-hidden bg-neutral-50 text-neutral-800 text-[14px] antialiased relative selection:bg-brand/10 selection:text-brand",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정 프로젝트 개요 이 이민지 · 멤버 결제 안정화 결제 오류를 재현하고 수정 작업의"
+      },
+      {
+        "tag": "aside",
+        "line": 82,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-neutral-200 flex flex-col justify-between select-none z-30",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 128,
+        "class": "fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-neutral-200 flex justify-between items-center px-8 z-20",
+        "text": "프로젝트 개요 이 이민지 · 멤버"
+      },
+      {
+        "tag": "main",
+        "line": 142,
+        "class": "ml-[216px] mt-16 p-8 min-h-[calc(1000px-64px)] relative",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 전체 승인 대기 반려됨 승인됨 진행 중 검토 중 완료 검색 총 7개 작업 번호 제목 상태 담당자 생성자 최"
+      },
+      {
+        "tag": "div",
+        "line": 144,
+        "class": "absolute inset-0 bg-neutral-900/10 pointer-events-none z-10 transition-opacity",
+        "text": ""
+      },
+      {
+        "tag": "aside",
+        "line": 291,
+        "class": "fixed right-0 top-0 bottom-0 w-[680px] bg-white border-l border-neutral-200 shadow-2xl z-40 flex flex-col justify-between",
+        "text": "#103 작업 상세 정보 승인됨 결제 재시도 조건 정리 작업을 시작할 수 있습니다. 작업 시작 내용 수정 내용 변경 시 다시 승인이 필요합니다. 작업 내용 중복 결제를 방지할 재시"
+      }
+    ],
+    "tables": [
+      {
+        "line": 188,
+        "headers": [
+          "번호",
+          "제목",
+          "상태",
+          "담당자",
+          "생성자",
+          "최근 수정일"
+        ],
+        "rows": 7,
+        "class": "w-full text-left text-sm border-collapse"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "select",
+        "line": 159,
+        "text": "전체 승인 대기 반려됨 승인됨 진행 중 검토 중 완료"
+      },
+      {
+        "tag": "input",
+        "line": 174,
+        "placeholder": "제목 또는 내용 검색",
+        "readonly": "",
+        "type": "text",
+        "value": "",
+        "text": ""
+      }
+    ],
+    "buttons": [
+      {
+        "line": 178,
+        "text": "검색",
+        "disabled": false,
+        "class": "px-3 py-2 text-xs font-medium border border-neutral-300 text-neutral-700 bg-white hover:bg-neutral-50 rounded transition-colors duration-150"
+      },
+      {
+        "line": 279,
+        "text": "",
+        "disabled": true,
+        "class": "w-7 h-7 flex items-center justify-center rounded border border-neutral-200 text-neutral-400 bg-neutral-50 pointer-events-none"
+      },
+      {
+        "line": 282,
+        "text": "",
+        "disabled": true,
+        "class": "w-7 h-7 flex items-center justify-center rounded border border-neutral-200 text-neutral-400 bg-neutral-50 pointer-events-none"
+      },
+      {
+        "line": 301,
+        "text": "",
+        "disabled": false,
+        "class": "w-8 h-8 flex items-center justify-center rounded hover:bg-neutral-100 text-neutral-500 hover:text-neutral-800 transition-colors"
+      },
+      {
+        "line": 307,
+        "text": "",
+        "disabled": false,
+        "class": "w-8 h-8 flex items-center justify-center rounded hover:bg-neutral-100 text-neutral-500 hover:text-neutral-800 transition-colors"
+      },
+      {
+        "line": 337,
+        "text": "작업 시작",
+        "disabled": false,
+        "class": "px-3.5 py-1.5 text-xs font-semibold text-white bg-brand hover:bg-brand-hover rounded transition-colors duration-150"
+      },
+      {
+        "line": 343,
+        "text": "내용 수정",
+        "disabled": false,
+        "class": "px-3.5 py-1.5 text-xs font-medium text-neutral-700 bg-white border border-neutral-300 hover:bg-neutral-100 rounded transition-colors duration-150"
+      }
+    ],
+    "labels": [
+      "작업 내용"
+    ],
+    "explicitWidthReferences": [
+      {
+        "line": 80,
+        "html": "class=\"w-[1440px] min-h-[1000px] overflow-hidden bg-neutral-50 text-neutral-800 text-[14px] antialiased relative selection:bg-brand/10 selection:text-brand\">"
+      },
+      {
+        "line": 83,
+        "html": "class=\"fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-neutral-200 flex flex-col justify-between select-none z-30\">"
+      },
+      {
+        "line": 292,
+        "html": "class=\"fixed right-0 top-0 bottom-0 w-[680px] bg-white border-l border-neutral-200 shadow-2xl z-40 flex flex-col justify-between\">"
+      }
+    ]
+  },
+  {
+    "file": "07.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "프로젝트 개요",
+        "line": 119
+      },
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 137
+      },
+      {
+        "tag": "h2",
+        "text": "중복 결제 방지 처리",
+        "line": 309
+      }
+    ],
+    "layers": [
+      {
+        "tag": "body",
+        "line": 74,
+        "class": "w-[1440px] h-[1000px] mx-auto overflow-hidden bg-[#F7F8F7] text-[#202622] flex relative select-none",
+        "text": "내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정 Project Collab 프로젝트 개요 이 이민지 · 멤버 결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 "
+      },
+      {
+        "tag": "aside",
+        "line": 76,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between select-none z-20",
+        "text": "내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정 Project Collab"
+      },
+      {
+        "tag": "header",
+        "line": 116,
+        "class": "fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-[#DDE2DE] flex justify-between items-center px-8 z-10",
+        "text": "프로젝트 개요 이 이민지 · 멤버"
+      },
+      {
+        "tag": "main",
+        "line": 132,
+        "class": "ml-[216px] mt-16 mr-[680px] flex-1 p-8 overflow-y-auto h-[calc(100vh-64px)] bg-[#F7F8F7]",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 전체 승인 대기 반려됨 승인됨 진행 중 검토 중 완료 검색 번호 작업 제목 상태 담당자 생성자 최근 수정일"
+      },
+      {
+        "tag": "aside",
+        "line": 266,
+        "class": "fixed top-0 right-0 w-[680px] h-screen bg-white border-l border-[#DDE2DE] flex flex-col justify-between z-30",
+        "text": "#104 작업 상세 정보 담당 포기 진행 중 중복 결제 방지 처리 작업을 마치면 검토를 요청하세요. 검토 요청 내용 수정 내용 변경 시 승인 대기로 돌아갑니다. 작업 내용 같은 결"
+      }
+    ],
+    "tables": [
+      {
+        "line": 171,
+        "headers": [
+          "번호",
+          "작업 제목",
+          "상태",
+          "담당자",
+          "생성자",
+          "최근 수정일"
+        ],
+        "rows": 7,
+        "class": "w-full text-left text-sm border-collapse"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "select",
+        "line": 147,
+        "text": "전체 승인 대기 반려됨 승인됨 진행 중 검토 중 완료"
+      },
+      {
+        "tag": "input",
+        "line": 159,
+        "placeholder": "제목 또는 내용 검색",
+        "type": "text",
+        "value": "",
+        "text": ""
+      }
+    ],
+    "buttons": [
+      {
+        "line": 163,
+        "text": "검색",
+        "disabled": false,
+        "class": "h-9 px-4 bg-white hover:bg-[#F7F8F7] border border-[#DDE2DE] text-sm text-[#202622] rounded transition-colors"
+      },
+      {
+        "line": 258,
+        "text": "이전",
+        "disabled": true,
+        "class": "px-2 py-1 bg-white border border-[#DDE2DE] rounded text-neutral-muted hover:bg-[#F7F8F7] transition-colors cursor-not-allowed"
+      },
+      {
+        "line": 260,
+        "text": "다음",
+        "disabled": true,
+        "class": "px-2 py-1 bg-white border border-[#DDE2DE] rounded text-neutral-muted hover:bg-[#F7F8F7] transition-colors cursor-not-allowed"
+      },
+      {
+        "line": 277,
+        "text": "",
+        "disabled": false,
+        "class": "w-8 h-8 flex items-center justify-center text-neutral-muted hover:text-[#202622] hover:bg-[#F7F8F7] rounded transition-colors"
+      },
+      {
+        "line": 285,
+        "text": "담당 포기",
+        "disabled": false,
+        "class": "w-full text-left px-3 py-1.5 text-xs text-red-600 hover:bg-[#F7F8F7] transition-colors"
+      },
+      {
+        "line": 291,
+        "text": "",
+        "disabled": false,
+        "class": "w-8 h-8 flex items-center justify-center text-neutral-muted hover:text-[#202622] hover:bg-[#F7F8F7] rounded transition-colors"
+      },
+      {
+        "line": 319,
+        "text": "검토 요청",
+        "disabled": false,
+        "class": "h-9 px-4 bg-[#245C45] hover:bg-[#1c4a37] text-white text-sm font-medium rounded transition-colors"
+      },
+      {
+        "line": 324,
+        "text": "내용 수정",
+        "disabled": false,
+        "class": "h-9 px-4 bg-white hover:bg-[#F7F8F7] border border-[#DDE2DE] text-sm text-[#202622] rounded transition-colors"
+      }
+    ],
+    "labels": [
+      "작업 내용",
+      "작업 메타 정보"
+    ],
+    "explicitWidthReferences": [
+      {
+        "line": 74,
+        "html": "<body class=\"w-[1440px] h-[1000px] mx-auto overflow-hidden bg-[#F7F8F7] text-[#202622] flex relative select-none\">"
+      },
+      {
+        "line": 77,
+        "html": "class=\"fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between select-none z-20\">"
+      },
+      {
+        "line": 267,
+        "html": "class=\"fixed top-0 right-0 w-[680px] h-screen bg-white border-l border-[#DDE2DE] flex flex-col justify-between z-30\">"
+      }
+    ]
+  },
+  {
+    "file": "08.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "결제 안정화",
+        "line": 126
+      },
+      {
+        "tag": "h2",
+        "text": "결제 오류 수정 검토",
+        "line": 287
+      },
+      {
+        "tag": "h3",
+        "text": "작업 내용",
+        "line": 318
+      },
+      {
+        "tag": "h3",
+        "text": "상세 정보",
+        "line": 325
+      }
+    ],
+    "layers": [
+      {
+        "tag": "aside",
+        "line": 73,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between select-none z-30",
+        "text": "Project Collab 업무 협업 도구 ← 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 112,
+        "class": "fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-[#DDE2DE] flex justify-between items-center px-8 z-20",
+        "text": "프로젝트 개요 박준호 · 관리자"
+      },
+      {
+        "tag": "main",
+        "line": 123,
+        "class": "flex-1 p-8 pr-[700px] bg-[#FFFFFF] min-h-[calc(100vh-64px)]",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 전체 진행 중 검토 중 승인 대기 완료 검색 번호 제목 담당자 상태 #107 결제 취소 흐름 점검 미할당 "
+      },
+      {
+        "tag": "aside",
+        "line": 243,
+        "class": "fixed top-16 right-0 w-[680px] h-[calc(100vh-64px)] bg-white border-l border-[#DDE2DE] flex flex-col justify-between z-20 shadow-[-4px_0_12px_rgba(0,0,0,0.03)]",
+        "text": "#105 작업 상세 정보 담당자 해제 작업 삭제 검토 중 결제 오류 수정 검토 작업 내용을 확인하고 완료하거나 보완을 요청하세요. 완료 처리 보완 요청 내용 수정 작업 내용 오류 "
+      }
+    ],
+    "tables": [
+      {
+        "line": 160,
+        "headers": [
+          "번호",
+          "제목",
+          "담당자",
+          "상태"
+        ],
+        "rows": 7,
+        "class": "w-full text-left text-xs border-collapse"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "select",
+        "line": 135,
+        "text": "전체 진행 중 검토 중 승인 대기 완료"
+      },
+      {
+        "tag": "input",
+        "line": 147,
+        "placeholder": "작업명 검색",
+        "type": "text",
+        "text": ""
+      }
+    ],
+    "buttons": [
+      {
+        "line": 151,
+        "text": "검색",
+        "disabled": false,
+        "class": "px-3 py-2 bg-[#F7F8F7] border border-[#DDE2DE] text-xs text-[#202622] rounded hover:bg-[#EAEFEA] transition-colors"
+      },
+      {
+        "line": 233,
+        "text": "",
+        "disabled": true,
+        "class": "w-7 h-7 flex items-center justify-center border border-[#DDE2DE] rounded bg-white text-[#69736C] disabled:opacity-40"
+      },
+      {
+        "line": 236,
+        "text": "",
+        "disabled": true,
+        "class": "w-7 h-7 flex items-center justify-center border border-[#DDE2DE] rounded bg-white text-[#69736C] disabled:opacity-40"
+      },
+      {
+        "line": 255,
+        "text": "",
+        "disabled": false,
+        "class": "w-8 h-8 flex items-center justify-center text-[#69736C] hover:text-[#202622] hover:bg-[#F7F8F7] rounded transition-colors"
+      },
+      {
+        "line": 265,
+        "text": "담당자 해제",
+        "disabled": false,
+        "class": "w-full text-left px-3 py-2 text-xs text-[#202622] hover:bg-[#F7F8F7] transition-colors"
+      },
+      {
+        "line": 267,
+        "text": "작업 삭제",
+        "disabled": false,
+        "class": "w-full text-left px-3 py-2 text-xs text-red-600 hover:bg-[#F7F8F7] transition-colors"
+      },
+      {
+        "line": 272,
+        "text": "",
+        "disabled": false,
+        "class": "w-8 h-8 flex items-center justify-center text-[#69736C] hover:text-[#202622] hover:bg-[#F7F8F7] rounded transition-colors"
+      },
+      {
+        "line": 298,
+        "text": "완료 처리",
+        "disabled": false,
+        "class": "px-4 py-2 bg-[#245C45] hover:bg-[#1d4b38] text-white text-xs font-medium rounded transition-colors"
+      },
+      {
+        "line": 304,
+        "text": "보완 요청",
+        "disabled": false,
+        "class": "px-4 py-2 bg-white hover:bg-[#F7F8F7] border border-[#DDE2DE] text-xs font-medium text-[#202622] rounded transition-colors"
+      },
+      {
+        "line": 310,
+        "text": "내용 수정",
+        "disabled": false,
+        "class": "px-3 py-2 text-xs text-[#69736C] hover:text-[#202622] rounded transition-colors ml-1"
+      },
+      {
+        "line": 335,
+        "text": "변경",
+        "disabled": false,
+        "class": "text-[11px] text-[#245C45] hover:underline font-medium ml-1"
+      }
+    ],
+    "labels": [],
+    "explicitWidthReferences": [
+      {
+        "line": 74,
+        "html": "class=\"fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between select-none z-30\">"
+      },
+      {
+        "line": 244,
+        "html": "class=\"fixed top-16 right-0 w-[680px] h-[calc(100vh-64px)] bg-white border-l border-[#DDE2DE] flex flex-col justify-between z-20 shadow-[-4px_0_12px_rgba(0,0,0,0.03)]\">"
+      }
+    ]
+  },
+  {
+    "file": "09.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Project Collab",
+        "line": 85
+      },
+      {
+        "tag": "h2",
+        "text": "프로젝트 개요",
+        "line": 130
+      },
+      {
+        "tag": "h3",
+        "text": "결제 안정화",
+        "line": 143
+      },
+      {
+        "tag": "h2",
+        "text": "결제 로그 누락 수정",
+        "line": 324
+      },
+      {
+        "tag": "h4",
+        "text": "작업 내용",
+        "line": 337
+      },
+      {
+        "tag": "h4",
+        "text": "상세 정보",
+        "line": 345
+      }
+    ],
+    "layers": [
+      {
+        "tag": "aside",
+        "line": 80,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between z-30",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 127,
+        "class": "fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-[#DDE2DE] flex justify-between items-center px-8 z-20",
+        "text": "프로젝트 개요 박준호 · 관리자"
+      },
+      {
+        "tag": "main",
+        "line": 140,
+        "class": "flex-1 p-8 pr-[712px] min-w-[500px]",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 전체 진행 중 검토 중 승인 대기 완료 검색 번호 제목 담당자 상태 #107 결제 취소 흐름 점검 미할당 "
+      },
+      {
+        "tag": "section",
+        "line": 280,
+        "class": "fixed top-16 right-0 bottom-0 w-[680px] bg-white border-l border-[#DDE2DE] flex flex-col justify-between shadow-[-4px_0_12px_rgba(0,0,0,0.03)] z-20",
+        "text": "#106 작업 상세 정보 작업 삭제 완료 결제 로그 누락 수정 완료된 작업은 내용과 담당자를 변경할 수 없습니다. 작업 내용 실패한 결제 요청의 로그가 남도록 수정합니다. 상세 정"
+      }
+    ],
+    "tables": [
+      {
+        "line": 177,
+        "headers": [
+          "번호",
+          "제목",
+          "담당자",
+          "상태"
+        ],
+        "rows": 7,
+        "class": "w-full text-left border-collapse"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "select",
+        "line": 152,
+        "text": "전체 진행 중 검토 중 승인 대기 완료"
+      },
+      {
+        "tag": "input",
+        "line": 165,
+        "placeholder": "작업명 검색",
+        "type": "text",
+        "text": ""
+      }
+    ],
+    "buttons": [
+      {
+        "line": 90,
+        "text": "내 프로젝트로",
+        "disabled": false,
+        "class": "flex items-center gap-1.5 text-xs text-[#637067] hover:text-[#245C45] transition-colors py-1"
+      },
+      {
+        "line": 170,
+        "text": "검색",
+        "disabled": false,
+        "class": "bg-white border border-[#DDE2DE] text-[#202622] hover:bg-[#F7F8F7] text-sm font-medium px-4 py-2 rounded transition-colors"
+      },
+      {
+        "line": 264,
+        "text": "",
+        "disabled": true,
+        "class": "p-1 border border-[#DDE2DE] rounded bg-white hover:bg-[#F7F8F7] disabled:opacity-40 disabled:cursor-not-allowed"
+      },
+      {
+        "line": 270,
+        "text": "",
+        "disabled": true,
+        "class": "p-1 border border-[#DDE2DE] rounded bg-white hover:bg-[#F7F8F7] disabled:opacity-40 disabled:cursor-not-allowed"
+      },
+      {
+        "line": 295,
+        "text": "",
+        "disabled": false,
+        "class": "p-1.5 text-[#637067] hover:text-[#202622] hover:bg-[#F7F8F7] rounded transition-colors"
+      },
+      {
+        "line": 303,
+        "text": "작업 삭제",
+        "disabled": false,
+        "class": "w-full text-left px-3 py-2 text-xs text-red-600 hover:bg-red-50 flex items-center gap-2"
+      },
+      {
+        "line": 310,
+        "text": "",
+        "disabled": false,
+        "class": "p-1.5 text-[#637067] hover:text-[#202622] hover:bg-[#F7F8F7] rounded transition-colors"
+      }
+    ],
+    "labels": [],
+    "explicitWidthReferences": [
+      {
+        "line": 81,
+        "html": "class=\"fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between z-30\">"
+      },
+      {
+        "line": 140,
+        "html": "<main class=\"flex-1 p-8 pr-[712px] min-w-[500px]\">"
+      },
+      {
+        "line": 281,
+        "html": "class=\"fixed top-16 right-0 bottom-0 w-[680px] bg-white border-l border-[#DDE2DE] flex flex-col justify-between shadow-[-4px_0_12px_rgba(0,0,0,0.03)] z-20\">"
+      }
+    ]
+  },
+  {
+    "file": "10.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Project Collab",
+        "line": 60
+      },
+      {
+        "tag": "h2",
+        "text": "프로젝트 개요",
+        "line": 100
+      },
+      {
+        "tag": "h3",
+        "text": "결제 안정화",
+        "line": 111
+      },
+      {
+        "tag": "h4",
+        "text": "작업",
+        "line": 124
+      },
+      {
+        "tag": "h3",
+        "text": "작업 만들기",
+        "line": 261
+      }
+    ],
+    "layers": [
+      {
+        "tag": "body",
+        "line": 52,
+        "class": "w-[1440px] min-h-[1000px] mx-auto relative overflow-hidden bg-[#F7F8F7] text-[#202622]",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 결제 안정화 작업 멤버 설정 프로젝트 개요 이민지 · 멤버 결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관"
+      },
+      {
+        "tag": "aside",
+        "line": 56,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between select-none z-10",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 98,
+        "class": "fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-[#DDE2DE] flex items-center justify-between px-8 z-10",
+        "text": "프로젝트 개요 이민지 · 멤버"
+      },
+      {
+        "tag": "main",
+        "line": 107,
+        "class": "ml-[216px] pt-16 p-8 min-h-[936px]",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 생성일 2026.09.15 | 수정일 2026.09.16 작업 작업 만들기 전체 검색 작업 번호 제목 상태"
+      },
+      {
+        "tag": "div",
+        "line": 256,
+        "class": "fixed inset-0 bg-neutral-900/40 flex items-center justify-center z-50 p-4",
+        "text": "작업 만들기 할 일과 완료 조건을 함께 작성해 주세요. 제목 * 담당자 담당자는 본인으로 자동 지정되며 변경할 수 없습니다. 작업 내용 * 실패 조건을 재현하고 원인을 기록합니다."
+      },
+      {
+        "tag": "div",
+        "line": 258,
+        "class": "bg-white w-[600px] rounded-lg shadow-2xl border border-[#DDE2DE] overflow-hidden flex flex-col animate-fade-in",
+        "text": "작업 만들기 할 일과 완료 조건을 함께 작성해 주세요. 제목 * 담당자 담당자는 본인으로 자동 지정되며 변경할 수 없습니다. 작업 내용 * 실패 조건을 재현하고 원인을 기록합니다."
+      }
+    ],
+    "tables": [
+      {
+        "line": 145,
+        "headers": [
+          "작업 번호",
+          "제목",
+          "상태",
+          "담당자",
+          "생성자",
+          "최근 수정일"
+        ],
+        "rows": 7,
+        "class": "w-full text-left border-collapse text-sm"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "select",
+        "line": 133,
+        "text": "전체"
+      },
+      {
+        "tag": "input",
+        "line": 138,
+        "placeholder": "제목 또는 내용 검색",
+        "type": "text",
+        "text": ""
+      },
+      {
+        "tag": "input",
+        "line": 278,
+        "type": "text",
+        "value": "결제 오류 재현",
+        "text": ""
+      },
+      {
+        "tag": "input",
+        "line": 285,
+        "readonly": "",
+        "type": "text",
+        "value": "이민지 (나)",
+        "text": ""
+      },
+      {
+        "tag": "textarea",
+        "line": 293,
+        "text": "실패 조건을 재현하고 원인을 기록합니다."
+      }
+    ],
+    "buttons": [
+      {
+        "line": 125,
+        "text": "작업 만들기",
+        "disabled": false,
+        "class": "inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#245C45] text-white rounded text-sm font-medium"
+      },
+      {
+        "line": 140,
+        "text": "검색",
+        "disabled": false,
+        "class": "px-3.5 py-1.5 bg-white border border-[#DDE2DE] rounded text-xs font-medium text-neutral-700"
+      },
+      {
+        "line": 243,
+        "text": "",
+        "disabled": true,
+        "class": "w-6 h-6 flex items-center justify-center rounded border border-[#DDE2DE] text-neutral-300 cursor-not-allowed"
+      },
+      {
+        "line": 246,
+        "text": "",
+        "disabled": true,
+        "class": "w-6 h-6 flex items-center justify-center rounded border border-[#DDE2DE] text-neutral-300 cursor-not-allowed"
+      },
+      {
+        "line": 262,
+        "text": "닫기",
+        "disabled": false,
+        "class": "text-neutral-400 hover:text-neutral-600 transition-colors p-1 rounded"
+      },
+      {
+        "line": 302,
+        "text": "취소",
+        "disabled": false,
+        "class": "border border-neutral-300 bg-white text-neutral-700 px-4 py-2 rounded text-sm hover:bg-neutral-50 font-medium transition-colors"
+      },
+      {
+        "line": 305,
+        "text": "제안 제출",
+        "disabled": false,
+        "class": "bg-[#245C45] text-white px-5 py-2 rounded text-sm font-medium hover:bg-[#1b4634] transition-colors"
+      }
+    ],
+    "labels": [
+      "제목 *",
+      "담당자",
+      "작업 내용 *"
+    ],
+    "explicitWidthReferences": [
+      {
+        "line": 52,
+        "html": "<body class=\"w-[1440px] min-h-[1000px] mx-auto relative overflow-hidden bg-[#F7F8F7] text-[#202622]\">"
+      },
+      {
+        "line": 56,
+        "html": "<aside class=\"fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between select-none z-10\">"
+      },
+      {
+        "line": 258,
+        "html": "<div class=\"bg-white w-[600px] rounded-lg shadow-2xl border border-[#DDE2DE] overflow-hidden flex flex-col animate-fade-in\">"
+      }
+    ]
+  },
+  {
+    "file": "11.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "프로젝트 개요",
+        "line": 107
+      },
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 117
+      },
+      {
+        "tag": "h3",
+        "text": "작업 만들기",
+        "line": 249
+      }
+    ],
+    "layers": [
+      {
+        "tag": "div",
+        "line": 60,
+        "class": "min-w-[1440px] h-screen flex flex-col bg-white",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 결제 안정화 작업 멤버 설정 프로젝트 개요 박준호 · 관리자 결제 안정화 생성일 2026.09.15 수정일 2026.09."
+      },
+      {
+        "tag": "aside",
+        "line": 62,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between select-none z-10",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 106,
+        "class": "h-16 border-b border-[#DDE2DE] bg-white flex items-center justify-between px-8 z-10 flex-shrink-0",
+        "text": "프로젝트 개요 박준호 · 관리자"
+      },
+      {
+        "tag": "main",
+        "line": 113,
+        "class": "flex-1 overflow-y-auto p-8 bg-white flex flex-col gap-6",
+        "text": "결제 안정화 생성일 2026.09.15 수정일 2026.09.16 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 작업 전체 + 작업 만들기 번호 제목 상태 담당자 작"
+      },
+      {
+        "tag": "div",
+        "line": 245,
+        "class": "fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4",
+        "text": "작업 만들기 할 일과 완료 조건을 함께 작성해 주세요. 제목 * 담당자 박준호 (나) 김서연 이민지 미할당 작업 내용 * 취소 요청과 처리 결과가 일치하는지 확인합니다. 승인된 작"
+      },
+      {
+        "tag": "div",
+        "line": 246,
+        "class": "bg-white w-[600px] rounded-lg shadow-xl border border-[#DDE2DE] flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-100",
+        "text": "작업 만들기 할 일과 완료 조건을 함께 작성해 주세요. 제목 * 담당자 박준호 (나) 김서연 이민지 미할당 작업 내용 * 취소 요청과 처리 결과가 일치하는지 확인합니다. 승인된 작"
+      }
+    ],
+    "tables": [
+      {
+        "line": 145,
+        "headers": [
+          "번호",
+          "제목",
+          "상태",
+          "담당자",
+          "작성자",
+          "등록일"
+        ],
+        "rows": 7,
+        "class": "w-full text-left border-collapse text-xs"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "input",
+        "line": 136,
+        "disabled": "",
+        "placeholder": "검색",
+        "type": "text",
+        "text": ""
+      },
+      {
+        "tag": "input",
+        "line": 268,
+        "type": "text",
+        "value": "결제 취소 흐름 점검",
+        "text": ""
+      },
+      {
+        "tag": "select",
+        "line": 276,
+        "text": "박준호 (나) 김서연 이민지 미할당"
+      },
+      {
+        "tag": "textarea",
+        "line": 292,
+        "text": "취소 요청과 처리 결과가 일치하는지 확인합니다."
+      }
+    ],
+    "buttons": [
+      {
+        "line": 139,
+        "text": "+ 작업 만들기",
+        "disabled": false,
+        "class": "bg-[#245C45] text-white px-3.5 py-1.5 text-xs font-medium rounded hover:bg-[#1c4a37] transition-colors"
+      },
+      {
+        "line": 230,
+        "text": "",
+        "disabled": true,
+        "class": "p-1 text-neutral-300 cursor-not-allowed"
+      },
+      {
+        "line": 233,
+        "text": "",
+        "disabled": true,
+        "class": "p-1 text-neutral-300 cursor-not-allowed"
+      },
+      {
+        "line": 250,
+        "text": "닫기",
+        "disabled": false,
+        "class": "text-[#6B7280] hover:text-[#202622] p-1 rounded transition-colors"
+      },
+      {
+        "line": 303,
+        "text": "취소",
+        "disabled": false,
+        "class": "px-4 py-2 text-sm font-medium text-[#202622] bg-white border border-[#DDE2DE] rounded hover:bg-neutral-50 transition-colors"
+      },
+      {
+        "line": 306,
+        "text": "작업 등록",
+        "disabled": false,
+        "class": "px-4 py-2 text-sm font-medium text-white bg-[#245C45] rounded hover:bg-[#1c4a37] transition-colors"
+      }
+    ],
+    "labels": [
+      "제목 *",
+      "담당자",
+      "작업 내용 *"
+    ],
+    "explicitWidthReferences": [
+      {
+        "line": 60,
+        "html": "<div class=\"min-w-[1440px] h-screen flex flex-col bg-white\">"
+      },
+      {
+        "line": 62,
+        "html": "<aside class=\"fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between select-none z-10\">"
+      },
+      {
+        "line": 246,
+        "html": "<div class=\"bg-white w-[600px] rounded-lg shadow-xl border border-[#DDE2DE] flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-100\">"
+      }
+    ]
+  },
+  {
+    "file": "12.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "프로젝트 개요",
+        "line": 71
+      },
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 84
+      },
+      {
+        "tag": "h2",
+        "text": "중복 결제 방지 처리",
+        "line": 219
+      },
+      {
+        "tag": "h3",
+        "text": "작업 내용",
+        "line": 238
+      },
+      {
+        "tag": "h3",
+        "text": "작업 메타 정보",
+        "line": 246
+      },
+      {
+        "tag": "h2",
+        "text": "작업 내용 수정",
+        "line": 277
+      }
+    ],
+    "layers": [
+      {
+        "tag": "aside",
+        "line": 24,
+        "class": "w-[216px] min-h-screen bg-white border-r border-[#DDE2DE] flex flex-col justify-between shrink-0 select-none z-10",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 69,
+        "class": "h-16 bg-white border-b border-[#DDE2DE] flex items-center justify-between px-8 shrink-0 z-10",
+        "text": "프로젝트 개요 이민지 · 멤버"
+      },
+      {
+        "tag": "main",
+        "line": 81,
+        "class": "flex-1 p-8 overflow-y-auto space-y-6",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 전체 작업명 검색 검색 번호 제목 담당자 상태 #107 결제 취소 흐름 점검 미할당 승인됨 #106 결제 "
+      },
+      {
+        "tag": "aside",
+        "line": 199,
+        "class": "w-[520px] bg-white border-l border-[#DDE2DE] flex flex-col justify-between overflow-y-auto shrink-0",
+        "text": "#104 작업 상세 정보 진행 중 중복 결제 방지 처리 작업을 마치면 검토를 요청하세요. 검토 요청 내용 수정 내용 변경 시 승인 대기로 돌아갑니다. 작업 내용 같은 결제 요청이 "
+      },
+      {
+        "tag": "div",
+        "line": 272,
+        "class": "fixed inset-0 bg-black/40 backdrop-blur-[1px] flex items-center justify-center p-6 z-50",
+        "text": "작업 내용 수정 제목 * 작업 내용 * 중복 요청 식별 조건을 추가하고 반복 결제 요청이 한 번만 처리되는지 확인합니다. 내용을 변경하면 승인 대기로 돌아갑니다. 다시 승인받은 뒤"
+      }
+    ],
+    "tables": [
+      {
+        "line": 107,
+        "headers": [
+          "번호",
+          "제목",
+          "담당자",
+          "상태"
+        ],
+        "rows": 7,
+        "class": "w-full text-left text-sm"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "input",
+        "line": 290,
+        "type": "text",
+        "id": "task-title",
+        "value": "중복 결제 방지 처리",
+        "text": ""
+      },
+      {
+        "tag": "textarea",
+        "line": 303,
+        "id": "task-desc",
+        "text": "중복 요청 식별 조건을 추가하고 반복 결제 요청이 한 번만 처리되는지 확인합니다."
+      }
+    ],
+    "buttons": [
+      {
+        "line": 100,
+        "text": "검색",
+        "disabled": false,
+        "class": "px-3 py-1.5 text-sm border border-[#DDE2DE] rounded hover:bg-[#F7F8F7] text-[#202622]"
+      },
+      {
+        "line": 205,
+        "text": "",
+        "disabled": false,
+        "class": "p-1 hover:bg-[#F7F8F7] rounded"
+      },
+      {
+        "line": 208,
+        "text": "",
+        "disabled": false,
+        "class": "p-1 hover:bg-[#F7F8F7] rounded"
+      },
+      {
+        "line": 226,
+        "text": "검토 요청",
+        "disabled": false,
+        "class": "px-4 py-2 bg-[#245C45] text-white text-sm font-medium rounded hover:bg-[#1E4D3A] transition-colors"
+      },
+      {
+        "line": 229,
+        "text": "내용 수정",
+        "disabled": false,
+        "class": "px-4 py-2 bg-white border border-[#DDE2DE] text-[#202622] text-sm font-medium rounded hover:bg-[#F0F2F0] transition-colors"
+      },
+      {
+        "line": 278,
+        "text": "닫기",
+        "disabled": false,
+        "class": "text-[#5F6E65] hover:text-[#202622] p-1 rounded hover:bg-[#F7F8F7] transition-colors"
+      },
+      {
+        "line": 319,
+        "text": "취소",
+        "disabled": false,
+        "class": "px-4 py-2 text-sm font-medium text-[#202622] bg-white border border-[#DDE2DE] rounded hover:bg-[#F0F2F0] transition-colors"
+      },
+      {
+        "line": 325,
+        "text": "저장하고 재승인 요청",
+        "disabled": false,
+        "class": "px-4 py-2 text-sm font-medium text-white bg-[#245C45] rounded hover:bg-[#1E4D3A] transition-colors shadow-sm"
+      }
+    ],
+    "labels": [
+      "제목 *",
+      "작업 내용 *"
+    ],
+    "explicitWidthReferences": [
+      {
+        "line": 24,
+        "html": "<aside class=\"w-[216px] min-h-screen bg-white border-r border-[#DDE2DE] flex flex-col justify-between shrink-0 select-none z-10\">"
+      },
+      {
+        "line": 199,
+        "html": "<aside class=\"w-[520px] bg-white border-l border-[#DDE2DE] flex flex-col justify-between overflow-y-auto shrink-0\">"
+      },
+      {
+        "line": 274,
+        "html": "<div class=\"bg-white rounded-lg border border-[#DDE2DE] shadow-xl w-full max-w-[620px] overflow-hidden flex flex-col\">"
+      }
+    ]
+  },
+  {
+    "file": "13.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "프로젝트 개요",
+        "line": 109
+      },
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 121
+      },
+      {
+        "tag": "h3",
+        "text": "결제 오류 재현",
+        "line": 227
+      },
+      {
+        "tag": "h2",
+        "text": "작업 승인",
+        "line": 261
+      }
+    ],
+    "layers": [
+      {
+        "tag": "div",
+        "line": 61,
+        "class": "relative w-full h-screen min-w-[1440px] flex",
+        "text": "P Project Collab 업무 협업 도구 내 프로젝트로 결제 안정화 작업 멤버 설정 프로젝트 개요 박준호 · 관리자 박 결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 "
+      },
+      {
+        "tag": "aside",
+        "line": 63,
+        "class": "w-[216px] h-screen border-r border-borderLine bg-white flex flex-col justify-between shrink-0 z-10",
+        "text": "P Project Collab 업무 협업 도구 내 프로젝트로 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 108,
+        "class": "h-16 px-8 border-b border-borderLine flex items-center justify-between bg-white shrink-0",
+        "text": "프로젝트 개요 박준호 · 관리자 박"
+      },
+      {
+        "tag": "main",
+        "line": 118,
+        "class": "flex-1 p-8 overflow-hidden bg-white flex flex-col gap-6",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 번호 작업 제목 담당자 상태 #107 결제 취소 흐름 점검 미할당 승인됨 #106 결제 로그 누락 수정 이"
+      },
+      {
+        "tag": "div",
+        "line": 256,
+        "class": "fixed inset-0 z-50 flex items-center justify-center bg-black/40",
+        "text": "작업 승인 승인 대기 중인 작업을 검토하고 담당자를 지정하여 승인합니다. 담당자가 지정된 작업은 승인 후 시작할 수 있습니다. 작업 제목 결제 오류 재현 작업 내용 실패 조건을 재"
+      },
+      {
+        "tag": "div",
+        "line": 258,
+        "class": "w-[600px] bg-white rounded-lg border border-borderLine shadow-2xl flex flex-col overflow-hidden",
+        "text": "작업 승인 승인 대기 중인 작업을 검토하고 담당자를 지정하여 승인합니다. 담당자가 지정된 작업은 승인 후 시작할 수 있습니다. 작업 제목 결제 오류 재현 작업 내용 실패 조건을 재"
+      }
+    ],
+    "tables": [
+      {
+        "line": 131,
+        "headers": [
+          "번호",
+          "작업 제목",
+          "담당자",
+          "상태"
+        ],
+        "rows": 7,
+        "class": "w-full text-left border-collapse"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "input",
+        "line": 289,
+        "name": "assignee",
+        "type": "radio",
+        "text": ""
+      },
+      {
+        "tag": "input",
+        "line": 297,
+        "name": "assignee",
+        "type": "radio",
+        "text": ""
+      },
+      {
+        "tag": "input",
+        "line": 305,
+        "name": "assignee",
+        "type": "radio",
+        "text": ""
+      }
+    ],
+    "buttons": [
+      {
+        "line": 214,
+        "text": "이전",
+        "disabled": true,
+        "class": "px-1.5 py-1 text-neutral-300 cursor-not-allowed"
+      },
+      {
+        "line": 215,
+        "text": "다음",
+        "disabled": true,
+        "class": "px-1.5 py-1 text-neutral-300 cursor-not-allowed"
+      },
+      {
+        "line": 247,
+        "text": "작업 승인",
+        "disabled": false,
+        "class": "w-full py-2.5 bg-[#245C45] text-white text-sm font-medium rounded hover:bg-[#1b4634] transition-colors"
+      },
+      {
+        "line": 262,
+        "text": "",
+        "disabled": false,
+        "class": "w-8 h-8 rounded flex items-center justify-center text-neutral-500 hover:text-neutral-800 hover:bg-neutral-100 transition-colors"
+      },
+      {
+        "line": 316,
+        "text": "취소",
+        "disabled": false,
+        "class": "px-4 py-2 border border-neutral-300 bg-white text-neutral-700 text-sm font-medium rounded hover:bg-neutral-50 transition-colors"
+      },
+      {
+        "line": 319,
+        "text": "승인",
+        "disabled": false,
+        "class": "px-5 py-2 bg-[#245C45] text-white text-sm font-medium rounded hover:bg-[#1b4634] transition-colors"
+      }
+    ],
+    "labels": [
+      "담당자 지정",
+      "현재 담당자 유지 · 이민지 현재 담당자를 그대로 유지합니다.",
+      "다른 멤버 지정 프로젝트의 다른 멤버에게 작업을 배정합니다.",
+      "미할당 미할당으로 승인 시, 작업 시작 전에 담당자 배정이 필요합니다."
+    ],
+    "explicitWidthReferences": [
+      {
+        "line": 61,
+        "html": "<div class=\"relative w-full h-screen min-w-[1440px] flex\">"
+      },
+      {
+        "line": 63,
+        "html": "<aside class=\"w-[216px] h-screen border-r border-borderLine bg-white flex flex-col justify-between shrink-0 z-10\">"
+      },
+      {
+        "line": 221,
+        "html": "<div class=\"w-[360px] bg-white flex flex-col p-6 shrink-0\">"
+      },
+      {
+        "line": 258,
+        "html": "<div class=\"w-[600px] bg-white rounded-lg border border-borderLine shadow-2xl flex flex-col overflow-hidden\">"
+      }
+    ]
+  },
+  {
+    "file": "14.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "프로젝트 개요",
+        "line": 99
+      },
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 115
+      },
+      {
+        "tag": "h3",
+        "text": "결제 오류 재현",
+        "line": 242
+      },
+      {
+        "tag": "h2",
+        "text": "작업 반려",
+        "line": 272
+      }
+    ],
+    "layers": [
+      {
+        "tag": "body",
+        "line": 53,
+        "class": "w-[1440px] min-h-[1000px] overflow-hidden relative bg-[#F7F8F7] text-[#202622]",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 결제 안정화 작업 멤버 설정 새 작업 생성 프로젝트 개요 박 박준호 · 관리자 결제 안정화 결제 오류를 재현하고 수정 작업"
+      },
+      {
+        "tag": "aside",
+        "line": 55,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between z-10 select-none",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 결제 안정화 작업 멤버 설정 새 작업 생성"
+      },
+      {
+        "tag": "header",
+        "line": 98,
+        "class": "fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-[#DDE2DE] flex justify-between items-center px-8 z-10",
+        "text": "프로젝트 개요 박 박준호 · 관리자"
+      },
+      {
+        "tag": "main",
+        "line": 108,
+        "class": "ml-[216px] mt-16 p-8 min-h-[calc(100vh-64px)] flex gap-6",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 전체 번호 작업 제목 상태 담당자 생성자 생성일 #107 결제 취소 흐름 점검 승인됨 미할당 김서연 202"
+      },
+      {
+        "tag": "div",
+        "line": 267,
+        "class": "fixed inset-0 bg-black/40 z-40 backdrop-blur-[0.5px]",
+        "text": ""
+      },
+      {
+        "tag": "div",
+        "line": 269,
+        "class": "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] bg-white rounded shadow-2xl border border-[#DDE2DE] z-50 overflow-hidden flex flex-col",
+        "text": "작업 반려 반려 사유가 작업 상세에 표시됩니다. 작업 결제 오류 재현 생성자: 이민지 · 생성일: 2026.09.15 반려 사유 * 반려 사유를 입력해 주세요. 취소 반려"
+      }
+    ],
+    "tables": [
+      {
+        "line": 124,
+        "headers": [
+          "번호",
+          "작업 제목",
+          "상태",
+          "담당자",
+          "생성자",
+          "생성일"
+        ],
+        "rows": 7,
+        "class": "w-full text-sm text-left border-collapse"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "textarea",
+        "line": 300,
+        "id": "reject-reason",
+        "placeholder": "완료 조건을 더 구체적으로 작성해 주세요.",
+        "text": ""
+      }
+    ],
+    "buttons": [
+      {
+        "line": 64,
+        "text": "내 프로젝트로",
+        "disabled": false,
+        "class": "w-full flex items-center gap-2 px-2 py-1.5 text-xs text-neutral-600 hover:text-neutral-900 transition-colors"
+      },
+      {
+        "line": 91,
+        "text": "새 작업 생성",
+        "disabled": false,
+        "class": "w-full py-2 bg-[#245C45] text-white text-sm font-medium rounded flex items-center justify-center gap-1.5 hover:bg-[#1b4634] transition-colors"
+      },
+      {
+        "line": 222,
+        "text": "",
+        "disabled": true,
+        "class": "p-1 text-neutral-300 cursor-not-allowed"
+      },
+      {
+        "line": 226,
+        "text": "",
+        "disabled": true,
+        "class": "p-1 text-neutral-300 cursor-not-allowed"
+      },
+      {
+        "line": 261,
+        "text": "반려",
+        "disabled": false,
+        "class": "flex-1 py-2 text-xs font-medium border border-[#DDE2DE] text-neutral-700 rounded hover:bg-neutral-50 transition-colors"
+      },
+      {
+        "line": 262,
+        "text": "승인",
+        "disabled": false,
+        "class": "flex-1 py-2 text-xs font-medium bg-[#245C45] text-white rounded hover:bg-[#1b4634] transition-colors"
+      },
+      {
+        "line": 273,
+        "text": "",
+        "disabled": false,
+        "class": "text-neutral-400 hover:text-neutral-600 transition-colors"
+      },
+      {
+        "line": 311,
+        "text": "취소",
+        "disabled": false,
+        "class": "px-4 py-2 border border-[#DDE2DE] bg-white text-neutral-700 hover:bg-neutral-50 text-sm font-medium rounded transition-colors"
+      },
+      {
+        "line": 314,
+        "text": "반려",
+        "disabled": false,
+        "class": "px-4 py-2 bg-[#245C45] hover:bg-[#1b4634] text-white text-sm font-medium rounded transition-colors"
+      }
+    ],
+    "labels": [
+      "반려 사유 *"
+    ],
+    "explicitWidthReferences": [
+      {
+        "line": 53,
+        "html": "<body class=\"w-[1440px] min-h-[1000px] overflow-hidden relative bg-[#F7F8F7] text-[#202622]\">"
+      },
+      {
+        "line": 55,
+        "html": "<aside class=\"fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between z-10 select-none\">"
+      },
+      {
+        "line": 235,
+        "html": "<div class=\"w-[380px] bg-white border border-[#DDE2DE] rounded flex flex-col justify-between p-6\">"
+      },
+      {
+        "line": 269,
+        "html": "<div class=\"fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] bg-white rounded shadow-2xl border border-[#DDE2DE] z-50 overflow-hidden flex flex-col\">"
+      }
+    ]
+  },
+  {
+    "file": "15.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "결제 안정화",
+        "line": 111
+      },
+      {
+        "tag": "h2",
+        "text": "결제 오류 수정 검토",
+        "line": 188
+      },
+      {
+        "tag": "h3",
+        "text": "작업 내용",
+        "line": 214
+      },
+      {
+        "tag": "h3",
+        "text": "상세 정보",
+        "line": 221
+      },
+      {
+        "tag": "h3",
+        "text": "보완을 요청할까요?",
+        "line": 250
+      }
+    ],
+    "layers": [
+      {
+        "tag": "aside",
+        "line": 63,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between select-none z-30",
+        "text": "Project Collab 업무 협업 도구 ← 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 98,
+        "class": "fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-[#DDE2DE] flex justify-between items-center px-8 z-20",
+        "text": "프로젝트 개요 박준호 · 관리자"
+      },
+      {
+        "tag": "main",
+        "line": 108,
+        "class": "flex-1 p-8 pr-[700px] bg-[#FFFFFF] min-h-[calc(100vh-64px)]",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 전체 진행 중 검토 중 승인 대기 완료 검색 번호 제목 담당자 상태 #107 결제 취소 흐름 점검 미할당 "
+      },
+      {
+        "tag": "aside",
+        "line": 155,
+        "class": "fixed top-16 right-0 w-[680px] h-[calc(100vh-64px)] bg-white border-l border-[#DDE2DE] flex flex-col justify-between z-20 shadow-[-4px_0_12px_rgba(0,0,0,0.03)]",
+        "text": "#105 작업 상세 정보 담당자 해제 작업 삭제 검토 중 결제 오류 수정 검토 작업 내용을 확인하고 완료하거나 보완을 요청하세요. 완료 처리 보완 요청 내용 수정 작업 내용 오류 "
+      },
+      {
+        "tag": "div",
+        "line": 250,
+        "class": "fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40",
+        "text": "보완을 요청할까요? 검토 중 #105 결제 오류 수정 검토 생성자: 김서연 · 담당자: 이민지 작업이 진행 중으로 돌아갑니다. 취소 보완 요청"
+      },
+      {
+        "tag": "div",
+        "line": 250,
+        "class": "bg-white w-[580px] max-w-full rounded border border-[#DDE2DE] shadow-xl p-6 flex flex-col",
+        "text": "보완을 요청할까요? 검토 중 #105 결제 오류 수정 검토 생성자: 김서연 · 담당자: 이민지 작업이 진행 중으로 돌아갑니다. 취소 보완 요청"
+      }
+    ],
+    "tables": [
+      {
+        "line": 139,
+        "headers": [
+          "번호",
+          "제목",
+          "담당자",
+          "상태"
+        ],
+        "rows": 7,
+        "class": "w-full text-left text-xs border-collapse"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "select",
+        "line": 120,
+        "text": "전체 진행 중 검토 중 승인 대기 완료"
+      },
+      {
+        "tag": "input",
+        "line": 130,
+        "placeholder": "작업명 검색",
+        "type": "text",
+        "text": ""
+      }
+    ],
+    "buttons": [
+      {
+        "line": 132,
+        "text": "검색",
+        "disabled": false,
+        "class": "px-3 py-2 bg-[#F7F8F7] border border-[#DDE2DE] text-xs text-[#202622] rounded hover:bg-[#EAEFEA] transition-colors"
+      },
+      {
+        "line": 152,
+        "text": "",
+        "disabled": true,
+        "class": "w-7 h-7 flex items-center justify-center border border-[#DDE2DE] rounded bg-white text-[#69736C] disabled:opacity-40"
+      },
+      {
+        "line": 152,
+        "text": "",
+        "disabled": true,
+        "class": "w-7 h-7 flex items-center justify-center border border-[#DDE2DE] rounded bg-white text-[#69736C] disabled:opacity-40"
+      },
+      {
+        "line": 166,
+        "text": "",
+        "disabled": false,
+        "class": "w-8 h-8 flex items-center justify-center text-[#69736C] hover:text-[#202622] hover:bg-[#F7F8F7] rounded transition-colors"
+      },
+      {
+        "line": 171,
+        "text": "담당자 해제",
+        "disabled": false,
+        "class": "w-full text-left px-3 py-2 text-xs text-[#202622] hover:bg-[#F7F8F7] transition-colors"
+      },
+      {
+        "line": 172,
+        "text": "작업 삭제",
+        "disabled": false,
+        "class": "w-full text-left px-3 py-2 text-xs text-red-600 hover:bg-[#F7F8F7] transition-colors"
+      },
+      {
+        "line": 176,
+        "text": "",
+        "disabled": false,
+        "class": "w-8 h-8 flex items-center justify-center text-[#69736C] hover:text-[#202622] hover:bg-[#F7F8F7] rounded transition-colors"
+      },
+      {
+        "line": 199,
+        "text": "완료 처리",
+        "disabled": false,
+        "class": "px-4 py-2 bg-[#245C45] hover:bg-[#1d4b38] text-white text-xs font-medium rounded transition-colors"
+      },
+      {
+        "line": 203,
+        "text": "보완 요청",
+        "disabled": false,
+        "class": "px-4 py-2 bg-white hover:bg-[#F7F8F7] border border-[#DDE2DE] text-xs font-medium text-[#202622] rounded transition-colors"
+      },
+      {
+        "line": 207,
+        "text": "내용 수정",
+        "disabled": false,
+        "class": "px-3 py-2 text-xs text-[#69736C] hover:text-[#202622] rounded transition-colors ml-1"
+      },
+      {
+        "line": 231,
+        "text": "변경",
+        "disabled": false,
+        "class": "text-[11px] text-[#245C45] hover:underline font-medium ml-1"
+      },
+      {
+        "line": 250,
+        "text": "",
+        "disabled": false,
+        "class": "w-7 h-7 flex items-center justify-center text-[#69736C] hover:text-[#202622] rounded transition-colors"
+      },
+      {
+        "line": 250,
+        "text": "취소",
+        "disabled": false,
+        "class": "px-4 py-2 border border-[#DDE2DE] text-xs font-medium text-[#202622] bg-white hover:bg-[#F7F8F7] rounded transition-colors"
+      },
+      {
+        "line": 250,
+        "text": "보완 요청",
+        "disabled": false,
+        "class": "px-4 py-2 bg-[#245C45] hover:bg-[#1d4b38] text-white text-xs font-medium rounded transition-colors"
+      }
+    ],
+    "labels": [],
+    "explicitWidthReferences": [
+      {
+        "line": 63,
+        "html": "<aside class=\"fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between select-none z-30\">"
+      },
+      {
+        "line": 155,
+        "html": "<aside class=\"fixed top-16 right-0 w-[680px] h-[calc(100vh-64px)] bg-white border-l border-[#DDE2DE] flex flex-col justify-between z-20 shadow-[-4px_0_12px_rgba(0,0,0,0.03)]\">"
+      },
+      {
+        "line": 250,
+        "html": "<div class=\"fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40\"><div class=\"bg-white w-[580px] max-w-full rounded border border-[#DDE2DE] shadow-xl p-6 flex flex-col\"><div class=\"flex items-center justify-between pb-4 border-b border-[#DDE2DE]\"><h3 class=\"text-base font-bold text-[#202622]\">보완을 요청할까요?</h3><button class=\"w-7 h-7 flex items-center justify-center text-[#69736C] hover:text-[#202622] rounded transition-colors\" title=\"닫기\" type=\"button\"><span class=\"material-symbols-outlined text-base\">close</span></button></div><div class=\"py-5\"><div class=\"p-4 bg-[#F7F8F7] border border-[#DDE2DE] rounded mb-3\"><div class=\"flex items-center gap-2 mb-1\"><span class=\"inline-block text-[11px] px-2 py-0.5 bg-purple-50 text-purple-700 border border-purple-200 rounded font-medium\">검토 중</span><span class=\"text-xs text-[#69736C]\">#105</span></div><div class=\"text-sm font-semibold text-[#202622] mb-1.5\">결제 오류 수정 검토</div><div class=\"text-xs text-[#69736C] flex items-center gap-2\"><span>생성자: 김서연</span><span class=\"text-[#DDE2DE]\">·</span><span>담당자: 이민지</span></div></div><p class=\"text-sm text-[#69736C] leading-relaxed\">작업이 진행 중으로 돌아갑니다.</p></div><div class=\"flex items-center justify-end gap-2.5 pt-4 border-t border-[#DDE2DE]\"><button class=\"px-4 py-2 border border-[#DDE2DE] text-xs font-medium text-[#202622] bg-white hover:bg-[#F7F8F7] rounded transition-colors\" type=\"button\">취소</button><button class=\"px-4 py-2 bg-[#245C45] hover:bg-[#1d4b38] text-white text-xs font-medium rounded transition-colors\" type=\"button\">보완 요청</button></div></div></div></body></html>"
+      }
+    ]
+  },
+  {
+    "file": "16.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Project Collab",
+        "line": 53
+      },
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 112
+      },
+      {
+        "tag": "h3",
+        "text": "멤버",
+        "line": 127
+      }
+    ],
+    "layers": [
+      {
+        "tag": "aside",
+        "line": 50,
+        "class": "w-[216px] min-h-screen bg-white border-r border-[#DDE2DE] flex flex-col shrink-0 select-none",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 97,
+        "class": "h-14 bg-white border-b border-[#DDE2DE] px-8 flex items-center justify-between shrink-0",
+        "text": "프로젝트 개요 박준호 · 관리자"
+      },
+      {
+        "tag": "main",
+        "line": 107,
+        "class": "p-8 max-w-6xl w-full mx-auto flex flex-col gap-6",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 생성일 2026.09.15 | 최근 수정일 2026.09.16 멤버 멤버 추가 이름 사용자 ID 이메일 역"
+      }
+    ],
+    "tables": [
+      {
+        "line": 138,
+        "headers": [
+          "이름",
+          "사용자 ID",
+          "이메일",
+          "역할",
+          "참여일",
+          "관리"
+        ],
+        "rows": 3,
+        "class": "w-full text-left border-collapse"
+      }
+    ],
+    "inputs": [],
+    "buttons": [
+      {
+        "line": 129,
+        "text": "멤버 추가",
+        "disabled": false,
+        "class": "inline-flex items-center gap-1.5 bg-[#245C45] hover:bg-[#1b4735] text-white text-sm font-medium px-4 py-2 rounded transition-colors"
+      },
+      {
+        "line": 161,
+        "text": "역할 변경",
+        "disabled": false,
+        "class": "text-xs text-[#202622] hover:text-[#245C45] font-medium transition-colors"
+      },
+      {
+        "line": 166,
+        "text": "멤버 제거",
+        "disabled": true,
+        "class": "text-xs text-[#DDE2DE] cursor-not-allowed font-medium"
+      },
+      {
+        "line": 187,
+        "text": "역할 변경",
+        "disabled": false,
+        "class": "text-xs text-[#202622] hover:text-[#245C45] font-medium transition-colors"
+      },
+      {
+        "line": 191,
+        "text": "멤버 제거",
+        "disabled": false,
+        "class": "text-xs text-[#6B726C] hover:text-red-700 font-medium transition-colors"
+      },
+      {
+        "line": 208,
+        "text": "역할 변경",
+        "disabled": false,
+        "class": "text-xs text-[#202622] hover:text-[#245C45] font-medium transition-colors"
+      },
+      {
+        "line": 212,
+        "text": "멤버 제거",
+        "disabled": false,
+        "class": "text-xs text-[#6B726C] hover:text-red-700 font-medium transition-colors"
+      }
+    ],
+    "labels": [],
+    "explicitWidthReferences": [
+      {
+        "line": 50,
+        "html": "<aside class=\"w-[216px] min-h-screen bg-white border-r border-[#DDE2DE] flex flex-col shrink-0 select-none\">"
+      }
+    ]
+  },
+  {
+    "file": "17.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "프로젝트 개요",
+        "line": 101
+      },
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 112
+      },
+      {
+        "tag": "h3",
+        "text": "멤버",
+        "line": 123
+      },
+      {
+        "tag": "h2",
+        "text": "멤버 추가",
+        "line": 202
+      }
+    ],
+    "layers": [
+      {
+        "tag": "body",
+        "line": 62,
+        "class": "w-[1440px] min-h-[1000px] mx-auto bg-white relative overflow-hidden text-[#202622]",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 결제 안정화 작업 멤버 설정 프로젝트 개요 박준호 · 관리자 결제 안정화 생성일 2026.09.15 | 최근 수정일 202"
+      },
+      {
+        "tag": "div",
+        "line": 64,
+        "class": "flex w-[1440px] min-h-[1000px] bg-white select-none",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 결제 안정화 작업 멤버 설정 프로젝트 개요 박준호 · 관리자 결제 안정화 생성일 2026.09.15 | 최근 수정일 202"
+      },
+      {
+        "tag": "aside",
+        "line": 66,
+        "class": "w-[216px] h-[1000px] border-r border-neutral-200 bg-white flex flex-col justify-between p-4 shrink-0",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 100,
+        "class": "h-16 border-b border-neutral-200 px-8 flex items-center justify-between bg-white shrink-0",
+        "text": "프로젝트 개요 박준호 · 관리자"
+      },
+      {
+        "tag": "main",
+        "line": 108,
+        "class": "p-8 flex-1 bg-white flex flex-col gap-6",
+        "text": "결제 안정화 생성일 2026.09.15 | 최근 수정일 2026.09.16 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 멤버 멤버 추가 이름 사용자 ID 이메일 역"
+      },
+      {
+        "tag": "div",
+        "line": 196,
+        "class": "fixed inset-0 bg-black/40 z-40 backdrop-blur-[0.5px] transition-opacity",
+        "text": ""
+      },
+      {
+        "tag": "div",
+        "line": 198,
+        "class": "fixed inset-0 z-50 flex items-center justify-center p-4",
+        "text": "멤버 추가 사용자 ID * 사용자 확인 확인된 사용자 정보 사용자가 확인되었습니다 이름 최유진 사용자 ID 4 이메일 yujin@example.com 추가되는 역할 멤버 사용자 I"
+      },
+      {
+        "tag": "div",
+        "line": 199,
+        "class": "w-[600px] bg-white rounded border border-neutral-200 shadow-xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-100",
+        "text": "멤버 추가 사용자 ID * 사용자 확인 확인된 사용자 정보 사용자가 확인되었습니다 이름 최유진 사용자 ID 4 이메일 yujin@example.com 추가되는 역할 멤버 사용자 I"
+      }
+    ],
+    "tables": [
+      {
+        "line": 131,
+        "headers": [
+          "이름",
+          "사용자 ID",
+          "이메일",
+          "역할",
+          "참여일",
+          "관리"
+        ],
+        "rows": 3,
+        "class": "w-full text-left text-sm border-collapse"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "input",
+        "line": 215,
+        "id": "user-id-input",
+        "type": "text",
+        "value": "4",
+        "text": ""
+      }
+    ],
+    "buttons": [
+      {
+        "line": 124,
+        "text": "멤버 추가",
+        "disabled": false,
+        "class": "h-9 px-4 bg-[#245C45] text-white text-sm font-medium rounded flex items-center gap-1.5"
+      },
+      {
+        "line": 203,
+        "text": "닫기",
+        "disabled": false,
+        "class": "w-8 h-8 rounded flex items-center justify-center text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"
+      },
+      {
+        "line": 216,
+        "text": "사용자 확인",
+        "disabled": false,
+        "class": "h-9 px-4 rounded border border-neutral-300 bg-white text-neutral-700 text-sm font-medium hover:bg-neutral-50 transition-colors shrink-0"
+      },
+      {
+        "line": 256,
+        "text": "취소",
+        "disabled": false,
+        "class": "h-9 px-4 rounded border border-neutral-300 bg-white text-neutral-700 text-sm font-medium hover:bg-neutral-50 transition-colors"
+      },
+      {
+        "line": 259,
+        "text": "추가",
+        "disabled": false,
+        "class": "h-9 px-4 rounded bg-[#245C45] hover:bg-[#1b4634] text-white text-sm font-medium transition-colors"
+      }
+    ],
+    "labels": [
+      "사용자 ID *"
+    ],
+    "explicitWidthReferences": [
+      {
+        "line": 62,
+        "html": "<body class=\"w-[1440px] min-h-[1000px] mx-auto bg-white relative overflow-hidden text-[#202622]\">"
+      },
+      {
+        "line": 64,
+        "html": "<div aria-hidden=\"true\" class=\"flex w-[1440px] min-h-[1000px] bg-white select-none\">"
+      },
+      {
+        "line": 66,
+        "html": "<aside class=\"w-[216px] h-[1000px] border-r border-neutral-200 bg-white flex flex-col justify-between p-4 shrink-0\">"
+      },
+      {
+        "line": 134,
+        "html": "<th class=\"px-4 w-[160px]\">이름</th>"
+      },
+      {
+        "line": 135,
+        "html": "<th class=\"px-4 w-[100px]\">사용자 ID</th>"
+      },
+      {
+        "line": 136,
+        "html": "<th class=\"px-4 w-[240px]\">이메일</th>"
+      },
+      {
+        "line": 137,
+        "html": "<th class=\"px-4 w-[120px]\">역할</th>"
+      },
+      {
+        "line": 138,
+        "html": "<th class=\"px-4 w-[120px]\">참여일</th>"
+      },
+      {
+        "line": 199,
+        "html": "<div aria-labelledby=\"modal-title\" aria-modal=\"true\" class=\"w-[600px] bg-white rounded border border-neutral-200 shadow-xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-100\" role=\"dialog\">"
+      }
+    ]
+  },
+  {
+    "file": "18.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "프로젝트 개요",
+        "line": 117
+      },
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 131
+      },
+      {
+        "tag": "h3",
+        "text": "멤버",
+        "line": 147
+      },
+      {
+        "tag": "h3",
+        "text": "역할 변경",
+        "line": 245
+      }
+    ],
+    "layers": [
+      {
+        "tag": "body",
+        "line": 68,
+        "class": "w-[1440px] min-h-[1000px] mx-auto relative antialiased bg-[#F7F8F7] text-[#202622] overflow-x-hidden selection:bg-[#245C45] selection:text-white",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정 프로젝트 공간 프로젝트 개요 박준호 · 관리자 프로젝트 정보 결제 안정화 결제 "
+      },
+      {
+        "tag": "aside",
+        "line": 72,
+        "class": "w-[216px] min-h-screen bg-white border-r border-[#DDE2DE] flex flex-col justify-between select-none shrink-0 fixed top-0 left-0 bottom-0 z-10",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정 프로젝트 공간"
+      },
+      {
+        "tag": "header",
+        "line": 116,
+        "class": "h-16 bg-white border-b border-[#DDE2DE] px-8 flex items-center justify-between sticky top-0 z-20",
+        "text": "프로젝트 개요 박준호 · 관리자"
+      },
+      {
+        "tag": "main",
+        "line": 125,
+        "class": "p-8 flex flex-col gap-6",
+        "text": "프로젝트 정보 결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 생성일 2026.09.15 최근 수정일 2026.09.16 멤버 총 3명 멤버 추가 이름 사"
+      },
+      {
+        "tag": "div",
+        "line": 240,
+        "class": "fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4",
+        "text": "역할 변경 김서연 사용자 ID 1 seoyeon@example.com 현재 역할: 소유자 새 역할 선택 소유자 현재 역할 프로젝트의 모든 권한과 소유권을 가집니다. 관리자 멤버 및"
+      },
+      {
+        "tag": "div",
+        "line": 242,
+        "class": "w-[600px] bg-white rounded-lg border border-[#DDE2DE] shadow-xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-150",
+        "text": "역할 변경 김서연 사용자 ID 1 seoyeon@example.com 현재 역할: 소유자 새 역할 선택 소유자 현재 역할 프로젝트의 모든 권한과 소유권을 가집니다. 관리자 멤버 및"
+      }
+    ],
+    "tables": [
+      {
+        "line": 157,
+        "headers": [
+          "이름",
+          "사용자 ID",
+          "이메일",
+          "역할",
+          "참여일",
+          "관리"
+        ],
+        "rows": 3,
+        "class": "w-full text-left border-collapse"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "input",
+        "line": 273,
+        "name": "project_role",
+        "type": "radio",
+        "value": "owner",
+        "text": ""
+      },
+      {
+        "tag": "input",
+        "line": 288,
+        "disabled": "",
+        "name": "project_role",
+        "type": "radio",
+        "value": "admin",
+        "text": ""
+      },
+      {
+        "tag": "input",
+        "line": 302,
+        "disabled": "",
+        "name": "project_role",
+        "type": "radio",
+        "value": "member",
+        "text": ""
+      }
+    ],
+    "buttons": [
+      {
+        "line": 150,
+        "text": "멤버 추가",
+        "disabled": false,
+        "class": "inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#245C45] text-white text-xs font-medium rounded hover:bg-[#1d4b38] transition-colors"
+      },
+      {
+        "line": 182,
+        "text": "역할 변경",
+        "disabled": false,
+        "class": "hover:underline"
+      },
+      {
+        "line": 184,
+        "text": "멤버 제거",
+        "disabled": false,
+        "class": "text-[#8A948D] cursor-not-allowed"
+      },
+      {
+        "line": 201,
+        "text": "역할 변경",
+        "disabled": false,
+        "class": "hover:text-[#202622]"
+      },
+      {
+        "line": 203,
+        "text": "멤버 제거",
+        "disabled": false,
+        "class": "hover:text-[#202622]"
+      },
+      {
+        "line": 220,
+        "text": "역할 변경",
+        "disabled": false,
+        "class": "hover:text-[#202622]"
+      },
+      {
+        "line": 222,
+        "text": "멤버 제거",
+        "disabled": false,
+        "class": "hover:text-[#202622]"
+      },
+      {
+        "line": 246,
+        "text": "닫기",
+        "disabled": false,
+        "class": "w-8 h-8 -mr-2 rounded flex items-center justify-center text-[#667069] hover:text-[#202622] hover:bg-[#F7F8F7] transition-colors"
+      },
+      {
+        "line": 324,
+        "text": "취소",
+        "disabled": false,
+        "class": "h-9 px-4 rounded text-xs font-medium text-[#202622] bg-white border border-[#DDE2DE] hover:bg-[#F7F8F7] transition-colors"
+      },
+      {
+        "line": 327,
+        "text": "변경사항 저장",
+        "disabled": true,
+        "class": "h-9 px-4 rounded text-xs font-medium text-[#8A948D] bg-neutral-200 border border-neutral-300 cursor-not-allowed"
+      }
+    ],
+    "labels": [
+      "소유자 현재 역할 프로젝트의 모든 권한과 소유권을 가집니다.",
+      "관리자 멤버 및 작업 관리 권한",
+      "멤버 작업 제안 및 할당된 작업 수행"
+    ],
+    "explicitWidthReferences": [
+      {
+        "line": 68,
+        "html": "<body class=\"w-[1440px] min-h-[1000px] mx-auto relative antialiased bg-[#F7F8F7] text-[#202622] overflow-x-hidden selection:bg-[#245C45] selection:text-white\">"
+      },
+      {
+        "line": 72,
+        "html": "<aside class=\"w-[216px] min-h-screen bg-white border-r border-[#DDE2DE] flex flex-col justify-between select-none shrink-0 fixed top-0 left-0 bottom-0 z-10\">"
+      },
+      {
+        "line": 242,
+        "html": "<div class=\"w-[600px] bg-white rounded-lg border border-[#DDE2DE] shadow-xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-150\">"
+      }
+    ]
+  },
+  {
+    "file": "19.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "프로젝트 개요",
+        "line": 106
+      },
+      {
+        "tag": "h2",
+        "text": "프로젝트 설정",
+        "line": 117
+      },
+      {
+        "tag": "h3",
+        "text": "프로젝트 삭제",
+        "line": 149
+      }
+    ],
+    "layers": [
+      {
+        "tag": "aside",
+        "line": 64,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between p-4 select-none z-20",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 104,
+        "class": "fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-[#DDE2DE] flex items-center justify-between px-8 z-10",
+        "text": "프로젝트 개요 김서연 · 소유자"
+      },
+      {
+        "tag": "main",
+        "line": 114,
+        "class": "flex-1 mt-16 p-8 bg-white",
+        "text": "프로젝트 설정 프로젝트 이름 * 프로젝트 설명 * 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 생성일: 2026.09.15 최근 수정일: 2026.09.16 변경사"
+      }
+    ],
+    "tables": [],
+    "inputs": [
+      {
+        "tag": "input",
+        "line": 124,
+        "id": "project-name",
+        "name": "project-name",
+        "type": "text",
+        "value": "결제 안정화",
+        "text": ""
+      },
+      {
+        "tag": "textarea",
+        "line": 130,
+        "id": "project-description",
+        "name": "project-description",
+        "text": "결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다."
+      }
+    ],
+    "buttons": [
+      {
+        "line": 140,
+        "text": "변경사항 저장",
+        "disabled": false,
+        "class": "px-5 h-10 bg-[#245C45] hover:bg-[#1b4735] text-white text-sm font-medium rounded transition-colors duration-150 inline-flex items-center justify-center"
+      },
+      {
+        "line": 153,
+        "text": "프로젝트 삭제",
+        "disabled": false,
+        "class": "px-4 h-9 border border-[#B3261E] text-[#B3261E] hover:bg-[#FDF2F2] text-sm font-medium rounded transition-colors duration-150 inline-flex items-center justify-center"
+      }
+    ],
+    "labels": [
+      "프로젝트 이름 *",
+      "프로젝트 설명 *"
+    ],
+    "explicitWidthReferences": [
+      {
+        "line": 64,
+        "html": "<aside class=\"fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between p-4 select-none z-20\">"
+      },
+      {
+        "line": 115,
+        "html": "<div class=\"max-w-[760px]\">"
+      }
+    ]
+  },
+  {
+    "file": "20.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "결제 안정화",
+        "line": 113
+      },
+      {
+        "tag": "h2",
+        "text": "작업",
+        "line": 123
+      },
+      {
+        "tag": "h2",
+        "text": "중복 결제 방지 처리",
+        "line": 277
+      },
+      {
+        "tag": "h3",
+        "text": "작업 내용 수정",
+        "line": 331
+      },
+      {
+        "tag": "h3",
+        "text": "최신 내용을 확인해 주세요",
+        "line": 372
+      }
+    ],
+    "layers": [
+      {
+        "tag": "aside",
+        "line": 57,
+        "class": "w-[216px] border-r border-neutral-200 bg-white flex flex-col justify-between py-5 shrink-0 select-none",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 99,
+        "class": "h-14 border-b border-neutral-200 bg-white flex items-center justify-between px-8 shrink-0",
+        "text": "프로젝트 개요 이민지 · 멤버"
+      },
+      {
+        "tag": "div",
+        "line": 327,
+        "class": "fixed inset-0 bg-black/40 z-20 flex items-center justify-center pointer-events-none",
+        "text": "작업 내용 수정 제목 * 작업 내용 * 중복 요청 식별 조건을 추가하고 반복 결제 요청이 한 번만 처리되는지 확인합니다. 내용을 변경하면 승인 대기로 돌아갑니다. 다시 승인받은 뒤"
+      },
+      {
+        "tag": "div",
+        "line": 356,
+        "class": "fixed inset-0 bg-black/60 z-30 flex items-center justify-center p-4",
+        "text": "작업 변경 충돌 최신 내용을 확인해 주세요 다른 사용자가 작업을 변경했습니다. 최신 내용을 확인한 뒤 다시 진행해 주세요. 작성 중인 수정 내용 작성 중이던 제목과 내용은 배경 폼"
+      },
+      {
+        "tag": "div",
+        "line": 358,
+        "class": "w-[600px] bg-white rounded border border-neutral-200 shadow-2xl overflow-hidden flex flex-col",
+        "text": "작업 변경 충돌 최신 내용을 확인해 주세요 다른 사용자가 작업을 변경했습니다. 최신 내용을 확인한 뒤 다시 진행해 주세요. 작성 중인 수정 내용 작성 중이던 제목과 내용은 배경 폼"
+      }
+    ],
+    "tables": [
+      {
+        "line": 147,
+        "headers": [
+          "번호",
+          "작업 제목",
+          "상태",
+          "담당자",
+          "생성자",
+          "최근 수정일"
+        ],
+        "rows": 7,
+        "class": "w-full text-left border-collapse"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "input",
+        "line": 138,
+        "type": "text",
+        "placeholder": "작업명 또는 내용 검색",
+        "text": ""
+      },
+      {
+        "tag": "input",
+        "line": 337,
+        "type": "text",
+        "value": "중복 결제 방지 처리",
+        "readonly": null,
+        "text": ""
+      },
+      {
+        "tag": "textarea",
+        "line": 341,
+        "readonly": null,
+        "text": "중복 요청 식별 조건을 추가하고 반복 결제 요청이 한 번만 처리되는지 확인합니다."
+      }
+    ],
+    "buttons": [
+      {
+        "line": 124,
+        "text": "새 작업 생성",
+        "disabled": false,
+        "class": "px-3.5 py-1.5 bg-primary text-white text-xs font-medium rounded hover:bg-primary-hover transition-colors"
+      },
+      {
+        "line": 140,
+        "text": "검색",
+        "disabled": false,
+        "class": "px-3 py-1.5 bg-neutral-100 border border-neutral-200 text-xs text-neutral-700 rounded hover:bg-neutral-200 transition-colors"
+      },
+      {
+        "line": 246,
+        "text": "",
+        "disabled": true,
+        "class": "px-1.5 py-1 text-neutral-300 cursor-not-allowed"
+      },
+      {
+        "line": 250,
+        "text": "",
+        "disabled": true,
+        "class": "px-1.5 py-1 text-neutral-300 cursor-not-allowed"
+      },
+      {
+        "line": 265,
+        "text": "",
+        "disabled": false,
+        "class": "p-1 hover:text-neutral-600 rounded"
+      },
+      {
+        "line": 268,
+        "text": "",
+        "disabled": false,
+        "class": "p-1 hover:text-neutral-600 rounded"
+      },
+      {
+        "line": 284,
+        "text": "검토 요청",
+        "disabled": false,
+        "class": "px-4 py-2 bg-primary text-white text-xs font-medium rounded"
+      },
+      {
+        "line": 285,
+        "text": "내용 수정",
+        "disabled": false,
+        "class": "px-4 py-2 bg-white border border-neutral-200 text-neutral-700 text-xs font-medium rounded"
+      },
+      {
+        "line": 365,
+        "text": "닫기",
+        "disabled": false,
+        "class": "text-neutral-400 hover:text-neutral-700 transition-colors p-1 rounded hover:bg-neutral-100"
+      },
+      {
+        "line": 393,
+        "text": "닫기",
+        "disabled": false,
+        "class": "px-4 py-2 border border-neutral-200 text-neutral-700 text-xs font-medium rounded hover:bg-white hover:border-neutral-300 transition-colors focus:outline-none"
+      },
+      {
+        "line": 396,
+        "text": "최신 내용 확인",
+        "disabled": false,
+        "class": "px-4 py-2 bg-primary text-white text-xs font-medium rounded hover:bg-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1"
+      }
+    ],
+    "labels": [
+      "제목 *",
+      "작업 내용 *"
+    ],
+    "explicitWidthReferences": [
+      {
+        "line": 57,
+        "html": "<aside class=\"w-[216px] border-r border-neutral-200 bg-white flex flex-col justify-between py-5 shrink-0 select-none\">"
+      },
+      {
+        "line": 259,
+        "html": "<div class=\"w-[440px] bg-white border-l border-neutral-200 flex flex-col justify-between shrink-0\">"
+      },
+      {
+        "line": 329,
+        "html": "<div class=\"w-[620px] bg-white rounded border border-neutral-300 shadow-xl opacity-80 pointer-events-none\">"
+      },
+      {
+        "line": 358,
+        "html": "<div class=\"w-[600px] bg-white rounded border border-neutral-200 shadow-2xl overflow-hidden flex flex-col\" role=\"dialog\" aria-modal=\"true\">"
+      }
+    ]
+  },
+  {
+    "file": "21.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "프로젝트 개요",
+        "line": 108
+      },
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 119
+      },
+      {
+        "tag": "h3",
+        "text": "작업",
+        "line": 135
+      }
+    ],
+    "layers": [
+      {
+        "tag": "aside",
+        "line": 64,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-surface border-r border-line flex flex-col justify-between select-none z-20",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 프로젝트 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 107,
+        "class": "fixed top-0 left-[216px] right-0 h-16 bg-surface border-b border-line flex items-center justify-between px-8 z-10",
+        "text": "프로젝트 개요 이민지 · 멤버"
+      },
+      {
+        "tag": "main",
+        "line": 114,
+        "class": "mt-16 p-8 flex-1 flex flex-col gap-6 max-w-[1224px] w-full",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 생성일: 2026.09.15 최근 수정일: 2026.09.16 작업 작업 만들기 전체 승인 대기 반려됨 승"
+      }
+    ],
+    "tables": [
+      {
+        "line": 162,
+        "headers": [
+          "번호",
+          "제목",
+          "상태",
+          "담당자",
+          "생성자",
+          "최근 수정일"
+        ],
+        "rows": 1,
+        "class": "w-full text-left border-collapse"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "select",
+        "line": 144,
+        "text": "전체 승인 대기 반려됨 승인됨 진행 중 검토 중 완료"
+      },
+      {
+        "tag": "input",
+        "line": 153,
+        "type": "text",
+        "value": "정산",
+        "text": ""
+      }
+    ],
+    "buttons": [
+      {
+        "line": 136,
+        "text": "작업 만들기",
+        "disabled": false,
+        "class": "inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors duration-150"
+      },
+      {
+        "line": 155,
+        "text": "검색",
+        "disabled": false,
+        "class": "h-9 px-4 bg-surface border border-line text-sm font-medium text-text-main rounded hover:bg-surface-subtle transition-colors duration-150"
+      },
+      {
+        "line": 184,
+        "text": "검색·필터 초기화",
+        "disabled": false,
+        "class": "px-4 py-2 text-sm font-medium text-text-main bg-surface border border-line rounded hover:bg-surface-subtle transition-colors duration-150"
+      },
+      {
+        "line": 202,
+        "text": "이전",
+        "disabled": true,
+        "class": "px-2 py-1 border border-line rounded text-text-muted opacity-40 cursor-not-allowed bg-surface-subtle"
+      },
+      {
+        "line": 205,
+        "text": "다음",
+        "disabled": true,
+        "class": "px-2 py-1 border border-line rounded text-text-muted opacity-40 cursor-not-allowed bg-surface-subtle"
+      }
+    ],
+    "labels": [],
+    "explicitWidthReferences": [
+      {
+        "line": 64,
+        "html": "<aside class=\"fixed left-0 top-0 h-screen w-[216px] bg-surface border-r border-line flex flex-col justify-between select-none z-20\">"
+      },
+      {
+        "line": 114,
+        "html": "<main class=\"mt-16 p-8 flex-1 flex flex-col gap-6 max-w-[1224px] w-full\">"
+      }
+    ]
+  },
+  {
+    "file": "22.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "결제 안정화",
+        "line": 141
+      },
+      {
+        "tag": "h2",
+        "text": "작업",
+        "line": 154
+      }
+    ],
+    "layers": [
+      {
+        "tag": "body",
+        "line": 86,
+        "class": "w-[1440px] min-w-[1440px] mx-auto min-h-screen text-[14px] leading-[1.6] bg-surface-sub text-ink selection:bg-brand-subtle selection:text-brand",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 프로젝트 결제 안정화 작업 멤버 설정 프로젝트 개요 이민지 · 멤버 결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 "
+      },
+      {
+        "tag": "aside",
+        "line": 88,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-surface-line flex flex-col justify-between p-4 select-none z-30",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 프로젝트 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 126,
+        "class": "fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-surface-line flex items-center justify-between px-8 z-20",
+        "text": "프로젝트 개요 이민지 · 멤버"
+      },
+      {
+        "tag": "main",
+        "line": 135,
+        "class": "ml-[216px] pt-16 p-8 min-h-screen",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 생성일: 2026.09.15 최근 수정일: 2026.09.16 작업 새 작업 만들기 상태: 전체 검색 작업"
+      }
+    ],
+    "tables": [
+      {
+        "line": 187,
+        "headers": [
+          "번호",
+          "제목",
+          "상태",
+          "담당자",
+          "생성자",
+          "최근 수정일"
+        ],
+        "rows": 6,
+        "class": "w-full text-left border-collapse table-fixed"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "input",
+        "line": 173,
+        "disabled": "",
+        "placeholder": "제목 또는 내용 검색",
+        "type": "text",
+        "text": ""
+      }
+    ],
+    "buttons": [
+      {
+        "line": 155,
+        "text": "새 작업 만들기",
+        "disabled": false,
+        "class": "inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-brand text-white text-[13px] font-medium rounded hover:bg-brand-hover transition-colors duration-150"
+      },
+      {
+        "line": 165,
+        "text": "상태: 전체",
+        "disabled": false,
+        "class": "inline-flex items-center gap-2 h-9 px-3 border border-surface-line rounded bg-white text-[13px] text-ink hover:border-ink-light transition-colors duration-150"
+      },
+      {
+        "line": 174,
+        "text": "검색",
+        "disabled": true,
+        "class": "h-9 px-3.5 border border-surface-line bg-surface-sub hover:bg-surface-line text-[13px] text-ink font-medium rounded transition-colors duration-150"
+      },
+      {
+        "line": 334,
+        "text": "이전",
+        "disabled": true,
+        "class": "px-2.5 py-1 text-ink-light border border-surface-line rounded bg-surface-sub cursor-not-allowed opacity-60"
+      },
+      {
+        "line": 337,
+        "text": "다음",
+        "disabled": true,
+        "class": "px-2.5 py-1 text-ink-light border border-surface-line rounded bg-surface-sub cursor-not-allowed opacity-60"
+      }
+    ],
+    "labels": [],
+    "explicitWidthReferences": [
+      {
+        "line": 86,
+        "html": "<body class=\"w-[1440px] min-w-[1440px] mx-auto min-h-screen text-[14px] leading-[1.6] bg-surface-sub text-ink selection:bg-brand-subtle selection:text-brand\">"
+      },
+      {
+        "line": 88,
+        "html": "<aside class=\"fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-surface-line flex flex-col justify-between p-4 select-none z-30\">"
+      },
+      {
+        "line": 136,
+        "html": "<div class=\"max-w-[1160px] mx-auto flex flex-col gap-6\">"
+      },
+      {
+        "line": 140,
+        "html": "<div class=\"flex flex-col gap-1 max-w-[760px]\">"
+      },
+      {
+        "line": 190,
+        "html": "<th class=\"w-[88px] px-6\">번호</th>"
+      },
+      {
+        "line": 192,
+        "html": "<th class=\"w-[110px] px-4\">상태</th>"
+      },
+      {
+        "line": 193,
+        "html": "<th class=\"w-[120px] px-4\">담당자</th>"
+      },
+      {
+        "line": 194,
+        "html": "<th class=\"w-[120px] px-4\">생성자</th>"
+      },
+      {
+        "line": 195,
+        "html": "<th class=\"w-[130px] px-6 text-right\">최근 수정일</th>"
+      }
+    ]
+  },
+  {
+    "file": "23.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "Project Collab",
+        "line": 64
+      },
+      {
+        "tag": "h2",
+        "text": "프로젝트에 접근할 권한이 없습니다.",
+        "line": 99
+      }
+    ],
+    "layers": [
+      {
+        "tag": "aside",
+        "line": 60,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between select-none z-20",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로"
+      },
+      {
+        "tag": "header",
+        "line": 79,
+        "class": "h-16 bg-white border-b border-[#DDE2DE] px-8 flex items-center justify-between sticky top-0 z-10",
+        "text": "프로젝트 개요 이 이민지"
+      },
+      {
+        "tag": "main",
+        "line": 92,
+        "class": "flex-1 p-8 flex items-center justify-center",
+        "text": "프로젝트에 접근할 권한이 없습니다. 현재 참여 중인 프로젝트를 확인해 주세요. 내 프로젝트로"
+      },
+      {
+        "tag": "div",
+        "line": 93,
+        "class": "w-full max-w-[480px] bg-white border border-[#DDE2DE] rounded p-12 flex flex-col items-center text-center shadow-none",
+        "text": "프로젝트에 접근할 권한이 없습니다. 현재 참여 중인 프로젝트를 확인해 주세요. 내 프로젝트로"
+      }
+    ],
+    "tables": [],
+    "inputs": [],
+    "buttons": [],
+    "labels": [],
+    "explicitWidthReferences": [
+      {
+        "line": 60,
+        "html": "<aside class=\"fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between select-none z-20\">"
+      },
+      {
+        "line": 93,
+        "html": "<div class=\"w-full max-w-[480px] bg-white border border-[#DDE2DE] rounded p-12 flex flex-col items-center text-center shadow-none\">"
+      }
+    ]
+  },
+  {
+    "file": "24.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "프로젝트 개요",
+        "line": 116
+      },
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 129
+      },
+      {
+        "tag": "h3",
+        "text": "작업",
+        "line": 142
+      },
+      {
+        "tag": "h2",
+        "text": "결제 오류 재현",
+        "line": 293
+      }
+    ],
+    "layers": [
+      {
+        "tag": "aside",
+        "line": 73,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between z-30",
+        "text": "Project Collab 업무 협업 도구 ← 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 114,
+        "class": "fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-[#DDE2DE] flex items-center justify-between px-8 z-20",
+        "text": "프로젝트 개요 이민지 · 관리자"
+      },
+      {
+        "tag": "main",
+        "line": 126,
+        "class": "flex-1 p-8 pr-6 overflow-y-auto max-w-[calc(1440px-216px-680px)]",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 생성일 2026.09.15 · 최근 수정일 2026.09.16 작업 전체 7건 + 새 작업 생성 전체 승인"
+      },
+      {
+        "tag": "section",
+        "line": 268,
+        "class": "w-[680px] bg-white border-l border-[#DDE2DE] flex flex-col justify-between shadow-sm min-h-[calc(100vh-64px)]",
+        "text": "#101 작업 상세 정보 ⋮ ✕ 승인 대기 결제 오류 재현 직접 만든 작업은 다른 소유자 또는 관리자의 승인이 필요합니다. 승인 반려 내용 수정 작업 내용 실패 조건을 재현하고 원"
+      }
+    ],
+    "tables": [
+      {
+        "line": 161,
+        "headers": [
+          "번호",
+          "작업명",
+          "상태",
+          "담당자",
+          "생성자",
+          "수정일"
+        ],
+        "rows": 7,
+        "class": "w-full text-left border-collapse text-xs"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "select",
+        "line": 151,
+        "text": "전체 승인 대기 반려됨 승인됨 진행 중 검토 중 완료"
+      },
+      {
+        "tag": "input",
+        "line": 153,
+        "placeholder": "제목 또는 내용 검색",
+        "type": "text",
+        "value": "",
+        "text": ""
+      }
+    ],
+    "buttons": [
+      {
+        "line": 145,
+        "text": "+ 새 작업 생성",
+        "disabled": false,
+        "class": "px-3 py-1.5 bg-[#245C45] hover:bg-[#1b4634] text-white text-xs font-medium rounded transition-colors duration-150 inline-flex items-center gap-1"
+      },
+      {
+        "line": 155,
+        "text": "검색",
+        "disabled": false,
+        "class": "px-3 py-1.5 border border-[#DDE2DE] bg-white hover:bg-neutral-100 text-neutral-700 text-xs font-medium rounded transition-colors"
+      },
+      {
+        "line": 259,
+        "text": "<",
+        "disabled": true,
+        "class": "cursor-not-allowed px-1 py-0.5"
+      },
+      {
+        "line": 261,
+        "text": ">",
+        "disabled": true,
+        "class": "cursor-not-allowed px-1 py-0.5"
+      },
+      {
+        "line": 278,
+        "text": "⋮",
+        "disabled": false,
+        "class": "p-1 hover:text-neutral-800 rounded hover:bg-neutral-100 transition-colors"
+      },
+      {
+        "line": 281,
+        "text": "✕",
+        "disabled": false,
+        "class": "p-1 hover:text-neutral-800 rounded hover:bg-neutral-100 transition-colors"
+      },
+      {
+        "line": 301,
+        "text": "승인",
+        "disabled": true,
+        "class": "bg-neutral-300 text-neutral-500 cursor-not-allowed border border-neutral-300 px-5 py-2 rounded text-sm font-medium opacity-60 flex items-center gap-1.5"
+      },
+      {
+        "line": 305,
+        "text": "반려",
+        "disabled": false,
+        "class": "border border-[#DDE2DE] text-neutral-700 bg-white hover:bg-neutral-50 px-4 py-2 rounded text-sm font-medium transition-colors"
+      },
+      {
+        "line": 309,
+        "text": "내용 수정",
+        "disabled": false,
+        "class": "text-neutral-700 hover:text-neutral-900 text-sm font-medium ml-auto transition-colors"
+      }
+    ],
+    "labels": [],
+    "explicitWidthReferences": [
+      {
+        "line": 73,
+        "html": "<aside class=\"fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between z-30\">"
+      },
+      {
+        "line": 268,
+        "html": "<section class=\"w-[680px] bg-white border-l border-[#DDE2DE] flex flex-col justify-between shadow-sm min-h-[calc(100vh-64px)]\">"
+      }
+    ]
+  },
+  {
+    "file": "25.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "프로젝트 개요",
+        "line": 100
+      },
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 114
+      },
+      {
+        "tag": "h3",
+        "text": "작업",
+        "line": 125
+      },
+      {
+        "tag": "h3",
+        "text": "결제 취소 흐름 점검",
+        "line": 263
+      },
+      {
+        "tag": "h2",
+        "text": "담당자 지정",
+        "line": 311
+      }
+    ],
+    "layers": [
+      {
+        "tag": "body",
+        "line": 60,
+        "class": "bg-white text-[#202622] text-sm antialiased overflow-hidden select-none min-w-[1440px] h-screen",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정 프로젝트 개요 박준호 · 관리자 결제 안정화 결제 오류를 재현하고 수정 작업의 "
+      },
+      {
+        "tag": "aside",
+        "line": 62,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between z-20",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 98,
+        "class": "fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-[#DDE2DE] flex items-center justify-between px-8 z-20",
+        "text": "프로젝트 개요 박준호 · 관리자"
+      },
+      {
+        "tag": "main",
+        "line": 109,
+        "class": "flex-1 p-8 overflow-y-auto",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 생성일 2026.09.15 · 최근 수정일 2026.09.16 작업 전체 7건 상태 전체 번호 제목 상태 "
+      },
+      {
+        "tag": "aside",
+        "line": 250,
+        "class": "w-[360px] bg-white border-l border-[#DDE2DE] flex flex-col shrink-0",
+        "text": "#107 작업 상세 정보 승인됨 결제 취소 흐름 점검 담당자 지정 후 작업을 시작할 수 있습니다. 담당자 지정 내용 수정 작업 내용 취소 요청과 처리 결과가 일치하는지 확인합니다."
+      },
+      {
+        "tag": "div",
+        "line": 306,
+        "class": "fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4",
+        "text": "담당자 지정 대상 작업 결제 취소 흐름 점검 (#107) 프로젝트 멤버 중 작업을 진행할 담당자를 지정해 주세요. 김서연 소유자 · seoyeon@example.com 박준호 (나"
+      },
+      {
+        "tag": "div",
+        "line": 308,
+        "class": "w-[600px] bg-white rounded shadow-lg border border-[#DDE2DE] flex flex-col overflow-hidden",
+        "text": "담당자 지정 대상 작업 결제 취소 흐름 점검 (#107) 프로젝트 멤버 중 작업을 진행할 담당자를 지정해 주세요. 김서연 소유자 · seoyeon@example.com 박준호 (나"
+      }
+    ],
+    "tables": [
+      {
+        "line": 140,
+        "headers": [
+          "번호",
+          "제목",
+          "상태",
+          "담당자",
+          "생성자",
+          "등록일"
+        ],
+        "rows": 7,
+        "class": "w-full text-left border-collapse"
+      }
+    ],
+    "inputs": [
+      {
+        "tag": "select",
+        "line": 129,
+        "text": "상태 전체"
+      },
+      {
+        "tag": "input",
+        "line": 133,
+        "placeholder": "작업명 검색",
+        "type": "text",
+        "text": ""
+      },
+      {
+        "tag": "input",
+        "line": 332,
+        "name": "assignee",
+        "type": "radio",
+        "value": "seoyeon",
+        "text": ""
+      },
+      {
+        "tag": "input",
+        "line": 342,
+        "name": "assignee",
+        "type": "radio",
+        "value": "junho",
+        "text": ""
+      },
+      {
+        "tag": "input",
+        "line": 352,
+        "name": "assignee",
+        "type": "radio",
+        "value": "minji",
+        "text": ""
+      }
+    ],
+    "buttons": [
+      {
+        "line": 237,
+        "text": "",
+        "disabled": true,
+        "class": "text-[#DDE2DE] cursor-not-allowed"
+      },
+      {
+        "line": 241,
+        "text": "",
+        "disabled": true,
+        "class": "text-[#DDE2DE] cursor-not-allowed"
+      },
+      {
+        "line": 255,
+        "text": "",
+        "disabled": false,
+        "class": "p-1 hover:text-[#202622] rounded"
+      },
+      {
+        "line": 256,
+        "text": "",
+        "disabled": false,
+        "class": "p-1 hover:text-[#202622] rounded"
+      },
+      {
+        "line": 271,
+        "text": "담당자 지정",
+        "disabled": false,
+        "class": "flex-1 py-2 px-3 bg-[#245C45] text-white text-xs font-semibold rounded hover:bg-[#1e4d3a] transition-colors"
+      },
+      {
+        "line": 274,
+        "text": "내용 수정",
+        "disabled": false,
+        "class": "flex-1 py-2 px-3 bg-white border border-[#DDE2DE] text-[#202622] text-xs font-medium rounded hover:bg-[#F7F8F7] transition-colors"
+      },
+      {
+        "line": 312,
+        "text": "닫기",
+        "disabled": false,
+        "class": "text-[#6B726C] hover:text-[#202622] p-1 rounded transition-colors"
+      },
+      {
+        "line": 367,
+        "text": "취소",
+        "disabled": false,
+        "class": "px-4 py-2 text-xs font-medium text-[#202622] bg-white border border-[#DDE2DE] rounded hover:bg-[#F7F8F7] transition-colors"
+      },
+      {
+        "line": 370,
+        "text": "지정",
+        "disabled": false,
+        "class": "px-4 py-2 text-xs font-semibold text-white bg-[#245C45] rounded hover:bg-[#1e4d3a] transition-colors"
+      }
+    ],
+    "labels": [
+      "김서연 소유자 · seoyeon@example.com",
+      "박준호 (나) 관리자 · junho@example.com",
+      "이민지 멤버 · minji@example.com"
+    ],
+    "explicitWidthReferences": [
+      {
+        "line": 60,
+        "html": "<body class=\"bg-white text-[#202622] text-sm antialiased overflow-hidden select-none min-w-[1440px] h-screen\">"
+      },
+      {
+        "line": 62,
+        "html": "<aside class=\"fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between z-20\">"
+      },
+      {
+        "line": 250,
+        "html": "<aside class=\"w-[360px] bg-white border-l border-[#DDE2DE] flex flex-col shrink-0\">"
+      },
+      {
+        "line": 308,
+        "html": "<div class=\"w-[600px] bg-white rounded shadow-lg border border-[#DDE2DE] flex flex-col overflow-hidden\">"
+      }
+    ]
+  },
+  {
+    "file": "26.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "프로젝트 개요",
+        "line": 94
+      },
+      {
+        "tag": "h2",
+        "text": "결제 안정화",
+        "line": 108
+      },
+      {
+        "tag": "h3",
+        "text": "프로젝트 멤버",
+        "line": 123
+      },
+      {
+        "tag": "h2",
+        "text": "멤버를 제거할까요?",
+        "line": 211
+      }
+    ],
+    "layers": [
+      {
+        "tag": "div",
+        "line": 51,
+        "class": "flex w-[1440px] h-[1000px] mx-auto relative overflow-hidden bg-white",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정 프로젝트 개요 박준호 · 관리자 결제 안정화 결제 오류를 재현하고 수정 작업의 "
+      },
+      {
+        "tag": "aside",
+        "line": 53,
+        "class": "fixed left-0 top-0 h-screen w-[216px] border-r border-[#DDE2DE] bg-white flex flex-col justify-between p-4 z-10",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정"
+      },
+      {
+        "tag": "header",
+        "line": 92,
+        "class": "fixed top-0 left-[216px] right-0 h-16 border-b border-[#DDE2DE] bg-white flex justify-between items-center px-8 z-10",
+        "text": "프로젝트 개요 박준호 · 관리자"
+      },
+      {
+        "tag": "main",
+        "line": 103,
+        "class": "ml-[216px] mt-16 w-[calc(1440px-216px)] min-h-[calc(1000px-64px)] p-8 bg-white overflow-y-auto",
+        "text": "결제 안정화 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 생성일: 2026.09.15 최근 수정일: 2026.09.16 프로젝트 멤버 멤버 추가 이름 사용자 ID "
+      },
+      {
+        "tag": "div",
+        "line": 206,
+        "class": "fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4",
+        "text": "멤버를 제거할까요? 이민지 (ID: 3) 멤버 minji@example.com 이 멤버가 담당한 작업은 미할당으로 바뀝니다. 진행 중·검토 중인 작업은 승인됨으로 돌아갑니다. 완료"
+      },
+      {
+        "tag": "div",
+        "line": 208,
+        "class": "w-[600px] bg-white rounded-lg border border-[#DDE2DE] shadow-xl p-6 relative flex flex-col",
+        "text": "멤버를 제거할까요? 이민지 (ID: 3) 멤버 minji@example.com 이 멤버가 담당한 작업은 미할당으로 바뀝니다. 진행 중·검토 중인 작업은 승인됨으로 돌아갑니다. 완료"
+      }
+    ],
+    "tables": [
+      {
+        "line": 132,
+        "headers": [
+          "이름",
+          "사용자 ID",
+          "이메일",
+          "역할",
+          "참여일",
+          "관리"
+        ],
+        "rows": 3,
+        "class": "w-full text-left border-collapse text-sm"
+      }
+    ],
+    "inputs": [],
+    "buttons": [
+      {
+        "line": 125,
+        "text": "멤버 추가",
+        "disabled": false,
+        "class": "inline-flex items-center gap-1.5 px-3 py-2 bg-[#245C45] hover:bg-[#1d4a37] text-white text-xs font-medium rounded transition-colors duration-150"
+      },
+      {
+        "line": 173,
+        "text": "역할 변경",
+        "disabled": false,
+        "class": "text-neutral-700 hover:text-neutral-900"
+      },
+      {
+        "line": 175,
+        "text": "멤버 제거",
+        "disabled": false,
+        "class": "text-neutral-700 hover:text-neutral-900"
+      },
+      {
+        "line": 190,
+        "text": "역할 변경",
+        "disabled": false,
+        "class": "text-neutral-700 hover:text-neutral-900"
+      },
+      {
+        "line": 192,
+        "text": "멤버 제거",
+        "disabled": false,
+        "class": "text-red-700 font-medium hover:underline"
+      },
+      {
+        "line": 212,
+        "text": "닫기",
+        "disabled": false,
+        "class": "text-neutral-400 hover:text-neutral-700 p-1 rounded transition-colors"
+      },
+      {
+        "line": 246,
+        "text": "취소",
+        "disabled": false,
+        "class": "border border-neutral-300 hover:bg-neutral-50 text-neutral-700 px-4 py-2 text-sm font-medium rounded transition-colors duration-150"
+      },
+      {
+        "line": 249,
+        "text": "멤버 제거",
+        "disabled": false,
+        "class": "bg-red-600 hover:bg-red-700 text-white px-4 py-2 text-sm font-medium rounded transition-colors duration-150 shadow-sm"
+      }
+    ],
+    "labels": [],
+    "explicitWidthReferences": [
+      {
+        "line": 51,
+        "html": "<div class=\"flex w-[1440px] h-[1000px] mx-auto relative overflow-hidden bg-white\">"
+      },
+      {
+        "line": 53,
+        "html": "<aside class=\"fixed left-0 top-0 h-screen w-[216px] border-r border-[#DDE2DE] bg-white flex flex-col justify-between p-4 z-10\">"
+      },
+      {
+        "line": 208,
+        "html": "<div class=\"w-[600px] bg-white rounded-lg border border-[#DDE2DE] shadow-xl p-6 relative flex flex-col\">"
+      }
+    ]
+  },
+  {
+    "file": "27.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "프로젝트 개요",
+        "line": 117
+      },
+      {
+        "tag": "h2",
+        "text": "프로젝트 설정",
+        "line": 128
+      },
+      {
+        "tag": "h3",
+        "text": "프로젝트 삭제",
+        "line": 157
+      },
+      {
+        "tag": "h2",
+        "text": "프로젝트를 삭제할까요?",
+        "line": 170
+      }
+    ],
+    "layers": [
+      {
+        "tag": "body",
+        "line": 69,
+        "class": "w-[1440px] h-[1000px] mx-auto overflow-hidden bg-white text-content select-none relative",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정 새 작업 생성 프로젝트 개요 김서연 · 소유자 프로젝트 설정 프로젝트 이름 프로"
+      },
+      {
+        "tag": "aside",
+        "line": 71,
+        "class": "fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between p-4 z-10",
+        "text": "Project Collab 업무 협업 도구 내 프로젝트로 현재 프로젝트 결제 안정화 작업 멤버 설정 새 작업 생성"
+      },
+      {
+        "tag": "header",
+        "line": 115,
+        "class": "fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-[#DDE2DE] flex justify-between items-center px-8 z-10",
+        "text": "프로젝트 개요 김서연 · 소유자"
+      },
+      {
+        "tag": "main",
+        "line": 126,
+        "class": "ml-[216px] pt-16 h-[1000px] overflow-y-auto bg-white p-8",
+        "text": "프로젝트 설정 프로젝트 이름 프로젝트 설명 결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다. 생성일 2026.09.15 최근 수정일 2026.09.16 변경사항 저장 프"
+      },
+      {
+        "tag": "div",
+        "line": 166,
+        "class": "fixed inset-0 bg-black/45 flex items-center justify-center z-50 p-4",
+        "text": "프로젝트를 삭제할까요? 대상 프로젝트 결제 안정화 프로젝트의 모든 작업과 멤버 정보가 함께 삭제됩니다. 삭제 후 복구할 수 없습니다. 취소 프로젝트 삭제"
+      },
+      {
+        "tag": "div",
+        "line": 167,
+        "class": "w-[600px] bg-white rounded-lg border border-[#DDE2DE] shadow-2xl flex flex-col overflow-hidden",
+        "text": "프로젝트를 삭제할까요? 대상 프로젝트 결제 안정화 프로젝트의 모든 작업과 멤버 정보가 함께 삭제됩니다. 삭제 후 복구할 수 없습니다. 취소 프로젝트 삭제"
+      }
+    ],
+    "tables": [],
+    "inputs": [
+      {
+        "tag": "input",
+        "line": 133,
+        "readonly": "",
+        "type": "text",
+        "value": "결제 안정화",
+        "text": ""
+      },
+      {
+        "tag": "textarea",
+        "line": 137,
+        "readonly": "",
+        "text": "결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다."
+      }
+    ],
+    "buttons": [
+      {
+        "line": 108,
+        "text": "새 작업 생성",
+        "disabled": false,
+        "class": "w-full flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-medium text-[#245C45] border border-[#245C45] rounded hover:bg-[#EBF2EE] transition-colors duration-150"
+      },
+      {
+        "line": 150,
+        "text": "변경사항 저장",
+        "disabled": false,
+        "class": "h-9 px-4 bg-[#245C45] text-white text-sm font-medium rounded hover:bg-[#1C4A37] transition-colors"
+      },
+      {
+        "line": 159,
+        "text": "프로젝트 삭제",
+        "disabled": false,
+        "class": "h-9 px-4 text-sm font-medium text-red-600 border border-red-300 rounded hover:bg-red-50 transition-colors"
+      },
+      {
+        "line": 171,
+        "text": "",
+        "disabled": false,
+        "class": "text-content-muted hover:text-content transition-colors"
+      },
+      {
+        "line": 194,
+        "text": "취소",
+        "disabled": false,
+        "class": "h-9 px-4 text-sm font-medium text-content bg-white border border-[#DDE2DE] rounded hover:bg-neutral-50 transition-colors"
+      },
+      {
+        "line": 197,
+        "text": "프로젝트 삭제",
+        "disabled": false,
+        "class": "h-9 px-4 text-sm font-medium text-white bg-red-600 rounded hover:bg-red-700 transition-colors shadow-sm"
+      }
+    ],
+    "labels": [
+      "프로젝트 이름",
+      "프로젝트 설명"
+    ],
+    "explicitWidthReferences": [
+      {
+        "line": 69,
+        "html": "<body class=\"w-[1440px] h-[1000px] mx-auto overflow-hidden bg-white text-content select-none relative\">"
+      },
+      {
+        "line": 71,
+        "html": "<aside class=\"fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between p-4 z-10\">"
+      },
+      {
+        "line": 127,
+        "html": "<div class=\"max-w-[760px] mx-auto py-4\">"
+      },
+      {
+        "line": 167,
+        "html": "<div class=\"w-[600px] bg-white rounded-lg border border-[#DDE2DE] shadow-2xl flex flex-col overflow-hidden\">"
+      }
+    ]
+  },
+  {
+    "file": "28.html",
+    "headings": [
+      {
+        "tag": "h1",
+        "text": "결제 안정화",
+        "line": 79
+      },
+      {
+        "tag": "h2",
+        "text": "결제 실패 안내 개선",
+        "line": 112
+      },
+      {
+        "tag": "h3",
+        "text": "작업 내용",
+        "line": 128
+      }
+    ],
+    "layers": [
+      {
+        "tag": "main",
+        "line": 69,
+        "class": "w-[390px] min-h-screen bg-white flex flex-col relative border-x border-[#DDE2DE]",
+        "text": "작업 결제 안정화 제안 철회 현재 사용자 이민지 · 멤버 #102 반려됨 결제 실패 안내 개선 반려 사유 완료 조건을 더 구체적으로 작성해 주세요. 작업 내용 실패 상황별 안내 문"
+      },
+      {
+        "tag": "header",
+        "line": 71,
+        "class": "sticky top-0 z-30 flex items-center justify-between h-14 px-4 bg-white border-b border-[#DDE2DE]",
+        "text": "작업 결제 안정화 제안 철회"
+      }
+    ],
+    "tables": [],
+    "inputs": [],
+    "buttons": [
+      {
+        "line": 73,
+        "text": "작업",
+        "disabled": false,
+        "class": "flex items-center gap-1 text-[#202622] hover:opacity-75 transition-opacity"
+      },
+      {
+        "line": 83,
+        "text": "추가 옵션",
+        "disabled": false,
+        "class": "flex items-center justify-center w-8 h-8 text-[#202622] rounded hover:bg-[#F7F8F7] transition-colors"
+      },
+      {
+        "line": 88,
+        "text": "제안 철회",
+        "disabled": false,
+        "class": "w-full text-left px-3 py-2 text-xs text-[#202622] hover:bg-[#F7F8F7] transition-colors"
+      },
+      {
+        "line": 161,
+        "text": "내용 수정",
+        "disabled": false,
+        "class": "flex-1 h-11 bg-white border border-[#DDE2DE] text-[#202622] text-sm font-medium rounded hover:bg-[#F7F8F7] transition-colors flex items-center justify-center"
+      },
+      {
+        "line": 164,
+        "text": "다시 제출",
+        "disabled": false,
+        "class": "flex-1 h-11 bg-[#245C45] text-white text-sm font-medium rounded hover:bg-[#1c4a37] transition-colors flex items-center justify-center"
+      }
+    ],
+    "labels": [],
+    "explicitWidthReferences": [
+      {
+        "line": 69,
+        "html": "<main class=\"w-[390px] min-h-screen bg-white flex flex-col relative border-x border-[#DDE2DE]\">"
+      },
+      {
+        "line": 160,
+        "html": "<div class=\"fixed bottom-0 w-[390px] bg-white border-t border-[#DDE2DE] px-4 py-3 flex gap-2.5 z-30\">"
+      }
+    ]
+  }
+]

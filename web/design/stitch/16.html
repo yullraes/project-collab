@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=1440, initial-scale=1.0" name="viewport"/>
+<title>16 프로젝트 멤버</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#245C45',
+              hover: '#1b4735',
+              light: '#EAF2ED',
+            },
+            neutral: {
+              surface: '#FFFFFF',
+              background: '#F7F8F7',
+              border: '#DDE2DE',
+              text: '#202622',
+              muted: '#6B726C',
+            }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans KR"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: #202622;
+      background-color: #F7F8F7;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex bg-[#F7F8F7]">
+<!-- Left Navigation Bar (216px fixed) -->
+<aside class="w-[216px] min-h-screen bg-white border-r border-[#DDE2DE] flex flex-col shrink-0 select-none">
+<!-- Brand -->
+<div class="px-5 py-6 border-b border-[#DDE2DE]">
+<h1 class="text-base font-bold text-[#202622] leading-tight">Project Collab</h1>
+<p class="text-xs text-[#6B726C] mt-0.5">업무 협업 도구</p>
+</div>
+<!-- Navigation Area -->
+<div class="p-3 flex-1 flex flex-col space-y-4">
+<!-- Back to My Projects -->
+<a class="flex items-center gap-2 px-2.5 py-2 text-xs text-[#6B726C] hover:text-[#202622] transition-colors rounded" href="#">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>내 프로젝트로</span>
+</a>
+<!-- Current Project Indicator -->
+<div class="px-2.5 pt-1">
+<div class="text-[11px] text-[#6B726C] font-medium">현재 프로젝트</div>
+<div class="text-sm font-semibold text-[#202622] mt-0.5 truncate">결제 안정화</div>
+</div>
+<!-- Main Navigation Menu -->
+<nav class="space-y-1 pt-1">
+<a class="flex items-center gap-2.5 px-3 py-2 text-sm text-[#202622] hover:bg-[#F7F8F7] rounded transition-colors" href="#">
+<svg class="w-4 h-4 text-[#6B726C]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>작업</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-[#245C45] bg-[#EAF2ED] rounded transition-colors" href="#">
+<svg class="w-4 h-4 text-[#245C45]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>멤버</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 text-sm text-[#202622] hover:bg-[#F7F8F7] rounded transition-colors" href="#">
+<svg class="w-4 h-4 text-[#6B726C]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>설정</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Work Surface -->
+<div class="flex-1 flex flex-col min-w-0 bg-[#F7F8F7]">
+<!-- Top Header Bar -->
+<header class="h-14 bg-white border-b border-[#DDE2DE] px-8 flex items-center justify-between shrink-0">
+<div class="flex items-center">
+<span class="text-sm font-medium text-[#202622]">프로젝트 개요</span>
+</div>
+<!-- Current User & Role -->
+<div class="flex items-center gap-2">
+<span class="text-sm text-[#202622] font-medium">박준호 · 관리자</span>
+</div>
+</header>
+<!-- Page Content (32px padding) -->
+<main class="p-8 max-w-6xl w-full mx-auto flex flex-col gap-6">
+<!-- Project Overview Header Card -->
+<section class="bg-white border border-[#DDE2DE] rounded p-6">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="text-xl font-bold text-[#202622]">결제 안정화</h2>
+<p class="text-sm text-[#6B726C] mt-1.5">결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다.</p>
+</div>
+<div class="text-xs text-[#6B726C] flex items-center gap-4 shrink-0">
+<span>생성일 2026.09.15</span>
+<span class="text-[#DDE2DE]">|</span>
+<span>최근 수정일 2026.09.16</span>
+</div>
+</div>
+</section>
+<!-- Members Section Card -->
+<section class="bg-white border border-[#DDE2DE] rounded overflow-hidden">
+<!-- Section Header -->
+<div class="p-6 pb-5 flex justify-between items-center border-b border-[#DDE2DE]">
+<div>
+<h3 class="text-lg font-bold text-[#202622]">멤버</h3>
+</div>
+<button class="inline-flex items-center gap-1.5 bg-[#245C45] hover:bg-[#1b4735] text-white text-sm font-medium px-4 py-2 rounded transition-colors" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>멤버 추가</span>
+</button>
+</div>
+<!-- Members Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-[#DDE2DE] bg-[#F7F8F7] text-xs font-medium text-[#6B726C]">
+<th class="py-3 px-6">이름</th>
+<th class="py-3 px-6">사용자 ID</th>
+<th class="py-3 px-6">이메일</th>
+<th class="py-3 px-6">역할</th>
+<th class="py-3 px-6">참여일</th>
+<th class="py-3 px-6 text-right">관리</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#DDE2DE] text-sm text-[#202622]">
+<!-- Row 1: 김서연 (소유자) -->
+<tr class="hover:bg-[#F7F8F7]/60 transition-colors">
+<td class="py-4 px-6 font-medium">김서연</td>
+<td class="py-4 px-6 text-[#6B726C]">1</td>
+<td class="py-4 px-6 text-[#6B726C]">seoyeon@example.com</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#EAF2ED] text-[#245C45]">소유자</span>
+</td>
+<td class="py-4 px-6 text-[#6B726C]">2026.09.01</td>
+<td class="py-4 px-6 text-right">
+<div class="flex items-center justify-end gap-3">
+<button class="text-xs text-[#202622] hover:text-[#245C45] font-medium transition-colors" type="button">
+                      역할 변경
+                    </button>
+<span class="text-[#DDE2DE]">·</span>
+<span class="inline-flex items-center gap-1.5" title="프로젝트에는 소유자가 최소 한 명 필요합니다.">
+<button class="text-xs text-[#DDE2DE] cursor-not-allowed font-medium" disabled="" type="button">
+                        멤버 제거
+                      </button>
+<span class="text-xs text-[#6B726C] text-left hidden xl:inline-block">(프로젝트에는 소유자가 최소 한 명 필요합니다.)</span>
+</span>
+</div>
+</td>
+</tr>
+<!-- Row 2: 박준호 (나 - 관리자) -->
+<tr class="hover:bg-[#F7F8F7]/60 transition-colors">
+<td class="py-4 px-6 font-medium">
+                  박준호 <span class="text-xs text-[#6B726C] font-normal">(나)</span>
+</td>
+<td class="py-4 px-6 text-[#6B726C]">2</td>
+<td class="py-4 px-6 text-[#6B726C]">junho@example.com</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#F7F8F7] border border-[#DDE2DE] text-[#202622]">관리자</span>
+</td>
+<td class="py-4 px-6 text-[#6B726C]">2026.09.01</td>
+<td class="py-4 px-6 text-right">
+<div class="flex items-center justify-end gap-3">
+<button class="text-xs text-[#202622] hover:text-[#245C45] font-medium transition-colors" type="button">
+                      역할 변경
+                    </button>
+<span class="text-[#DDE2DE]">·</span>
+<button class="text-xs text-[#6B726C] hover:text-red-700 font-medium transition-colors" type="button">
+                      멤버 제거
+                    </button>
+</div>
+</td>
+</tr>
+<!-- Row 3: 이민지 (멤버) -->
+<tr class="hover:bg-[#F7F8F7]/60 transition-colors">
+<td class="py-4 px-6 font-medium">이민지</td>
+<td class="py-4 px-6 text-[#6B726C]">3</td>
+<td class="py-4 px-6 text-[#6B726C]">minji@example.com</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#F7F8F7] border border-[#DDE2DE] text-[#6B726C]">멤버</span>
+</td>
+<td class="py-4 px-6 text-[#6B726C]">2026.09.01</td>
+<td class="py-4 px-6 text-right">
+<div class="flex items-center justify-end gap-3">
+<button class="text-xs text-[#202622] hover:text-[#245C45] font-medium transition-colors" type="button">
+                      역할 변경
+                    </button>
+<span class="text-[#DDE2DE]">·</span>
+<button class="text-xs text-[#6B726C] hover:text-red-700 font-medium transition-colors" type="button">
+                      멤버 제거
+                    </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Count Info -->
+<div class="px-6 py-4 border-t border-[#DDE2DE] bg-white flex justify-between items-center text-xs text-[#6B726C]">
+<span>총 3명</span>
+</div>
+</section>
+</main>
+</div>
+</body>
+</html>

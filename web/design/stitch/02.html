@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Project Collab</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {},
+          borderRadius: {
+            DEFAULT: "0.125rem",
+            lg: "0.25rem",
+            xl: "0.5rem",
+            full: "0.75rem"
+          },
+          spacing: {},
+          fontFamily: {
+            headline: ["Public Sans", "sans-serif"],
+            display: ["Public Sans", "sans-serif"],
+            body: ["Public Sans", "sans-serif"],
+            label: ["Public Sans", "sans-serif"]
+          },
+          fontSize: {}
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", sans-serif;
+      color: #202622;
+      background-color: #FFFFFF;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-[#202622] antialiased overflow-hidden min-w-[1440px]">
+  <!-- 전체 프레임 (데스크톱 1440x1000) -->
+  <div class="relative w-[1440px] h-[1000px] mx-auto bg-white flex overflow-hidden">
+    <!-- 왼쪽 사이드바 (216px) -->
+    <aside
+      class="w-[216px] h-full bg-white border-r border-[#DDE2DE] flex flex-col justify-between p-4 select-none shrink-0 z-10">
+      <div class="flex flex-col gap-6">
+        <div class="px-2 pt-2">
+          <span class="text-base font-bold text-[#202622] tracking-tight block">Project Collab</span>
+          <span class="text-xs text-[#202622]/60 mt-0.5 block">업무 협업 도구</span>
+        </div>
+        <nav class="flex flex-col gap-1">
+          <a class="flex items-center gap-3 px-3 py-2 text-sm font-semibold text-[#245C45] bg-[#F7F8F7] rounded"
+            href="#">
+            <span class="material-symbols-outlined text-[20px]" data-icon="folder">folder</span>
+            <span>내 프로젝트</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+    <!-- 메인 영역 (머리글 + 본문 화면 01) -->
+    <div class="flex-1 flex flex-col h-full bg-white relative">
+      <!-- 상단 머리글 (64px) -->
+      <header class="h-16 border-b border-[#DDE2DE] px-8 flex items-center justify-between bg-white shrink-0">
+        <div class="flex items-center">
+          <span class="text-lg font-bold text-[#202622] tracking-tight">프로젝트 개요</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="text-sm text-[#202622]/80 font-normal">이민지</span>
+        </div>
+      </header>
+      <!-- 본문 화면 (01 내 프로젝트 배경 콘텐츠) -->
+      <main class="flex-1 p-8 bg-white overflow-y-auto">
+        <div class="flex items-center justify-between mb-6">
+          <h1 class="text-2xl font-bold text-[#202622]">내 프로젝트</h1>
+          <button
+            class="px-4 py-2 bg-[#245C45] text-white text-sm font-medium rounded hover:bg-[#1e4d3a] transition-colors"
+            type="button">
+            프로젝트 만들기
+          </button>
+        </div>
+        <!-- 프로젝트 목록 테이블 -->
+        <div class="w-full border border-[#DDE2DE] rounded overflow-hidden">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-[#F7F8F7] border-b border-[#DDE2DE] text-xs font-semibold text-[#202622]/70 h-10">
+                <th class="px-4 py-2 font-medium w-1/4">프로젝트 이름</th>
+                <th class="px-4 py-2 font-medium w-1/2">설명</th>
+                <th class="px-4 py-2 font-medium text-right w-1/4">최근 수정일</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#DDE2DE] text-sm">
+              <tr class="h-14 hover:bg-[#F7F8F7]/50">
+                <td class="px-4 py-3 font-semibold text-[#202622]">결제 안정화</td>
+                <td class="px-4 py-3 text-[#202622]/80 text-sm leading-relaxed">결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다.</td>
+                <td class="px-4 py-3 text-right text-xs text-[#202622]/60 font-normal">2026.09.16</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+    <!-- 모달 오버레이 (Dimmed Backdrop) -->
+    <div class="absolute inset-0 bg-[#202622]/40 backdrop-blur-[0.5px] z-50 flex items-center justify-center">
+      <!-- 중앙 대화상자 (Dialog: 폭 580px) -->
+      <div class="w-[580px] bg-white rounded-xl shadow-xl border border-[#DDE2DE] flex flex-col overflow-hidden">
+        <!-- 대화상자 상단 헤더 -->
+        <div class="h-16 px-6 border-b border-[#DDE2DE] flex items-center justify-between">
+          <h2 class="text-lg font-bold text-[#202622]">프로젝트 만들기</h2>
+          <button class="text-[#202622]/60 hover:text-[#202622] transition-colors p-1 rounded" type="button">
+            <span class="material-symbols-outlined text-[22px]" data-icon="close">close</span>
+          </button>
+        </div>
+        <!-- 대화상자 폼 본문 -->
+        <form class="p-6 flex flex-col gap-5">
+          <!-- 필드: 프로젝트 이름 -->
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-semibold text-[#202622] flex items-center gap-1" for="project-name">
+              프로젝트 이름
+              <span class="text-[#245C45]">*</span>
+            </label>
+            <input
+              class="w-full px-3 py-2 text-sm border border-[#DDE2DE] rounded bg-white text-[#202622] focus:outline-none focus:border-[#245C45] focus:ring-1 focus:ring-[#245C45] transition-colors"
+              id="project-name" name="projectName" type="text" value="결제 안정화" />
+          </div>
+          <!-- 필드: 프로젝트 설명 -->
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-semibold text-[#202622] flex items-center gap-1" for="project-desc">
+              프로젝트 설명
+              <span class="text-[#245C45]">*</span>
+            </label>
+            <textarea
+              class="w-full px-3 py-2 text-sm leading-relaxed border border-[#DDE2DE] rounded bg-white text-[#202622] focus:outline-none focus:border-[#245C45] focus:ring-1 focus:ring-[#245C45] transition-colors resize-none"
+              id="project-desc" name="projectDescription" rows="4">결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다.</textarea>
+          </div>
+          <!-- 안내 문구 -->
+          <p class="text-xs text-[#202622]/60 font-normal">
+            프로젝트를 만들면 소유자가 됩니다.
+          </p>
+          <!-- 하단 액션 버튼 그룹 -->
+          <div class="flex items-center justify-end gap-2 pt-4 border-t border-[#DDE2DE] mt-1">
+            <button
+              class="px-4 py-2 text-sm font-medium text-[#202622]/80 hover:text-[#202622] bg-white border border-[#DDE2DE] rounded hover:bg-[#F7F8F7] transition-colors"
+              type="button">
+              취소
+            </button>
+            <button
+              class="px-5 py-2 text-sm font-medium text-white bg-[#245C45] rounded hover:bg-[#1d4c38] transition-colors shadow-sm"
+              type="submit">
+              만들기
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

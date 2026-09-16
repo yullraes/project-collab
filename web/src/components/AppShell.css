@@ -1,0 +1,28 @@
+.app-shell {
+  min-height: 100svh;
+}
+
+.workspace {
+  margin-left: var(--sidebar-width);
+  min-width: 0;
+}
+
+.main-content {
+  padding: var(--space-8);
+  max-width: 1600px;
+  margin-inline: auto;
+}
+
+.main-content>.footnote {
+  margin-top: var(--space-4);
+}
+
+@media (max-width: 760px) {
+  .workspace {
+    margin-left: 0;
+  }
+
+  .main-content {
+    padding: 24px 16px;
+  }
+}

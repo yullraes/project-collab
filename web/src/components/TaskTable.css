@@ -1,0 +1,55 @@
+.task-table {
+  min-width: 740px;
+}
+
+.task-table th:nth-child(2) {
+  width: 40%;
+}
+
+.task-table td:not(:nth-child(2)) {
+  white-space: nowrap;
+}
+
+@media (max-width: 1100px) {
+
+  .creator-col,
+  .date-col {
+    display: none;
+  }
+
+  .task-table {
+    min-width: 540px;
+  }
+}
+
+@media (max-width: 760px) {
+  .task-table {
+    min-width: 0;
+    table-layout: fixed;
+  }
+
+  .number-col {
+    display: none;
+  }
+
+  .task-table th:nth-child(2) {
+    width: auto;
+  }
+
+  .task-table th:nth-child(3) {
+    width: 82px;
+  }
+
+  .task-table th:nth-child(4) {
+    width: 68px;
+  }
+
+  .task-table th,
+  .task-table td {
+    padding: 12px 8px;
+  }
+
+  .task-table td:nth-child(2) {
+    overflow-wrap: anywhere;
+  }
+}

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>검토 중 상세 · 관리자</title>
+  <!-- Material Symbols Outlined -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <!-- Pretendard / Noto Sans KR / Public Sans Font -->
+  <link as="style" crossorigin=""
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#245C45',
+              hover: '#1d4b38',
+              surface: '#F7F8F7',
+              border: '#DDE2DE',
+              text: '#202622',
+              muted: '#69736C'
+            }
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          fontFamily: {
+            headline: ["Pretendard", "Public Sans", "sans-serif"],
+            display: ["Pretendard", "Public Sans", "sans-serif"],
+            body: ["Pretendard", "Public Sans", "sans-serif"],
+            label: ["Pretendard", "Public Sans", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      color: #202622;
+      background-color: #FFFFFF;
+      letter-spacing: -0.015em;
+    }
+
+    .material-symbols-outlined {
+      font-size: 18px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-[#202622] min-h-screen overflow-x-hidden antialiased">
+  <!-- 좌측 사이드바 (너비 216px, 고정) -->
+  <aside
+    class="fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between select-none z-30">
+    <div class="p-4 flex flex-col">
+      <!-- 로고 헤더 -->
+      <div class="mb-5 pb-4 border-b border-[#DDE2DE]">
+        <div class="text-base font-headline font-bold text-[#202622] tracking-tight">Project Collab</div>
+        <div class="text-xs text-[#69736C] mt-0.5 font-normal">업무 협업 도구</div>
+      </div>
+      <!-- 상위 이동 링크 -->
+      <a class="inline-flex items-center text-xs text-[#69736C] hover:text-[#202622] mb-4 transition-colors" href="#">
+        <span class="mr-1 text-[11px]">←</span> 내 프로젝트로
+      </a>
+      <!-- 현재 프로젝트 정보 -->
+      <div class="mb-5 px-3 py-2 bg-[#F7F8F7] border border-[#DDE2DE] rounded">
+        <div class="text-[11px] text-[#69736C]">현재 프로젝트</div>
+        <div class="text-sm font-semibold text-[#202622] truncate mt-0.5">결제 안정화</div>
+      </div>
+      <!-- 네비게이션 메뉴 -->
+      <nav class="space-y-1">
+        <a class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-[#245C45] bg-[#F7F8F7] border-l-2 border-[#245C45] rounded-r"
+          href="#">
+          <span class="material-symbols-outlined text-[#245C45]">check_box</span>
+          <span>작업</span>
+        </a>
+        <a class="flex items-center gap-2.5 px-3 py-2 text-sm text-[#69736C] hover:text-[#202622] hover:bg-[#F7F8F7] rounded transition-colors"
+          href="#">
+          <span class="material-symbols-outlined">group</span>
+          <span>멤버</span>
+        </a>
+        <a class="flex items-center gap-2.5 px-3 py-2 text-sm text-[#69736C] hover:text-[#202622] hover:bg-[#F7F8F7] rounded transition-colors"
+          href="#">
+          <span class="material-symbols-outlined">settings</span>
+          <span>설정</span>
+        </a>
+      </nav>
+    </div>
+    <!-- 사이드바 푸터 -->
+  </aside>
+  <!-- 상단 헤더 (높이 64px, 사이드바 오른쪽) -->
+  <header
+    class="fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-[#DDE2DE] flex justify-between items-center px-8 z-20">
+    <div class="text-base font-semibold text-[#202622]">프로젝트 개요</div>
+    <div class="flex items-center gap-2 text-sm text-[#202622]">
+      <span class="inline-block w-2 h-2 rounded-full bg-[#245C45]"></span>
+      <span>박준호 · 관리자</span>
+    </div>
+  </header>
+  <!-- 메인 레이아웃 (배경 작업 목록 + 우측 680px 슬라이드 상세 패널) -->
+  <div class="pt-16 pl-[216px] min-h-screen flex">
+    <!-- 좌측: 프로젝트 기본 목록 뷰 (상세 패널 열림 상태) -->
+    <main class="flex-1 p-8 pr-[700px] bg-[#FFFFFF] min-h-[calc(100vh-64px)]">
+      <!-- 상단 프로젝트 요약 영역 -->
+      <div class="p-5 bg-[#F7F8F7] border border-[#DDE2DE] rounded mb-6">
+        <h1 class="text-xl font-bold text-[#202622] mb-1">결제 안정화</h1>
+        <p class="text-sm text-[#69736C] leading-relaxed">
+          결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다.
+        </p>
+      </div>
+      <!-- 검색/필터 바 -->
+      <div class="flex items-center justify-between mb-4 gap-3">
+        <div class="flex items-center gap-2 flex-1 max-w-md">
+          <div class="relative">
+            <select
+              class="appearance-none bg-white border border-[#DDE2DE] text-xs text-[#202622] py-2 pl-3 pr-7 rounded focus:outline-none focus:border-[#245C45]">
+              <option>전체</option>
+              <option>진행 중</option>
+              <option>검토 중</option>
+              <option>승인 대기</option>
+              <option>완료</option>
+            </select>
+            <span
+              class="material-symbols-outlined absolute right-1.5 top-1/2 -translate-y-1/2 pointer-events-none text-xs text-[#69736C]">arrow_drop_down</span>
+          </div>
+          <div class="relative flex-1">
+            <input
+              class="w-full bg-white border border-[#DDE2DE] text-xs text-[#202622] py-2 px-3 rounded focus:outline-none focus:border-[#245C45] placeholder-[#69736C]"
+              placeholder="작업명 검색" type="text" />
+          </div>
+          <button
+            class="px-3 py-2 bg-[#F7F8F7] border border-[#DDE2DE] text-xs text-[#202622] rounded hover:bg-[#EAEFEA] transition-colors"
+            type="button">
+            검색
+          </button>
+        </div>
+      </div>
+      <!-- 작업 목록 테이블 -->
+      <div class="border border-[#DDE2DE] rounded overflow-hidden">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-[#F7F8F7] border-b border-[#DDE2DE] text-[#69736C]">
+              <th class="py-3 px-4 font-normal w-16">번호</th>
+              <th class="py-3 px-4 font-normal">제목</th>
+              <th class="py-3 px-4 font-normal w-24">담당자</th>
+              <th class="py-3 px-4 font-normal w-24 text-right">상태</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#DDE2DE] text-sm">
+            <tr class="h-14 hover:bg-[#F7F8F7] transition-colors cursor-pointer">
+              <td class="px-4 text-xs text-[#69736C]">#107</td>
+              <td class="px-4 font-medium text-[#202622]">결제 취소 흐름 점검</td>
+              <td class="px-4 text-xs text-[#69736C]">미할당</td>
+              <td class="px-4 text-right"><span
+                  class="inline-block text-[11px] px-2 py-0.5 bg-[#F7F8F7] text-[#69736C] border border-[#DDE2DE] rounded">승인됨</span>
+              </td>
+            </tr>
+            <tr class="h-14 hover:bg-[#F7F8F7] transition-colors cursor-pointer">
+              <td class="px-4 text-xs text-[#69736C]">#106</td>
+              <td class="px-4 font-medium text-[#202622]">결제 로그 누락 수정</td>
+              <td class="px-4 text-xs text-[#69736C]">이민지</td>
+              <td class="px-4 text-right"><span
+                  class="inline-block text-[11px] px-2 py-0.5 bg-[#F7F8F7] text-[#69736C] border border-[#DDE2DE] rounded">완료</span>
+              </td>
+            </tr>
+            <tr class="h-14 bg-[#F7F8F7] border-l-4 border-l-[#245C45] cursor-pointer">
+              <td class="px-4 text-xs font-semibold text-[#245C45]">#105</td>
+              <td class="px-4 font-medium text-[#202622]">결제 오류 수정 검토</td>
+              <td class="px-4 text-xs text-[#202622]">이민지</td>
+              <td class="px-4 text-right"><span
+                  class="inline-block text-[11px] px-2 py-0.5 bg-purple-50 text-purple-700 border border-purple-200 rounded font-medium">검토
+                  중</span></td>
+            </tr>
+            <tr class="h-14 hover:bg-[#F7F8F7] transition-colors cursor-pointer">
+              <td class="px-4 text-xs text-[#69736C]">#104</td>
+              <td class="px-4 font-medium text-[#202622]">중복 결제 방지 처리</td>
+              <td class="px-4 text-xs text-[#69736C]">이민지</td>
+              <td class="px-4 text-right"><span
+                  class="inline-block text-[11px] px-2 py-0.5 bg-blue-50 text-blue-700 border border-blue-200 rounded">진행
+                  중</span></td>
+            </tr>
+            <tr class="h-14 hover:bg-[#F7F8F7] transition-colors cursor-pointer">
+              <td class="px-4 text-xs text-[#69736C]">#103</td>
+              <td class="px-4 font-medium text-[#202622]">결제 재시도 조건 정리</td>
+              <td class="px-4 text-xs text-[#69736C]">이민지</td>
+              <td class="px-4 text-right"><span
+                  class="inline-block text-[11px] px-2 py-0.5 bg-[#F7F8F7] text-[#69736C] border border-[#DDE2DE] rounded">승인됨</span>
+              </td>
+            </tr>
+            <tr class="h-14 hover:bg-[#F7F8F7] transition-colors cursor-pointer">
+              <td class="px-4 text-xs text-[#69736C]">#102</td>
+              <td class="px-4 font-medium text-[#202622]">결제 실패 안내 개선</td>
+              <td class="px-4 text-xs text-[#69736C]">이민지</td>
+              <td class="px-4 text-right"><span
+                  class="inline-block text-[11px] px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-200 rounded">반려됨</span>
+              </td>
+            </tr>
+            <tr class="h-14 hover:bg-[#F7F8F7] transition-colors cursor-pointer">
+              <td class="px-4 text-xs text-[#69736C]">#101</td>
+              <td class="px-4 font-medium text-[#202622]">결제 오류 재현</td>
+              <td class="px-4 text-xs text-[#69736C]">이민지</td>
+              <td class="px-4 text-right"><span
+                  class="inline-block text-[11px] px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-200 rounded">승인
+                  대기</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- 페이지네이션 및 총 건수 -->
+      <div class="flex items-center justify-between mt-4 text-xs text-[#69736C]">
+        <div class="flex items-center gap-3"><span>총 7개</span><span class="text-[#DDE2DE]">|</span><span>20개씩 보기</span>
+        </div>
+        <div class="flex items-center gap-2"><button
+            class="w-7 h-7 flex items-center justify-center border border-[#DDE2DE] rounded bg-white text-[#69736C] disabled:opacity-40"
+            disabled="" type="button"><span class="material-symbols-outlined text-xs">chevron_left</span></button><span
+            class="px-1 font-medium text-[#202622]">1 / 1페이지</span><button
+            class="w-7 h-7 flex items-center justify-center border border-[#DDE2DE] rounded bg-white text-[#69736C] disabled:opacity-40"
+            disabled="" type="button"><span class="material-symbols-outlined text-xs">chevron_right</span></button>
+        </div>
+      </div>
+    </main>
+    <!-- 우측 슬라이드 상세 패널 (폭 680px, 우측 고정) -->
+    <aside
+      class="fixed top-16 right-0 w-[680px] h-[calc(100vh-64px)] bg-white border-l border-[#DDE2DE] flex flex-col justify-between z-20 shadow-[-4px_0_12px_rgba(0,0,0,0.03)]">
+      <!-- 패널 상단 및 본문 컨텐츠 -->
+      <div class="p-8 overflow-y-auto flex-1">
+        <!-- 상단 헤더 바 -->
+        <div class="flex items-center justify-between pb-4 mb-6 border-b border-[#DDE2DE]">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-medium text-[#69736C]">#105 작업 상세 정보</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <!-- 더보기 메뉴 토글 및 드롭다운 컨테이너 -->
+            <div class="relative inline-block text-left" id="action-menu-wrap">
+              <button
+                class="w-8 h-8 flex items-center justify-center text-[#69736C] hover:text-[#202622] hover:bg-[#F7F8F7] rounded transition-colors"
+                id="more-btn" onclick="document.getElementById('dropdown-menu').classList.toggle('hidden')"
+                title="추가 옵션" type="button">
+                <span class="material-symbols-outlined">more_vert</span>
+              </button>
+              <!-- 옵션 항목 드롭다운 -->
+              <div
+                class="hidden absolute right-0 mt-1 w-32 bg-white border border-[#DDE2DE] rounded shadow-sm py-1 z-30"
+                id="dropdown-menu">
+                <button class="w-full text-left px-3 py-2 text-xs text-[#202622] hover:bg-[#F7F8F7] transition-colors"
+                  type="button">담당자 해제</button>
+                <button class="w-full text-left px-3 py-2 text-xs text-red-600 hover:bg-[#F7F8F7] transition-colors"
+                  type="button">작업 삭제</button>
+              </div>
+            </div>
+            <!-- 닫기 버튼 -->
+            <button
+              class="w-8 h-8 flex items-center justify-center text-[#69736C] hover:text-[#202622] hover:bg-[#F7F8F7] rounded transition-colors"
+              title="패널 닫기" type="button">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+          </div>
+        </div>
+        <!-- 상태 태그 & 작업 제목 -->
+        <div class="mb-6">
+          <div class="mb-2">
+            <span
+              class="inline-block text-xs font-semibold px-2.5 py-1 bg-purple-50 text-purple-700 border border-purple-200 rounded">
+              검토 중
+            </span>
+          </div>
+          <h2 class="text-2xl font-bold text-[#202622] tracking-tight leading-snug">
+            결제 오류 수정 검토
+          </h2>
+        </div>
+        <!-- 안내 및 관리자 액션 박스 -->
+        <div class="p-5 bg-[#F7F8F7] border border-[#DDE2DE] rounded mb-8">
+          <p class="text-xs text-[#69736C] mb-4">
+            작업 내용을 확인하고 완료하거나 보완을 요청하세요.
+          </p>
+          <div class="flex items-center gap-2.5">
+            <!-- 주요 액션: 완료 처리 -->
+            <button
+              class="px-4 py-2 bg-[#245C45] hover:bg-[#1d4b38] text-white text-xs font-medium rounded transition-colors"
+              type="button">
+              완료 처리
+            </button>
+            <!-- 보조 액션: 보완 요청 -->
+            <button
+              class="px-4 py-2 bg-white hover:bg-[#F7F8F7] border border-[#DDE2DE] text-xs font-medium text-[#202622] rounded transition-colors"
+              type="button">
+              보완 요청
+            </button>
+            <!-- 내용 수정 -->
+            <button class="px-3 py-2 text-xs text-[#69736C] hover:text-[#202622] rounded transition-colors ml-1"
+              type="button">
+              내용 수정
+            </button>
+          </div>
+        </div>
+        <!-- 작업 내용 섹션 -->
+        <div class="mb-8">
+          <h3 class="text-xs font-semibold text-[#69736C] mb-2 uppercase tracking-wide">작업 내용</h3>
+          <div class="p-4 bg-white border border-[#DDE2DE] rounded text-sm text-[#202622] leading-relaxed">
+            오류 재현 조건에서 수정 결과와 회귀 여부를 확인합니다.
+          </div>
+        </div>
+        <!-- 작업 메타 정보 섹션 -->
+        <div>
+          <h3 class="text-xs font-semibold text-[#69736C] mb-2 uppercase tracking-wide">상세 정보</h3>
+          <div class="border border-[#DDE2DE] rounded divide-y divide-[#DDE2DE]">
+            <div class="flex items-center justify-between px-4 py-3 text-xs bg-[#FFFFFF]">
+              <span class="text-[#69736C]">생성자</span>
+              <span class="font-medium text-[#202622]">김서연</span>
+            </div>
+            <div class="flex items-center justify-between px-4 py-3 text-xs bg-[#FFFFFF]">
+              <span class="text-[#69736C]">담당자</span>
+              <div class="flex items-center gap-2">
+                <span class="font-medium text-[#202622]">이민지</span>
+                <button class="text-[11px] text-[#245C45] hover:underline font-medium ml-1" type="button">
+                  변경
+                </button>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-4 py-3 text-xs bg-[#FFFFFF]">
+              <span class="text-[#69736C]">생성일</span>
+              <span class="text-[#202622]">2026.09.15</span>
+            </div>
+            <div class="flex items-center justify-between px-4 py-3 text-xs bg-[#FFFFFF]">
+              <span class="text-[#69736C]">최근 수정일</span>
+              <span class="text-[#202622]">2026.09.16</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 하단 푸터 바 -->
+    </aside>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+
+    body {
+      color: #202622;
+      background-color: #ffffff;
+      font-family: 'Public Sans', 'Pretendard', 'Noto Sans KR', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    }
+  

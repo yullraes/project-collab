@@ -1,0 +1,138 @@
+.preview-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 48px 32px;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.preview-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.preview-card>span {
+  color: var(--color-muted);
+  font-size: var(--text-xs);
+}
+
+.preview-card>span:last-child {
+  margin-left: auto;
+}
+
+.preview-card:hover {
+  border-color: var(--color-primary);
+}
+
+.specimen {
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.specimen>h2 {
+  margin-bottom: var(--space-6);
+}
+
+.specimen p+p {
+  margin-top: var(--space-3);
+}
+
+.type-title {
+  font-size: var(--text-title);
+  font-weight: 700;
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.swatches strong,
+.swatches code {
+  display: block;
+  margin-top: var(--space-2);
+}
+
+.swatches code {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+.swatch {
+  display: block;
+  height: 72px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.swatch--primary {
+  background: var(--color-primary);
+}
+
+.swatch--canvas {
+  background: var(--color-canvas);
+}
+
+.swatch--surface {
+  background: var(--color-surface);
+}
+
+.swatch--text {
+  background: var(--color-text);
+}
+
+.swatch--muted {
+  background: var(--color-muted);
+}
+
+.swatch--border {
+  background: var(--color-border);
+}
+
+.specimen-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 1100px) {
+  .preview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .preview-page {
+    padding: 24px 16px;
+  }
+
+  .preview-grid,
+  .specimen-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .swatches {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .specimen {
+    padding: 16px;
+  }
+
+  .type-title {
+    font-size: 22px;
+  }
+}

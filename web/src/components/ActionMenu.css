@@ -1,0 +1,38 @@
+.more-menu {
+  position: relative;
+}
+
+.more-menu summary {
+  list-style: none;
+  cursor: pointer;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 2px;
+  color: var(--color-muted);
+}
+
+.more-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.more-menu>div {
+  position: absolute;
+  right: 0;
+  top: 44px;
+  min-width: 156px;
+  padding: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px var(--color-shadow-menu);
+  z-index: 2;
+}
+
+.more-menu .button {
+  width: 100%;
+  justify-content: flex-start;
+  border: 0;
+}

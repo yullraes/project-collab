@@ -1,0 +1,201 @@
+{
+  "projectId": "16840669388429394128",
+  "screens": [
+    {
+      "number": 1,
+      "title": "01 내 프로젝트",
+      "screenId": "8bdeffa2216d41a2b52de3536b8729e3",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzJjNjZhMjU4MzQ5NzRlOTQ5ZTBjY2QxMTM3MTE0OWU1EgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 2,
+      "title": "02 프로젝트 만들기",
+      "screenId": "ae9ac2fd43b94804b868721e75279687",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2Q1NDA2YzNiZTJiMTQ4ODNhYTI0M2IzZjNhYWY4ZmFkEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 3,
+      "title": "03 프로젝트 작업 목록",
+      "screenId": "d9fb2b5c8c5942c6b98a8767f26bb64c",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2FlZDcyZjQxOTc3MjQxOWJhNjdkZWFmNmM4YmY2Y2NlEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 4,
+      "title": "04 승인 대기 상세 · 관리자",
+      "screenId": "04023467ec804ea6b02a1eebcbf3670a",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzYzZGUwNzQ1OGM1NjRjMGY5OWYyNjJmMTRiMWFlY2RmEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 5,
+      "title": "05 반려 작업 상세 · 생성자",
+      "screenId": "3ed10c4fde9d4d9294f9d2deb0ad5bd6",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2I5ZTMxNjFkYjYwMzRlODc4MjNiODUzMzM3OTc2NjQwEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 6,
+      "title": "06 승인된 작업 상세 · 담당자",
+      "screenId": "34048f530a7145358133eda8fe6df4b3",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzkwYzVhYWIxZTBhZjRiN2Q5OWZmYmY3MmViOTMwM2I0EgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 7,
+      "title": "07 진행 중 상세 · 담당자",
+      "screenId": "3a0797dc92b3407f8c9e4a96acdc13d5",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzVmMjFhZDEyNGUyYTQxOTJhMWYyZWVhZTJiM2NhNmY0EgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 8,
+      "title": "08 검토 중 상세 · 관리자",
+      "screenId": "61ca6861d09e4ee598d5449d27f8a66c",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzFmNmU5NjFmYmQ3MzQxYjI4ZjY0MjIzYTgzMmJiYmVhEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 9,
+      "title": "09 완료 작업 상세 · 관리자",
+      "screenId": "94b8bda9f3d549df9480c7b2ed7818da",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzZlOTA0ODZiYjI0ZDQ1YzBhMGUwNzQyMzI0MjVhY2YzEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 10,
+      "title": "10 작업 제안 만들기 · 멤버",
+      "screenId": "98c17ddad6204a64bf9e0912151ab6d1",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2ExZDYxOWYxZWJjNzQ5YmZiOTM3YjU2NjE2ZWNmMmJkEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 11,
+      "title": "11 작업 등록 · 관리자",
+      "screenId": "a5e8830c57494f818c1b47f5204540c2",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzA3MGJkMDBlNjhjNDQ5NjJiY2E1MTQ4NzI5OGZhODY4EgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 12,
+      "title": "12 내용 수정과 재승인",
+      "screenId": "597fd50f46de4a38b74152670bc65e3c",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2M2MjdhYTdmNjM0YzQ3NjRhOTAyY2NlMGIxODBhNzMxEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 13,
+      "title": "13 작업 승인",
+      "screenId": "ed0b42b59e954591bdaadf296fe2e807",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2MzMjk0MGM5OGU1ODQ0NTBiYzg0ODhlMWZhOGEzMDZkEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 14,
+      "title": "14 작업 반려 · 입력 오류",
+      "screenId": "4924b9b29ada4bc7a776e9eaa1107e8e",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2Y2OTM2ZDg4OTkwYTQ4YjhiOGYwMmJiNjVlOTE1NzU3EgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 15,
+      "title": "15 보완 요청 확인",
+      "screenId": "a5a130fc488441de9c59a0c562738305",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2I0MDFmY2M5NGEwYzQ3M2ViZTJmYTJhMWFiZTQ5ZTY2EgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 16,
+      "title": "16 프로젝트 멤버",
+      "screenId": "14b0e8cc2d7b456ea31b5125f1d58035",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzg4MTUxZmIzYWVkMjQyOTY4MDViZDYyODIwYmQ3N2Y4EgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 17,
+      "title": "17 기존 사용자 추가",
+      "screenId": "224ea080d5df4becbba71d5ab6bbfbed",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzA3NGI3YjkwZTE2MTQxMmZiYjI2ZDBkZTk2ZTU3YWVkEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 18,
+      "title": "18 마지막 소유자 역할 보호",
+      "screenId": "30b7534227ec40bc949b2d945682c98a",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2QyOWU4NjkxYTMzZDQwNTJiZGU0ZGViYTkwODA1N2E4EgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 19,
+      "title": "19 프로젝트 설정 · 소유자",
+      "screenId": "637d6ddc79334efd84d0988ff9a083ac",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2EzYmJkNDFjNzMwNDQ1OWJiMGUxMTk2Y2ZkMjU5ZDBkEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 20,
+      "title": "20 작업 변경 충돌",
+      "screenId": "b5a53673eb8b46438b11106a98af553a",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2MzZjMwYjQzOGEwOTQ2NGM4OWM5OTcxMTRkOTYzZTQ2EgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 21,
+      "title": "21 작업 목록 · 검색 결과 없음",
+      "screenId": "b0dab7476c3447e3adb01a4cf25df576",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzVkZWEwZGUzNzk2ZTQ0ZjdhMTJkNWI2OTNlZTQ3ZDg0EgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 22,
+      "title": "22 작업 목록 · 로딩",
+      "screenId": "1f47ca68308f4d7badfa14b28ba8e758",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzUzY2Q2ZGQwN2Q0ZTRjNWJhMzMxZTEyYjAwZDI2Zjk4EgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 23,
+      "title": "23 프로젝트 접근 권한 부족",
+      "screenId": "65502856b3ad4522b7eeba26784df962",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2U4ZjY5MmNhOGE0MTQ3Nzc5OTU5MTU0MzY0MzUzNDIwEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 24,
+      "title": "24 자기 작업 승인 제한",
+      "screenId": "84b85c30fcae417a9f68817596c77779",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzExZTQ5ZmFhYzc3OTQzZDg5MzZiYjU1NmE2YWFjMGJjEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 25,
+      "title": "25 미할당 작업 담당자 지정",
+      "screenId": "bdcb2a626bc440d789ccdc599b77fac5",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzUwYjQ0MWRmZTQ3YzQ1MmY4NzI3ZDc0ZjY3Y2NkMmFiEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 26,
+      "title": "26 프로젝트 멤버 제거 확인",
+      "screenId": "10779d5314a441f8a804dba5fef19372",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2I1ODRiMGVkZTBmYTRhYTM4M2I1ODI2M2NmZWYwMTdiEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 27,
+      "title": "27 프로젝트 삭제 확인",
+      "screenId": "be7393a14be54e35b66ffa845555bab7",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2E0M2FkZmUxNmFmYjRkODc4M2ZlYTE4Nzc1MzliYmE0EgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "DESKTOP"
+    },
+    {
+      "number": 28,
+      "title": "28 반려 작업 상세 · 모바일",
+      "screenId": "a4318ed3da334e73a3382b2bb568f021",
+      "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2U3M2E2MWJjNjRmODRiNjliMTYyNGQzODg5MTBhNGYzEgsSBxDPhfG15QIYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjg0MDY2OTM4ODQyOTM5NDEyOA&filename=&opi=96797242",
+      "device": "MOBILE"
+    }
+  ]
+}

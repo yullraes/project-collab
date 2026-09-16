@@ -1,0 +1,14 @@
+
+    body {
+      font-family: 'Public Sans', 'Noto Sans KR', sans-serif;
+      color: #202622;
+      background-color: #FFFFFF;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-size: 18px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  

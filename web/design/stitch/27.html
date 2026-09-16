@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Collab</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#245C45',
+              dark: '#1C4A37',
+              light: '#EBF2EE'
+            },
+            surface: {
+              DEFAULT: '#FFFFFF',
+              muted: '#F7F8F7'
+            },
+            line: {
+              DEFAULT: '#DDE2DE'
+            },
+            content: {
+              DEFAULT: '#202622',
+              subtle: '#6B7770',
+              muted: '#8B9690'
+            }
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          fontFamily: {
+            headline: ["Noto Sans KR", "Public Sans", "sans-serif"],
+            display: ["Noto Sans KR", "Public Sans", "sans-serif"],
+            body: ["Noto Sans KR", "Public Sans", "sans-serif"],
+            label: ["Noto Sans KR", "Public Sans", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Noto Sans KR', 'Public Sans', sans-serif;
+      color: #202622;
+      background-color: #FFFFFF;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="w-[1440px] h-[1000px] mx-auto overflow-hidden bg-white text-content select-none relative">
+<!-- 좌측 사이드바 (216px) -->
+<aside class="fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-[#DDE2DE] flex flex-col justify-between p-4 z-10">
+<div class="flex flex-col">
+<!-- 헤더 / 브랜드 로고 -->
+<div class="pb-5 border-b border-[#DDE2DE]">
+<div class="text-base font-headline font-bold text-[#202622] tracking-tight">Project Collab</div>
+<div class="text-xs font-label text-content-subtle mt-0.5">업무 협업 도구</div>
+</div>
+<!-- 상단 이동 링크 -->
+<div class="pt-4 pb-3">
+<a class="inline-flex items-center text-xs font-medium text-content-subtle hover:text-[#245C45] transition-colors duration-150" href="#">
+<span class="material-symbols-outlined mr-1 text-[16px]">arrow_back</span>
+          내 프로젝트로
+        </a>
+</div>
+<!-- 현재 프로젝트 정보 -->
+<div class="bg-surface-muted p-2.5 rounded border border-[#DDE2DE] mb-4">
+<div class="text-[11px] font-label text-content-muted">현재 프로젝트</div>
+<div class="text-sm font-headline font-bold text-[#202622] mt-0.5 truncate">결제 안정화</div>
+</div>
+<!-- 네비게이션 메뉴 -->
+<nav class="flex flex-col space-y-1">
+<a class="flex items-center gap-2.5 px-3 py-2 text-sm font-normal text-content-subtle rounded hover:bg-surface-muted transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">check_box</span>
+<span>작업</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 text-sm font-normal text-content-subtle rounded hover:bg-surface-muted transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span>멤버</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-[#245C45] bg-[#EBF2EE] rounded" href="#">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span>설정</span>
+</a>
+</nav>
+</div>
+<!-- 하단 새 작업 버튼 -->
+<div>
+<button class="w-full flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-medium text-[#245C45] border border-[#245C45] rounded hover:bg-[#EBF2EE] transition-colors duration-150" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>새 작업 생성</span>
+</button>
+</div>
+</aside>
+<!-- 상단 네비게이션 헤더 (h-16, 64px) -->
+<header class="fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-[#DDE2DE] flex justify-between items-center px-8 z-10">
+<div class="flex items-center">
+<h1 class="text-lg font-headline font-bold text-[#202622]">프로젝트 개요</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-sm font-normal text-content-subtle">
+        김서연 · 소유자
+      </div>
+</div>
+</header>
+<!-- 메인 배경 본문 (설정 화면) -->
+<main class="ml-[216px] pt-16 h-[1000px] overflow-y-auto bg-white p-8">
+<div class="max-w-[760px] mx-auto py-4">
+<h2 class="text-2xl font-headline font-bold text-[#202622] mb-8">프로젝트 설정</h2>
+<!-- 설정 폼 영역 -->
+<div class="space-y-6">
+<div>
+<label class="block text-xs font-medium text-content-subtle mb-1.5">프로젝트 이름</label>
+<input class="w-full h-10 px-3 text-sm text-[#202622] bg-surface-muted border border-[#DDE2DE] rounded focus:outline-none" readonly="" type="text" value="결제 안정화"/>
+</div>
+<div>
+<label class="block text-xs font-medium text-content-subtle mb-1.5">프로젝트 설명</label>
+<textarea class="w-full p-3 text-sm text-[#202622] bg-surface-muted border border-[#DDE2DE] rounded leading-relaxed focus:outline-none resize-none" readonly="" rows="3">결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다.</textarea>
+</div>
+<div class="grid grid-cols-2 gap-6 pt-1">
+<div>
+<span class="block text-xs font-medium text-content-subtle mb-1">생성일</span>
+<span class="text-sm text-[#202622]">2026.09.15</span>
+</div>
+<div>
+<span class="block text-xs font-medium text-content-subtle mb-1">최근 수정일</span>
+<span class="text-sm text-[#202622]">2026.09.16</span>
+</div>
+</div>
+<div class="pt-2">
+<button class="h-9 px-4 bg-[#245C45] text-white text-sm font-medium rounded hover:bg-[#1C4A37] transition-colors" type="button">
+            변경사항 저장
+          </button>
+</div>
+</div>
+<!-- 위험 구역: 프로젝트 삭제 -->
+<div class="mt-14 pt-8 border-t border-[#DDE2DE]">
+<h3 class="text-base font-headline font-bold text-[#202622] mb-1">프로젝트 삭제</h3>
+<p class="text-sm text-content-subtle mb-4">프로젝트의 모든 작업과 멤버 정보가 함께 삭제됩니다.</p>
+<button class="h-9 px-4 text-sm font-medium text-red-600 border border-red-300 rounded hover:bg-red-50 transition-colors" type="button">
+          프로젝트 삭제
+        </button>
+</div>
+</div>
+</main>
+<!-- 백드롭 딤 오버레이 & 중앙 모달 대화상자 -->
+<div class="fixed inset-0 bg-black/45 flex items-center justify-center z-50 p-4">
+<div class="w-[600px] bg-white rounded-lg border border-[#DDE2DE] shadow-2xl flex flex-col overflow-hidden">
+<!-- 모달 상단 헤더 -->
+<div class="flex items-center justify-between px-6 py-5 border-b border-[#DDE2DE]">
+<h2 class="text-lg font-headline font-bold text-[#202622]">프로젝트를 삭제할까요?</h2>
+<button class="text-content-muted hover:text-content transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- 모달 본문 -->
+<div class="p-6 space-y-4">
+<!-- 대상 프로젝트 안내 카드 -->
+<div class="p-4 bg-surface-muted border border-[#DDE2DE] rounded">
+<span class="text-xs font-label text-content-muted block mb-1">대상 프로젝트</span>
+<span class="text-base font-headline font-bold text-[#202622]">결제 안정화</span>
+</div>
+<!-- 안내 문구 -->
+<div class="space-y-1.5 pt-1">
+<p class="text-sm text-content leading-relaxed">
+            프로젝트의 모든 작업과 멤버 정보가 함께 삭제됩니다.
+          </p>
+<p class="text-sm font-medium text-red-600 leading-relaxed">
+            삭제 후 복구할 수 없습니다.
+          </p>
+</div>
+</div>
+<!-- 모달 하단 액션 영역 -->
+<div class="flex items-center justify-end gap-3 px-6 py-4 bg-surface-muted border-t border-[#DDE2DE]">
+<button class="h-9 px-4 text-sm font-medium text-content bg-white border border-[#DDE2DE] rounded hover:bg-neutral-50 transition-colors" type="button">
+          취소
+        </button>
+<button class="h-9 px-4 text-sm font-medium text-white bg-red-600 rounded hover:bg-red-700 transition-colors shadow-sm" type="button">
+          프로젝트 삭제
+        </button>
+</div>
+</div>
+</div>
+</body></html>

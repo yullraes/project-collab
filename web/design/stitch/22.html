@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Collab</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: "#245C45",
+              hover: "#1D4B38",
+              subtle: "#EBF3EF",
+            },
+            surface: {
+              base: "#FFFFFF",
+              sub: "#F7F8F7",
+              line: "#DDE2DE",
+            },
+            ink: {
+              DEFAULT: "#202622",
+              muted: "#667069",
+              light: "#8F9992",
+            }
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          fontFamily: {
+            headline: ["'Noto Sans KR'", "'Public Sans'", "sans-serif"],
+            display: ["'Noto Sans KR'", "'Public Sans'", "sans-serif"],
+            body: ["'Noto Sans KR'", "'Public Sans'", "sans-serif"],
+            label: ["'Noto Sans KR'", "'Public Sans'", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Noto Sans KR', 'Public Sans', sans-serif;
+      color: #202622;
+      background-color: #F7F8F7;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    
+    .table-row-h {
+      height: 56px;
+    }
+
+    @keyframes subtlePulse {
+      0%, 100% {
+        opacity: 0.95;
+      }
+      50% {
+        opacity: 0.45;
+      }
+    }
+
+    .skeleton-bar {
+      animation: subtlePulse 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+</head>
+<body class="w-[1440px] min-w-[1440px] mx-auto min-h-screen text-[14px] leading-[1.6] bg-surface-sub text-ink selection:bg-brand-subtle selection:text-brand">
+<!-- 좌측 216px 탐색바 -->
+<aside class="fixed left-0 top-0 h-screen w-[216px] bg-white border-r border-surface-line flex flex-col justify-between p-4 select-none z-30">
+<div class="flex flex-col gap-5">
+<!-- 로고 헤더 -->
+<div>
+<div class="text-[17px] font-bold text-ink tracking-tight font-headline">Project Collab</div>
+<div class="text-[12px] text-ink-muted">업무 협업 도구</div>
+</div>
+<!-- 내 프로젝트로 링크 -->
+<a class="inline-flex items-center gap-1 text-[13px] text-ink-muted hover:text-ink transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+<span>내 프로젝트로</span>
+</a>
+<!-- 현재 프로젝트 카드 -->
+<div class="p-3 bg-surface-sub rounded border border-surface-line">
+<div class="text-[11px] font-medium text-ink-muted uppercase tracking-wider mb-1">프로젝트</div>
+<div class="text-[14px] font-semibold text-ink truncate">결제 안정화</div>
+</div>
+<!-- 탐색 메뉴 (작업, 멤버, 설정 3개만 허용) -->
+<nav class="flex flex-col gap-1">
+<!-- 작업 (현재 활성 탭) -->
+<a class="flex items-center gap-2.5 px-3 py-2 text-[14px] font-medium text-brand bg-brand-subtle rounded transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">check_box</span>
+<span>작업</span>
+</a>
+<!-- 멤버 -->
+<a class="flex items-center gap-2.5 px-3 py-2 text-[14px] font-normal text-ink-muted hover:text-ink hover:bg-surface-sub rounded transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">person</span>
+<span>멤버</span>
+</a>
+<!-- 설정 -->
+<a class="flex items-center gap-2.5 px-3 py-2 text-[14px] font-normal text-ink-muted hover:text-ink hover:bg-surface-sub rounded transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span>설정</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- 상단 머리글 (Top Bar) -->
+<header class="fixed top-0 left-[216px] right-0 h-16 bg-white border-b border-surface-line flex items-center justify-between px-8 z-20">
+<div class="text-[18px] font-bold text-ink tracking-tight font-headline">프로젝트 개요</div>
+<div class="flex items-center gap-2 text-[13px] text-ink-muted">
+<span class="text-ink font-medium">이민지</span>
+<span class="text-surface-line text-[11px]">·</span>
+<span>멤버</span>
+</div>
+</header>
+<!-- 본문 영역 (32px 패딩, 왼쪽 216px 및 상단 64px 마진 확보) -->
+<main class="ml-[216px] pt-16 p-8 min-h-screen">
+<div class="max-w-[1160px] mx-auto flex flex-col gap-6">
+<!-- 1. 상단 프로젝트 요약 카드 -->
+<section class="bg-white border border-surface-line rounded p-6">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1 max-w-[760px]">
+<h1 class="text-[24px] font-bold text-ink leading-tight font-headline">결제 안정화</h1>
+<p class="text-[14px] text-ink-muted leading-[1.6]">결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다.</p>
+</div>
+<div class="flex flex-col items-end gap-1 text-[13px] text-ink-light shrink-0 pt-0.5">
+<div><span class="text-ink-muted">생성일:</span> 2026.09.15</div>
+<div><span class="text-ink-muted">최근 수정일:</span> 2026.09.16</div>
+</div>
+</div>
+</section>
+<!-- 2. 작업 목록 카드 -->
+<section class="bg-white border border-surface-line rounded flex flex-col">
+<!-- 작업 헤더 & 액션 -->
+<div class="px-6 py-4 border-b border-surface-line flex items-center justify-between">
+<h2 class="text-[16px] font-bold text-ink font-headline">작업</h2>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-brand text-white text-[13px] font-medium rounded hover:bg-brand-hover transition-colors duration-150" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>새 작업 만들기</span>
+</button>
+</div>
+<!-- 필터 바 -->
+<div class="px-6 py-3 border-b border-surface-line flex items-center justify-between bg-white">
+<div class="flex items-center gap-3">
+<!-- 상태 필터 드롭다운 ('전체') -->
+<div class="relative inline-block text-left">
+<button class="inline-flex items-center gap-2 h-9 px-3 border border-surface-line rounded bg-white text-[13px] text-ink hover:border-ink-light transition-colors duration-150" type="button">
+<span class="text-ink-muted">상태:</span>
+<span class="font-medium">전체</span>
+<span class="material-symbols-outlined text-[16px] text-ink-muted">expand_more</span>
+</button>
+</div>
+<!-- 검색 입력창 & 버튼 -->
+<div class="flex items-center gap-1.5">
+<input class="w-64 h-9 px-3 text-[13px] border border-surface-line rounded bg-white placeholder:text-ink-light text-ink focus:outline-none focus:border-brand" disabled="" placeholder="제목 또는 내용 검색" type="text"/>
+<button class="h-9 px-3.5 border border-surface-line bg-surface-sub hover:bg-surface-line text-[13px] text-ink font-medium rounded transition-colors duration-150" disabled="" type="button">
+                검색
+              </button>
+</div>
+</div>
+</div>
+<!-- 로딩 상태 안내 배너 (절제되고 정돈된 상태) -->
+<div class="py-2.5 px-6 bg-surface-sub/60 border-b border-surface-line flex items-center justify-center gap-2 text-[12px] text-ink-muted select-none">
+<span class="w-1.5 h-1.5 rounded-full bg-brand animate-ping"></span>
+<span>작업을 불러오는 중입니다.</span>
+</div>
+<!-- 표 본문 (로딩 스켈레톤) -->
+<div class="w-full overflow-hidden">
+<table class="w-full text-left border-collapse table-fixed">
+<thead>
+<tr class="h-11 border-b border-surface-line bg-surface-sub text-[12px] font-semibold text-ink-muted select-none">
+<th class="w-[88px] px-6">번호</th>
+<th class="px-4">제목</th>
+<th class="w-[110px] px-4">상태</th>
+<th class="w-[120px] px-4">담당자</th>
+<th class="w-[120px] px-4">생성자</th>
+<th class="w-[130px] px-6 text-right">최근 수정일</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-line">
+<!-- 스켈레톤 행 1 -->
+<tr class="table-row-h">
+<td class="px-6">
+<div class="h-4 w-8 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-72 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-5 w-14 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-14 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-14 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-6 text-right">
+<div class="h-4 w-20 bg-neutral-200 rounded ml-auto skeleton-bar"></div>
+</td>
+</tr>
+<!-- 스켈레톤 행 2 -->
+<tr class="table-row-h">
+<td class="px-6">
+<div class="h-4 w-9 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-96 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-5 w-14 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-12 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-16 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-6 text-right">
+<div class="h-4 w-20 bg-neutral-200 rounded ml-auto skeleton-bar"></div>
+</td>
+</tr>
+<!-- 스켈레톤 행 3 -->
+<tr class="table-row-h">
+<td class="px-6">
+<div class="h-4 w-8 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-60 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-5 w-14 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-16 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-14 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-6 text-right">
+<div class="h-4 w-20 bg-neutral-200 rounded ml-auto skeleton-bar"></div>
+</td>
+</tr>
+<!-- 스켈레톤 행 4 -->
+<tr class="table-row-h">
+<td class="px-6">
+<div class="h-4 w-7 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-80 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-5 w-14 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-14 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-12 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-6 text-right">
+<div class="h-4 w-20 bg-neutral-200 rounded ml-auto skeleton-bar"></div>
+</td>
+</tr>
+<!-- 스켈레톤 행 5 -->
+<tr class="table-row-h">
+<td class="px-6">
+<div class="h-4 w-9 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-64 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-5 w-14 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-16 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-14 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-6 text-right">
+<div class="h-4 w-20 bg-neutral-200 rounded ml-auto skeleton-bar"></div>
+</td>
+</tr>
+<!-- 스켈레톤 행 6 -->
+<tr class="table-row-h">
+<td class="px-6">
+<div class="h-4 w-8 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-72 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-5 w-14 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-14 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-4">
+<div class="h-4 w-16 bg-neutral-200 rounded skeleton-bar"></div>
+</td>
+<td class="px-6 text-right">
+<div class="h-4 w-20 bg-neutral-200 rounded ml-auto skeleton-bar"></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 하단 페이징 영역 (로딩 중 비활성화 상태) -->
+<div class="px-6 py-3 border-t border-surface-line flex items-center justify-between text-[13px] text-ink-light select-none">
+<div class="flex items-center gap-2">
+<span>20개씩 보기</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 text-ink-light border border-surface-line rounded bg-surface-sub cursor-not-allowed opacity-60" disabled="" type="button">
+              이전
+            </button>
+<button class="px-2.5 py-1 text-ink-light border border-surface-line rounded bg-surface-sub cursor-not-allowed opacity-60" disabled="" type="button">
+              다음
+            </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,21 @@
+.field {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.field label {
+  font-weight: 600;
+}
+
+.field-hint,
+.field-error {
+  font-size: var(--text-xs);
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+.field-error,
+.required {
+  color: var(--color-danger);
+}

@@ -1,0 +1,32 @@
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.page-heading p {
+  margin-top: var(--space-2);
+  color: var(--color-muted);
+  max-width: 700px;
+}
+
+@media (max-width: 760px) {
+  .page-heading {
+    gap: 12px;
+  }
+
+  .page-heading h1 {
+    font-size: 22px;
+  }
+
+  .page-heading p {
+    font-size: var(--text-xs);
+  }
+
+  .page-heading>.button {
+    font-size: var(--text-xs);
+    padding: 8px 12px;
+  }
+}

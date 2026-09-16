@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Collab - 작업 목록</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#245C45",
+            "primary-hover": "#1d4a37",
+            "primary-subtle": "#EAF2ED",
+            surface: "#FFFFFF",
+            "surface-subtle": "#F7F8F7",
+            line: "#DDE2DE",
+            "text-main": "#202622",
+            "text-muted": "#6B7280"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          fontFamily: {
+            headline: ["Noto Sans KR", "Public Sans", "sans-serif"],
+            display: ["Noto Sans KR", "Public Sans", "sans-serif"],
+            body: ["Noto Sans KR", "Public Sans", "sans-serif"],
+            label: ["Noto Sans KR", "Public Sans", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Noto Sans KR', 'Public Sans', sans-serif;
+      color: #202622;
+      background-color: #F7F8F7;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    }
+  </style>
+</head>
+<body class="bg-surface-subtle text-text-main antialiased min-h-screen">
+<div class="flex min-h-screen w-full">
+<!-- Left Sidebar (폭 216px, 고정 비율) -->
+<aside class="fixed left-0 top-0 h-screen w-[216px] bg-surface border-r border-line flex flex-col justify-between select-none z-20">
+<div class="flex flex-col">
+<!-- 브랜드 헤더 영역 -->
+<div class="h-16 px-5 border-b border-line flex flex-col justify-center">
+<div class="text-base font-bold text-text-main tracking-tight leading-tight">Project Collab</div>
+<div class="text-xs text-text-muted mt-0.5">업무 협업 도구</div>
+</div>
+<!-- 상위 이동 링크 -->
+<div class="px-4 pt-4 pb-2">
+<a class="inline-flex items-center gap-1.5 text-xs text-text-muted hover:text-primary transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+<span>내 프로젝트로</span>
+</a>
+</div>
+<!-- 프로젝트 정보 및 메뉴 탭 -->
+<div class="px-4 py-2">
+<div class="px-2.5 py-2 mb-2 rounded bg-surface-subtle border border-line">
+<div class="text-[11px] font-medium text-text-muted">프로젝트</div>
+<div class="text-sm font-semibold text-text-main truncate mt-0.5">결제 안정화</div>
+</div>
+<nav class="flex flex-col space-y-1 pt-1">
+<!-- 작업 (활성 상태) -->
+<a class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-primary bg-primary-subtle rounded transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">check_box</span>
+<span>작업</span>
+</a>
+<!-- 멤버 (비활성 상태) -->
+<a class="flex items-center gap-2.5 px-3 py-2 text-sm font-normal text-text-main hover:bg-surface-subtle rounded transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px] text-text-muted">group</span>
+<span>멤버</span>
+</a>
+<!-- 설정 (비활성 상태) -->
+<a class="flex items-center gap-2.5 px-3 py-2 text-sm font-normal text-text-main hover:bg-surface-subtle rounded transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px] text-text-muted">settings</span>
+<span>설정</span>
+</a>
+</nav>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 ml-[216px] flex flex-col min-w-0">
+<!-- Top Header (높이 64px) -->
+<header class="fixed top-0 left-[216px] right-0 h-16 bg-surface border-b border-line flex items-center justify-between px-8 z-10">
+<h1 class="text-lg font-bold text-text-main">프로젝트 개요</h1>
+<div class="flex items-center">
+<span class="text-sm font-normal text-text-main">이민지 · 멤버</span>
+</div>
+</header>
+<!-- 본문 영역 (32px 여백) -->
+<main class="mt-16 p-8 flex-1 flex flex-col gap-6 max-w-[1224px] w-full">
+<!-- 프로젝트 요약 카드 -->
+<section class="bg-surface border border-line rounded p-6">
+<div class="flex items-start justify-between">
+<div>
+<h2 class="text-2xl font-bold text-text-main tracking-tight leading-snug">결제 안정화</h2>
+<p class="text-sm text-text-main mt-2 leading-relaxed">
+                결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다.
+              </p>
+</div>
+<div class="flex flex-col items-end text-xs text-text-muted space-y-1">
+<span>생성일: 2026.09.15</span>
+<span>최근 수정일: 2026.09.16</span>
+</div>
+</div>
+</section>
+<!-- 작업 섹션 -->
+<section class="bg-surface border border-line rounded flex flex-col">
+<!-- 작업 섹션 상단 헤더 & 컨트롤 -->
+<div class="p-6 border-b border-line flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold text-text-main">작업</h3>
+<button class="inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-white text-sm font-medium rounded hover:bg-primary-hover transition-colors duration-150" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>작업 만들기</span>
+</button>
+</div>
+<!-- 필터 & 검색 바 -->
+<div class="flex items-center gap-3 pt-1">
+<div class="w-36">
+<select class="w-full h-9 px-3 text-sm text-text-main bg-surface border border-line rounded focus:outline-none focus:border-primary focus:ring-0"><option>전체</option>
+<option>승인 대기</option>
+<option>반려됨</option>
+<option>승인됨</option>
+<option>진행 중</option>
+<option selected="">검토 중</option>
+<option>완료</option></select>
+</div>
+<div class="w-72">
+<input class="w-full h-9 px-3 text-sm text-text-main bg-surface border border-line rounded focus:outline-none focus:border-primary focus:ring-0" type="text" value="정산"/>
+</div>
+<button class="h-9 px-4 bg-surface border border-line text-sm font-medium text-text-main rounded hover:bg-surface-subtle transition-colors duration-150" type="button">
+                검색
+              </button>
+</div>
+</div>
+<!-- 작업 목록 테이블 (Empty State 포함) -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="h-14 border-b border-line bg-surface-subtle text-xs font-semibold text-text-muted">
+<th class="w-20 px-6 font-medium">번호</th>
+<th class="px-6 font-medium">제목</th>
+<th class="w-32 px-6 font-medium">상태</th>
+<th class="w-36 px-6 font-medium">담당자</th>
+<th class="w-36 px-6 font-medium">생성자</th>
+<th class="w-36 px-6 font-medium text-right">최근 수정일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="py-24 text-center" colspan="6">
+<div class="flex flex-col items-center justify-center">
+<p class="text-base font-medium text-text-main leading-none">
+                        조건에 맞는 작업이 없습니다.
+                      </p>
+<p class="text-sm text-text-muted mt-2 leading-none">
+                        검색어나 상태 필터를 바꿔 보세요.
+                      </p>
+<div class="mt-5">
+<button class="px-4 py-2 text-sm font-medium text-text-main bg-surface border border-line rounded hover:bg-surface-subtle transition-colors duration-150" type="button">
+                          검색·필터 초기화
+                        </button>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 테이블 하단 페이지네이션 바 -->
+<div class="h-14 px-6 border-t border-line flex items-center justify-between text-xs text-text-muted bg-surface">
+<div>
+              총 <span class="font-medium text-text-main">0</span>개
+            </div>
+<div class="flex items-center gap-4">
+<span>20개씩 보기</span>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 border border-line rounded text-text-muted opacity-40 cursor-not-allowed bg-surface-subtle" disabled="" type="button">
+                  이전
+                </button>
+<button class="px-2 py-1 border border-line rounded text-text-muted opacity-40 cursor-not-allowed bg-surface-subtle" disabled="" type="button">
+                  다음
+                </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Collab</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#245C45",
+            "primary-hover": "#1d4a37"
+          },
+          borderRadius: {
+            DEFAULT: "0.125rem",
+            lg: "0.25rem",
+            xl: "0.5rem",
+            full: "0.75rem"
+          },
+          fontFamily: {
+            headline: ["Public Sans", "Pretendard", "Noto Sans KR", "sans-serif"],
+            display: ["Public Sans", "Pretendard", "Noto Sans KR", "sans-serif"],
+            body: ["Public Sans", "Pretendard", "Noto Sans KR", "sans-serif"],
+            label: ["Public Sans", "Pretendard", "Noto Sans KR", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      color: #202622;
+      background-color: #ffffff;
+      font-family: 'Public Sans', 'Pretendard', 'Noto Sans KR', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    }
+  </style>
+</head>
+<body class="bg-white text-[#202622] min-h-screen overflow-hidden antialiased select-none">
+<!-- Main Application Layout Shell -->
+<div class="flex w-[1440px] h-[1000px] mx-auto relative overflow-hidden bg-white">
+<!-- Left Navigation Shell (Width 216px) -->
+<aside class="fixed left-0 top-0 h-screen w-[216px] border-r border-[#DDE2DE] bg-white flex flex-col justify-between p-4 z-10">
+<div class="flex flex-col gap-6">
+<!-- Logo Header -->
+<div class="px-2 pt-1">
+<div class="text-base font-headline font-bold text-neutral-900 tracking-tight">Project Collab</div>
+<div class="text-xs font-label text-neutral-500 mt-0.5">업무 협업 도구</div>
+</div>
+<!-- Back Link -->
+<div>
+<a class="flex items-center gap-1.5 px-2 py-1.5 text-xs text-neutral-600 hover:text-neutral-900 rounded transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span>내 프로젝트로</span>
+</a>
+</div>
+<!-- Project Scope -->
+<div class="px-2 py-1 border-t border-[#DDE2DE]/60 pt-3">
+<div class="text-[11px] font-medium text-neutral-400">현재 프로젝트</div>
+<div class="text-sm font-semibold text-neutral-800 mt-0.5 truncate">결제 안정화</div>
+</div>
+<!-- Navigation Menu -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-normal text-neutral-700 rounded hover:bg-neutral-50 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">check_box</span>
+<span>작업</span>
+</a>
+<!-- Active Menu: 멤버 -->
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-[#245C45] bg-[#F7F8F7] rounded transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">group</span>
+<span>멤버</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-normal text-neutral-700 rounded hover:bg-neutral-50 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span>설정</span>
+</a>
+</nav>
+</div>
+<!-- Left Bottom User Session / Meta Area -->
+</aside>
+<!-- Top Bar Navigation Shell (Height 64px) -->
+<header class="fixed top-0 left-[216px] right-0 h-16 border-b border-[#DDE2DE] bg-white flex justify-between items-center px-8 z-10">
+<div>
+<h1 class="text-lg font-headline font-bold text-neutral-900">프로젝트 개요</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-sm font-medium text-neutral-700">
+          박준호 · 관리자
+        </div>
+</div>
+</header>
+<!-- Main Content Canvas (Offset by 216px left and 64px top) -->
+<main class="ml-[216px] mt-16 w-[calc(1440px-216px)] min-h-[calc(1000px-64px)] p-8 bg-white overflow-y-auto">
+<!-- Project Metadata Header Card -->
+<section class="border border-[#DDE2DE] bg-[#F7F8F7] rounded p-6 mb-8">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<h2 class="text-2xl font-bold text-neutral-900 tracking-tight">결제 안정화</h2>
+</div>
+<p class="text-sm text-neutral-700 leading-relaxed max-w-3xl">
+            결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다.
+          </p>
+<div class="flex items-center gap-6 mt-3 pt-3 border-t border-[#DDE2DE]/60 text-xs text-neutral-500">
+<div>생성일: 2026.09.15</div>
+<div>최근 수정일: 2026.09.16</div>
+</div>
+</div>
+</section>
+<!-- Members Section Header & Actions -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-base font-bold text-neutral-900">프로젝트 멤버</h3>
+</div>
+<button class="inline-flex items-center gap-1.5 px-3 py-2 bg-[#245C45] hover:bg-[#1d4a37] text-white text-xs font-medium rounded transition-colors duration-150" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>멤버 추가</span>
+</button>
+</div>
+<!-- Members Table -->
+<div class="border border-[#DDE2DE] rounded overflow-hidden">
+<table class="w-full text-left border-collapse text-sm">
+<thead>
+<tr class="bg-[#F7F8F7] border-b border-[#DDE2DE] text-xs font-medium text-neutral-600 h-10">
+<th class="px-4 py-2 font-medium">이름</th>
+<th class="px-4 py-2 font-medium">사용자 ID</th>
+<th class="px-4 py-2 font-medium">이메일</th>
+<th class="px-4 py-2 font-medium">역할</th>
+<th class="px-4 py-2 font-medium">참여일</th>
+<th class="px-4 py-2 font-medium text-right">관리</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#DDE2DE]">
+<!-- Row 1: 김서연 (소유자) -->
+<tr class="h-14 hover:bg-neutral-50/60 transition-colors">
+<td class="px-4 py-3 font-medium text-neutral-900">김서연</td>
+<td class="px-4 py-3 text-neutral-600 font-mono text-xs">1</td>
+<td class="px-4 py-3 text-neutral-600">seoyeon@example.com</td>
+<td class="px-4 py-3">
+<span class="inline-block px-2 py-0.5 text-xs font-medium bg-neutral-100 text-neutral-800 rounded">소유자</span>
+</td>
+<td class="px-4 py-3 text-neutral-600 text-xs">2026.09.01</td>
+<td class="px-4 py-3 text-right">
+<div class="inline-flex items-center gap-2">
+<span class="text-xs text-neutral-400 cursor-not-allowed">역할 변경</span>
+<span class="text-neutral-300">·</span>
+<span class="text-xs text-neutral-400 cursor-not-allowed">멤버 제거</span>
+<span class="text-xs text-neutral-400 ml-1">(프로젝트에는 소유자가 최소 한 명 필요합니다.)</span>
+</div>
+</td>
+</tr>
+<!-- Row 2: 박준호 (관리자 - 현재 로그인 본인) -->
+<tr class="h-14 hover:bg-neutral-50/60 transition-colors">
+<td class="px-4 py-3 font-medium text-neutral-900">박준호 (나)</td>
+<td class="px-4 py-3 text-neutral-600 font-mono text-xs">2</td>
+<td class="px-4 py-3 text-neutral-600">junho@example.com</td>
+<td class="px-4 py-3">
+<span class="inline-block px-2 py-0.5 text-xs font-medium bg-neutral-100 text-neutral-800 rounded">관리자</span>
+</td>
+<td class="px-4 py-3 text-neutral-600 text-xs">2026.09.01</td>
+<td class="px-4 py-3 text-right">
+<div class="inline-flex items-center gap-2 text-xs">
+<button class="text-neutral-700 hover:text-neutral-900" type="button">역할 변경</button>
+<span class="text-neutral-300">·</span>
+<button class="text-neutral-700 hover:text-neutral-900" type="button">멤버 제거</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: 이민지 (제거 대상) -->
+<tr class="h-14 bg-neutral-50 hover:bg-neutral-50/80 transition-colors">
+<td class="px-4 py-3 font-medium text-neutral-900">이민지</td>
+<td class="px-4 py-3 text-neutral-600 font-mono text-xs">3</td>
+<td class="px-4 py-3 text-neutral-600">minji@example.com</td>
+<td class="px-4 py-3">
+<span class="inline-block px-2 py-0.5 text-xs font-medium bg-neutral-100 text-neutral-800 rounded">멤버</span>
+</td>
+<td class="px-4 py-3 text-neutral-600 text-xs">2026.09.01</td>
+<td class="px-4 py-3 text-right">
+<div class="inline-flex items-center gap-2 text-xs">
+<button class="text-neutral-700 hover:text-neutral-900" type="button">역할 변경</button>
+<span class="text-neutral-300">·</span>
+<button class="text-red-700 font-medium hover:underline" type="button">멤버 제거</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="px-4 py-3 bg-white border-t border-[#DDE2DE] text-xs text-neutral-500">
+            총 3명
+          </div>
+</div>
+</section>
+</main>
+</div>
+<!-- Modal Dimmed Overlay (bg-black/40) -->
+<div class="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
+<!-- Dialog Window (600px width) -->
+<div class="w-[600px] bg-white rounded-lg border border-[#DDE2DE] shadow-xl p-6 relative flex flex-col">
+<!-- Dialog Header -->
+<div class="flex items-center justify-between pb-4">
+<h2 class="text-lg font-headline font-bold text-neutral-900">멤버를 제거할까요?</h2>
+<button aria-label="닫기" class="text-neutral-400 hover:text-neutral-700 p-1 rounded transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Target Member Profile Box -->
+<div class="bg-[#F7F8F7] border border-[#DDE2DE] rounded-md p-4 mb-5">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="text-base font-semibold text-neutral-900">이민지</span>
+<span class="text-xs text-neutral-500 font-mono">(ID: 3)</span>
+</div>
+<span class="inline-block px-2 py-0.5 text-xs font-medium bg-neutral-200/80 text-neutral-800 rounded">멤버</span>
+</div>
+<div class="text-xs text-neutral-600 font-mono">
+          minji@example.com
+        </div>
+</div>
+<!-- Impact Notice Body (Strict 3 sentences) -->
+<div class="text-sm text-neutral-700 leading-relaxed mb-6 space-y-2">
+<div class="flex items-start gap-2">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-neutral-400 mt-2 flex-shrink-0"></span>
+<span>이 멤버가 담당한 작업은 미할당으로 바뀝니다.</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-neutral-400 mt-2 flex-shrink-0"></span>
+<span>진행 중·검토 중인 작업은 승인됨으로 돌아갑니다.</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-neutral-400 mt-2 flex-shrink-0"></span>
+<span>완료된 작업의 담당자 정보도 해제됩니다.</span>
+</div>
+</div>
+<!-- Dialog Actions Footer -->
+<div class="flex justify-end items-center gap-2 pt-5 border-t border-neutral-100">
+<button class="border border-neutral-300 hover:bg-neutral-50 text-neutral-700 px-4 py-2 text-sm font-medium rounded transition-colors duration-150" type="button">
+          취소
+        </button>
+<button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 text-sm font-medium rounded transition-colors duration-150 shadow-sm" type="button">
+          멤버 제거
+        </button>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>기존 사용자 추가 - Project Collab</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#245C45',
+              hover: '#1b4634',
+              subtle: '#eaf1ed'
+            },
+            neutral: {
+              50: '#F7F8F7',
+              100: '#F0F2F0',
+              200: '#DDE2DE',
+              300: '#C4CBC5',
+              500: '#677169',
+              700: '#414A43',
+              900: '#202622'
+            }
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          fontFamily: {
+            headline: ["'Noto Sans KR'", "'Public Sans'", "sans-serif"],
+            display: ["'Noto Sans KR'", "'Public Sans'", "sans-serif"],
+            body: ["'Noto Sans KR'", "'Public Sans'", "sans-serif"],
+            label: ["'Noto Sans KR'", "'Public Sans'", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Noto Sans KR', 'Public Sans', sans-serif;
+      color: #202622;
+      background-color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    }
+  </style>
+</head>
+<body class="w-[1440px] min-h-[1000px] mx-auto bg-white relative overflow-hidden text-[#202622]">
+<!-- BACKGROUND: Screen 16 (Dimmed) -->
+<div aria-hidden="true" class="flex w-[1440px] min-h-[1000px] bg-white select-none">
+<!-- Left Navigation Bar (216px) -->
+<aside class="w-[216px] h-[1000px] border-r border-neutral-200 bg-white flex flex-col justify-between p-4 shrink-0">
+<div class="flex flex-col gap-6">
+<div>
+<div class="text-base font-bold text-neutral-900 tracking-tight">Project Collab</div>
+<div class="text-xs text-neutral-500 mt-0.5">업무 협업 도구</div>
+</div>
+<div class="flex flex-col gap-1">
+<a class="text-xs text-neutral-500 hover:text-neutral-900 flex items-center gap-1 py-1" href="#">
+<span class="material-symbols-outlined text-[14px]">arrow_back</span>
+            내 프로젝트로
+          </a>
+<div class="text-sm font-semibold text-neutral-900 px-2 py-1.5 bg-neutral-50 border border-neutral-200 rounded mt-1">
+            결제 안정화
+          </div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-normal text-neutral-700 rounded hover:bg-neutral-50" href="#">
+<span class="material-symbols-outlined text-[18px]">check_box</span>
+<span>작업</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-[#245C45] bg-neutral-100 rounded" href="#">
+<span class="material-symbols-outlined text-[18px] text-[#245C45]">group</span>
+<span>멤버</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-normal text-neutral-700 rounded hover:bg-neutral-50" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span>설정</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Content Canvas -->
+<div class="flex-1 flex flex-col min-w-0">
+<!-- Top Navigation Header (64px) -->
+<header class="h-16 border-b border-neutral-200 px-8 flex items-center justify-between bg-white shrink-0">
+<h1 class="text-lg font-bold text-neutral-900">프로젝트 개요</h1>
+<div class="flex items-center gap-2 text-sm text-neutral-700 font-medium">
+<span class="w-2 h-2 rounded-full bg-[#245C45]"></span>
+<span>박준호 · 관리자</span>
+</div>
+</header>
+<!-- Main Workspace (Padding 32px) -->
+<main class="p-8 flex-1 bg-white flex flex-col gap-6">
+<!-- Project Overview Box -->
+<div class="p-6 rounded border border-neutral-200 bg-neutral-50">
+<div class="flex justify-between items-start mb-2">
+<h2 class="text-xl font-bold text-neutral-900">결제 안정화</h2>
+<div class="text-xs text-neutral-500">
+              생성일 2026.09.15 | 최근 수정일 2026.09.16
+            </div>
+</div>
+<p class="text-sm text-neutral-700 leading-relaxed">
+            결제 오류를 재현하고 수정 작업의 승인과 검토를 관리합니다.
+          </p>
+</div>
+<!-- Members Section Header -->
+<div class="flex justify-between items-center mt-2">
+<h3 class="text-lg font-bold text-neutral-900">멤버</h3>
+<button class="h-9 px-4 bg-[#245C45] text-white text-sm font-medium rounded flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+            멤버 추가
+          </button>
+</div>
+<!-- Members Table -->
+<div class="border border-neutral-200 rounded overflow-hidden">
+<table class="w-full text-left text-sm border-collapse">
+<thead class="bg-neutral-50 border-b border-neutral-200 text-xs text-neutral-500 font-medium">
+<tr class="h-10">
+<th class="px-4 w-[160px]">이름</th>
+<th class="px-4 w-[100px]">사용자 ID</th>
+<th class="px-4 w-[240px]">이메일</th>
+<th class="px-4 w-[120px]">역할</th>
+<th class="px-4 w-[120px]">참여일</th>
+<th class="px-4">관리</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-neutral-200 text-sm">
+<!-- Row 1: 김서연 -->
+<tr class="h-14">
+<td class="px-4 font-medium text-neutral-900">김서연</td>
+<td class="px-4 text-neutral-700">1</td>
+<td class="px-4 text-neutral-700">seoyeon@example.com</td>
+<td class="px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-neutral-200 text-neutral-900">소유자</span>
+</td>
+<td class="px-4 text-neutral-500">2026.09.01</td>
+<td class="px-4 text-neutral-500 text-xs">
+<span class="text-neutral-400">역할 변경</span> · 
+                  <span class="text-neutral-400">멤버 제거</span>
+<span class="text-neutral-500 ml-1.5">(프로젝트에는 소유자가 최소 한 명 필요합니다.)</span>
+</td>
+</tr>
+<!-- Row 2: 박준호 (나) -->
+<tr class="h-14">
+<td class="px-4 font-medium text-neutral-900">박준호 (나)</td>
+<td class="px-4 text-neutral-700">2</td>
+<td class="px-4 text-neutral-700">junho@example.com</td>
+<td class="px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-neutral-100 text-neutral-700 border border-neutral-200">관리자</span>
+</td>
+<td class="px-4 text-neutral-500">2026.09.01</td>
+<td class="px-4 text-neutral-700 text-xs">
+<span class="cursor-pointer hover:underline">역할 변경</span> · 
+                  <span class="cursor-pointer hover:underline">멤버 제거</span>
+</td>
+</tr>
+<!-- Row 3: 이민지 -->
+<tr class="h-14">
+<td class="px-4 font-medium text-neutral-900">이민지</td>
+<td class="px-4 text-neutral-700">3</td>
+<td class="px-4 text-neutral-700">minji@example.com</td>
+<td class="px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-neutral-100 text-neutral-700 border border-neutral-200">멤버</span>
+</td>
+<td class="px-4 text-neutral-500">2026.09.01</td>
+<td class="px-4 text-neutral-700 text-xs">
+<span class="cursor-pointer hover:underline">역할 변경</span> · 
+                  <span class="cursor-pointer hover:underline">멤버 제거</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="text-xs text-neutral-500">
+          총 3명
+        </div>
+</main>
+</div>
+</div>
+<!-- DIMMED BACKDROP -->
+<div class="fixed inset-0 bg-black/40 z-40 backdrop-blur-[0.5px] transition-opacity"></div>
+<!-- MODAL DIALOG (Centered, width: 600px) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+<div aria-labelledby="modal-title" aria-modal="true" class="w-[600px] bg-white rounded border border-neutral-200 shadow-xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-100" role="dialog">
+<!-- Modal Header -->
+<div class="h-16 px-6 border-b border-neutral-200 flex items-center justify-between shrink-0 bg-white">
+<h2 class="text-[20px] font-bold text-neutral-900 leading-none" id="modal-title">멤버 추가</h2>
+<button aria-label="닫기" class="w-8 h-8 rounded flex items-center justify-center text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Modal Body -->
+<div class="p-6 flex flex-col gap-5">
+<!-- Input Group -->
+<div class="flex flex-col gap-2">
+<label class="text-xs font-medium text-neutral-700 flex items-center gap-0.5" for="user-id-input">
+            사용자 ID <span class="text-[#245C45]">*</span>
+</label>
+<div class="flex items-center gap-2">
+<input class="flex-1 h-9 px-3 rounded border border-neutral-300 text-sm text-neutral-900 bg-white focus:outline-none focus:border-[#245C45] focus:ring-1 focus:ring-[#245C45]" id="user-id-input" type="text" value="4"/>
+<button class="h-9 px-4 rounded border border-neutral-300 bg-white text-neutral-700 text-sm font-medium hover:bg-neutral-50 transition-colors shrink-0" type="button">
+              사용자 확인
+            </button>
+</div>
+</div>
+<!-- Confirmed User Information Box -->
+<div class="p-4 rounded border border-neutral-200 bg-neutral-50 flex flex-col gap-3">
+<div class="flex items-center justify-between border-b border-neutral-200/60 pb-2.5">
+<span class="text-xs font-semibold text-neutral-900">확인된 사용자 정보</span>
+<span class="flex items-center gap-1 text-xs font-medium text-[#245C45]">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              사용자가 확인되었습니다
+            </span>
+</div>
+<div class="grid grid-cols-3 gap-3 text-xs leading-normal">
+<div>
+<div class="text-neutral-500 mb-0.5">이름</div>
+<div class="font-semibold text-neutral-900 text-sm">최유진</div>
+</div>
+<div>
+<div class="text-neutral-500 mb-0.5">사용자 ID</div>
+<div class="font-medium text-neutral-700 text-sm">4</div>
+</div>
+<div>
+<div class="text-neutral-500 mb-0.5">이메일</div>
+<div class="font-medium text-neutral-700 text-sm truncate">yujin@example.com</div>
+</div>
+</div>
+<div class="pt-2 border-t border-neutral-200/60 flex items-center justify-between text-xs text-neutral-700">
+<span>추가되는 역할</span>
+<span class="px-2 py-0.5 rounded bg-white border border-neutral-200 text-neutral-900 font-medium">멤버</span>
+</div>
+</div>
+<!-- Footnote / Constraint Notice -->
+<p class="text-xs text-neutral-500 leading-relaxed">
+          사용자 ID로 확인된 사용자를 프로젝트 멤버로 추가합니다.
+        </p>
+</div>
+<!-- Modal Footer -->
+<div class="h-16 px-6 border-t border-neutral-200 bg-white flex items-center justify-end gap-2 shrink-0">
+<button class="h-9 px-4 rounded border border-neutral-300 bg-white text-neutral-700 text-sm font-medium hover:bg-neutral-50 transition-colors" type="button">
+          취소
+        </button>
+<button class="h-9 px-4 rounded bg-[#245C45] hover:bg-[#1b4634] text-white text-sm font-medium transition-colors" type="button">
+          추가
+        </button>
+</div>
+</div>
+</div>
+</body></html>

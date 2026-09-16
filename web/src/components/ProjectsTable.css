@@ -1,0 +1,7 @@
+.project-table {
+  min-width: 740px;
+}
+
+.project-table th:first-child {
+  min-width: 180px;
+}
