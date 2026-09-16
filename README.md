@@ -1,6 +1,14 @@
 # Project Collab
 
-사용자, 프로젝트 멤버십과 역할, 승인 기반 Task 흐름을 구현한 Spring Boot 백엔드 과제다. Task는 Jira 또는 GitHub Issue와 같은 협업 티켓으로 해석했다.
+사용자, 프로젝트 멤버십과 역할, 승인 기반 Task 흐름을 다루는 협업 서비스다. Task는 Jira 또는 GitHub Issue와 같은 협업 티켓으로 해석했다. Spring Boot 백엔드는 `api/`, Vite 기반 React + TypeScript 프런트엔드는 `web/`에 둔다. 프런트엔드는 현재 기본 프로젝트만 생성한 상태다.
+
+## 프로젝트 구조
+
+```text
+api/     Spring Boot 소스, 테스트, Gradle 빌드 설정
+web/     Vite + React + TypeScript 프로젝트
+docs/    API 명세와 설계 문서
+```
 
 ## 문서 경로
 
@@ -18,9 +26,16 @@
 ### 요구 환경
 
 - Java 17
+- Node.js 22.12 이상과 npm (프런트엔드, 초기 검증 환경: Node.js 24.14.0)
 - 별도 데이터베이스 불필요: H2 인메모리 사용
 
+### 백엔드
+
+저장소 루트에서 `api/`로 이동한 뒤 실행한다.
+
 ```bash
+cd api
+
 # macOS/Linux
 ./gradlew bootRun
 
@@ -30,7 +45,25 @@
 
 - Swagger UI: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
 - OpenAPI JSON: [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
-- 테스트: `./gradlew test` 또는 `./gradlew.bat test`
+- 테스트: `api/`에서 `./gradlew test` 또는 `./gradlew.bat test`
+
+### 프런트엔드
+
+별도 터미널에서 저장소 루트를 기준으로 실행한다.
+
+```bash
+cd web
+npm ci
+npm run dev
+```
+
+- 개발 화면: [http://localhost:5173](http://localhost:5173)
+- 빌드: `web/`에서 `npm run build`
+- 정적 검사: `web/`에서 `npm run lint`
+- 개발 서버는 `/api` 요청을 `http://localhost:8080`으로 전달한다. API를 사용하려면 백엔드를 함께 실행한다. 이 설정은 개발 서버에만 적용된다.
+- 아직 Stitch 화면 변환과 API 연동은 진행하지 않았다.
+
+### 백엔드 예제 데이터
 
 기본 실행 시 사용자, 프로젝트, 상태별 Task 예제가 자동 생성된다. 실제 ID와 리비전은 시작 로그를 기준으로 한다.
 
@@ -106,6 +139,6 @@ Swagger UI의 `Try it out`은 앞선 응답을 다음 요청에 자동 전달하
 
 - 담당자 재할당과 해당 사용자 멤버 제거의 동시 실행 충돌은 완전히 해결하지 못했다.
 - 실제 화면을 기준으로 한 조회 전용 모델과 역할별 대시보드는 설계하지 못했다.
-- 인증과 프론트엔드는 과제 범위에 따라 제외했다.
+- 인증은 과제 범위에 따라 제외했다. 프런트엔드는 후속 작업으로 기본 프로젝트를 생성했으며, 업무 화면과 API 연동은 아직 구현하지 않았다.
 
 후속 접근은 [회사별 데이터 분리와 미완성 항목](docs/scaling-and-gaps.md)에 기록했다.
